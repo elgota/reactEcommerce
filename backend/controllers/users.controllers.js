@@ -1,16 +1,16 @@
 import { pool } from "../db.js";
 
 export const createUser = async (req, res) => {
-  const { nombre, apellido, telefono, email, passwordHash } = req.body;
+  const { firstName, lastName, mobile, email, passwordHash } = req.body;
   const [result] = await pool.query(
-    "INSERT INTO user (nombre, apellido, telefono, email, passwordHash) VALUES (?, ?, ?, ?, ?)",
-    [nombre, apellido, telefono, email, passwordHash]
+    "INSERT INTO user (firstName, lastName, mobile, email, passwordHash) VALUES (?, ?, ?, ?, ?)",
+    [firstName, lastName, mobile, email, passwordHash]
   );
   res.json({
     id: result.insertId,
-    nombre,
-    apellido,
-    telefono,
+    firstName,
+    lastName,
+    mobile,
     email,
     passwordHash,
   });
