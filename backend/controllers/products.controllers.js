@@ -5,8 +5,9 @@ export const getProduct = async (req, res) => {
     req.params.id,
   ]);
 
-  if (result.length === 0)
+  if (result.length === 0) {
     return res.status(404).json({ message: "Product not found" });
+  }
 
   res.json(result[0]);
 };
@@ -33,8 +34,9 @@ export const updateProduct = async (req, res) => {
     req.params.id,
   ]);
 
-  if (result.affectedRows === 0)
+  if (result.affectedRows === 0) {
     return res.status(404).json({ message: "Product not found" });
+  }
 
   return res.sendStatus(204);
 };
@@ -44,8 +46,9 @@ export const deleteProduct = async (req, res) => {
     req.params.id,
   ]);
 
-  if (result.affectedRows === 0)
+  if (result.affectedRows === 0) {
     return res.status(404).json({ message: "Product not found" });
+  }
 
   return res.sendStatus(204);
 };

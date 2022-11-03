@@ -1,13 +1,5 @@
 import { pool } from "../db.js";
 
-export const getUsers = async (req, res) => {
-  const [result] = await pool.query(
-    "SELECT * FROM user ORDER BY registeredAt ASC"
-  );
-
-  res.json(result);
-};
-
 export const getUser = async (req, res) => {
   const [result] = await pool.query("SELECT * FROM user WHERE id = ?", [
     req.params.id,
@@ -20,13 +12,19 @@ export const getUser = async (req, res) => {
   res.json(result[0]);
 };
 
+export const getUsers = async (req, res) => {
+  const [result] = await pool.query(
+    "SELECT * FROM user ORDER BY registeredAt ASC"
+  );
+  res.json(result);
+};
+
 export const createUser = async (req, res) => {
   const { nombre, apellido, telefono, email, passwordHash } = req.body;
   const [result] = await pool.query(
     "INSERT INTO user (nombre, apellido, telefono, email, passwordHash) VALUES (?, ?, ?, ?, ?)",
     [nombre, apellido, telefono, email, passwordHash]
   );
-  console.log(result);
   res.json({
     id: result.insertId,
     nombre,

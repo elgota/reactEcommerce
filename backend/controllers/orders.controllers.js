@@ -1,11 +1,5 @@
 import { pool } from "../db.js";
 
-export const getOrders = async (req, res) => {
-  const [result] = await pool.query("SELECT * FROM `order`");
-
-  res.json(result);
-};
-
 export const getOrder = async (req, res) => {
   const [result] = await pool.query("SELECT * FROM `order` WHERE id = ?", [
     req.params.id,
@@ -18,6 +12,11 @@ export const getOrder = async (req, res) => {
   res.json(result[0]);
 };
 
+export const getOrders = async (req, res) => {
+  const [result] = await pool.query("SELECT * FROM `order`");
+  res.json(result);
+};
+
 export const createOrder = async (req, res) => {
   const { nombre, apellido, telefono, email, line1, line2, province, country } =
     req.body;
@@ -25,7 +24,6 @@ export const createOrder = async (req, res) => {
     "INSERT INTO `order` (nombre, apellido, telefono, email, line1, line2, province, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
     [nombre, apellido, telefono, email, line1, line2, province, country]
   );
-  console.log(result);
   res.json({
     id: result.insertId,
     nombre,

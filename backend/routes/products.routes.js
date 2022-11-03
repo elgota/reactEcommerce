@@ -6,6 +6,7 @@ import {
   updateProduct,
   deleteProduct,
 } from "../controllers/products.controllers.js";
+
 const router = Router();
 
 router.get("/api/products", getProducts);
