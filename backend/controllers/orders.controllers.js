@@ -1,22 +1,5 @@
 import { pool } from "../db.js";
 
-export const getOrder = async (req, res) => {
-  const [result] = await pool.query("SELECT * FROM `order` WHERE id = ?", [
-    req.params.id,
-  ]);
-
-  if (result.length === 0) {
-    return res.status(404).json({ message: "Usuario no encontrado" });
-  }
-
-  res.json(result[0]);
-};
-
-export const getOrders = async (req, res) => {
-  const [result] = await pool.query("SELECT * FROM `order`");
-  res.json(result);
-};
-
 export const createOrder = async (req, res) => {
   const { nombre, apellido, telefono, email, line1, line2, province, country } =
     req.body;
@@ -35,6 +18,23 @@ export const createOrder = async (req, res) => {
     province,
     country,
   });
+};
+
+export const getOrders = async (req, res) => {
+  const [result] = await pool.query("SELECT * FROM `order`");
+  res.json(result);
+};
+
+export const getOrder = async (req, res) => {
+  const [result] = await pool.query("SELECT * FROM `order` WHERE id = ?", [
+    req.params.id,
+  ]);
+
+  if (result.length === 0) {
+    return res.status(404).json({ message: "Usuario no encontrado" });
+  }
+
+  res.json(result[0]);
 };
 
 export const updateOrder = async (req, res) => {

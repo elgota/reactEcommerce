@@ -1,5 +1,21 @@
 import { pool } from "../db.js";
 
+export const createProduct = async (req, res) => {
+  const { title, summary } = req.body;
+  const [result] = await pool.query(
+    "INSERT INTO product (title, summary) VALUES (?, ?)",
+    [title, summary]
+  );
+  res.json({ id: result.insertId, title, summary });
+};
+
+export const getProducts = async (req, res) => {
+  const [result] = await pool.query(
+    "SELECT * FROM product ORDER BY createdAt ASC"
+  );
+  res.json(result);
+};
+
 export const getProduct = async (req, res) => {
   const [result] = await pool.query("SELECT * FROM product WHERE id = ?", [
     req.params.id,
@@ -10,22 +26,6 @@ export const getProduct = async (req, res) => {
   }
 
   res.json(result[0]);
-};
-
-export const getProducts = async (req, res) => {
-  const [result] = await pool.query(
-    "SELECT * FROM product ORDER BY createdAt ASC"
-  );
-  res.json(result);
-};
-
-export const createProduct = async (req, res) => {
-  const { title, summary } = req.body;
-  const [result] = await pool.query(
-    "INSERT INTO product (title, summary) VALUES (?, ?)",
-    [title, summary]
-  );
-  res.json({ id: result.insertId, title, summary });
 };
 
 export const updateProduct = async (req, res) => {

@@ -1,24 +1,5 @@
 import { pool } from "../db.js";
 
-export const getUser = async (req, res) => {
-  const [result] = await pool.query("SELECT * FROM user WHERE id = ?", [
-    req.params.id,
-  ]);
-
-  if (result.length === 0) {
-    return res.status(404).json({ message: "Usuario no encontrado" });
-  }
-
-  res.json(result[0]);
-};
-
-export const getUsers = async (req, res) => {
-  const [result] = await pool.query(
-    "SELECT * FROM user ORDER BY registeredAt ASC"
-  );
-  res.json(result);
-};
-
 export const createUser = async (req, res) => {
   const { nombre, apellido, telefono, email, passwordHash } = req.body;
   const [result] = await pool.query(
@@ -33,6 +14,25 @@ export const createUser = async (req, res) => {
     email,
     passwordHash,
   });
+};
+
+export const getUsers = async (req, res) => {
+  const [result] = await pool.query(
+    "SELECT * FROM user ORDER BY registeredAt ASC"
+  );
+  res.json(result);
+};
+
+export const getUser = async (req, res) => {
+  const [result] = await pool.query("SELECT * FROM user WHERE id = ?", [
+    req.params.id,
+  ]);
+
+  if (result.length === 0) {
+    return res.status(404).json({ message: "Usuario no encontrado" });
+  }
+
+  res.json(result[0]);
 };
 
 export const updateUser = async (req, res) => {
