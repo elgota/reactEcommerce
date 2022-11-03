@@ -1,12 +1,12 @@
 import { pool } from "../db.js";
 
 export const createProduct = async (req, res) => {
-  const { title, summary } = req.body;
+  const { userId, title, summary, slug, sku } = req.body;
   const [result] = await pool.query(
-    "INSERT INTO product (title, summary) VALUES (?, ?)",
-    [title, summary]
+    "INSERT INTO product (userId, title, summary, slug, sku) VALUES (?, ?, ?, ?, ?)",
+    [userId, title, summary, slug, sku]
   );
-  res.json({ id: result.insertId, title, summary });
+  res.json({ id: result.insertId, userId, title, summary, slug, sku });
 };
 
 export const getProducts = async (req, res) => {
