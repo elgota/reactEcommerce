@@ -1,12 +1,11 @@
 import { Router } from "express";
 import {
-    getUsers,
-    getUser,
-    createUser,
-    updateUser,
-    deleteUser
-} from "../controllers/users.controller.js"
-
+  getUsers,
+  getUser,
+  createUser,
+  updateUser,
+  deleteUser,
+} from "../controllers/users.controller.js";
 
 const router = Router();
 
@@ -18,7 +17,6 @@ router.post("/api/users", createUser);
 
 router.put("/api/users/:id", updateUser);
 
-router.delete("/api/users/:id", deleteUser); 
+router.delete("/api/users/:id", deleteUser);
 
 export default router;
-
