@@ -1,22 +1,26 @@
 import { pool } from "../db.js";
 
 export const createOrder = async (req, res) => {
-  const { nombre, apellido, telefono, email, line1, line2, province, country } =
+  const { sessionId, token, firstName, lastName, mobile, email, line1, line2, city, province, country, content } =
     req.body;
   const [result] = await pool.query(
-    "INSERT INTO `order` (nombre, apellido, telefono, email, line1, line2, province, country) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-    [nombre, apellido, telefono, email, line1, line2, province, country]
+    "INSERT INTO `order` (sessionId, token, firstName, lastName, mobile, email, line1, line2, city, province, country, content) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    [sessionId, token, firstName, lastName, mobile, email, line1, line2, city, province, country, content]
   );
   res.json({
     id: result.insertId,
-    nombre,
-    apellido,
-    telefono,
+    sessionId, 
+    token,
+    firstName,
+    lastName,
+    mobile,
     email,
     line1,
     line2,
+    city,
     province,
     country,
+    content
   });
 };
 
