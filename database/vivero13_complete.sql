@@ -147,4 +147,8 @@ INSERT INTO `order_item` (`productId`,`orderId`,`sku`,`price`,`discount`,`quanti
 INSERT INTO `order_item` (`productId`,`orderId`,`sku`,`price`,`discount`,`quantity`,`createdAt`,`updatedAt`,`content`) VALUES (2, 2, 'P000002', 100.00,0.05,1, '2022-11-15 12:16:18', '2022-11-15 15:16:18', 'Con macetero');
 INSERT INTO `order_item` (`productId`,`orderId`,`sku`,`price`,`discount`,`quantity`,`createdAt`,`updatedAt`,`content`) VALUES (2, 2, 'P000002', 100.00,0.05,1,'2022-11-15 12:16:18', '2022-11-15 15:16:18', 'Con tierra en la maceta');
 
+INSERT INTO `transaction` (`userId`,`orderId`,`code`,`type`,`mode`,`status`,`createdAt`,`updatedAt`,`content`) VALUES (4, 1, '0000000000000001', 1,5,0,'2022-11-15 17:16:18', '2022-11-15 17:16:18', 'new');
 
+INSERT INTO `transaction` (`userId`,`orderId`,`code`,`type`,`mode`,`status`,`createdAt`,`updatedAt`,`content`) VALUES (5, 2, '0000000000000002', 1,5,6,'2022-11-15 18:16:18', '2022-11-15 18:16:18', 'success');
+
+INSERT INTO `transaction` (`userId`,`orderId`,`code`,`type`,`mode`,`status`,`createdAt`,`updatedAt`,`content`) VALUES (5, 3, '0000000000000003', 0,5,5,'2022-11-15 19:16:18', '2022-11-15 19:16:18', 'rejected');
