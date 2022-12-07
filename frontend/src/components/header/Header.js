@@ -20,6 +20,7 @@ const Header = () => {
             <li>--------</li>
           </ul>
         </div>
+        <i class="fas fa-user"></i>
         <input type="text" className={css.search} placeholder="search" />
         <CgShoppingCart className={css.cart} />
       </div>
