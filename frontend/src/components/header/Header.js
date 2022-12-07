@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import css from "./Header.module.css"
 import Logo from "../../assets/logo.png";
 import { CgShoppingCart } from "react-icons/cg";
@@ -8,7 +9,7 @@ const Header = () => {
     <div className={css.container}>
       <div className={css.logo}>
         <img src={Logo} alt="Logo" /> {/* remplazar */}
-        <span>Vivero</span>
+        <span><Link to="/">Vivero</Link></span>
       </div>
       <div className={css.right}>
         <div className={css.menu}>
@@ -22,7 +23,7 @@ const Header = () => {
         </div>
         <i class="fas fa-user"></i>
         <input type="text" className={css.search} placeholder="search" />
-        <CgShoppingCart className={css.cart} />
+        <Link to="/ListaCarrito"><CgShoppingCart className={css.cart} ></CgShoppingCart></Link>
       </div>
     </div>
   )
