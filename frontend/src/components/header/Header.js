@@ -4,6 +4,9 @@ import css from "./Header.module.css"
 import Logo from "../../assets/logo.png";
 import { CgShoppingCart } from "react-icons/cg";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faUser} from '@fortawesome/free-solid-svg-icons'
+
 const Header = () => {
   return (
     <div className={css.container}>
@@ -21,9 +24,13 @@ const Header = () => {
             <li>--------</li>
           </ul>
         </div>
-        <i class="fas fa-user"></i>
         <input type="text" className={css.search} placeholder="search" />
-        <Link to="/ListaCarrito"><CgShoppingCart className={css.cart} ></CgShoppingCart></Link>
+        <div>
+          <Link to="/ListaCarrito"><CgShoppingCart className={css.cart} ></CgShoppingCart></Link>
+        </div>
+        <div className={css.account}>
+          <Link to="/Login"><FontAwesomeIcon icon={faUser} /></Link>
+        </div>
       </div>
     </div>
   )
