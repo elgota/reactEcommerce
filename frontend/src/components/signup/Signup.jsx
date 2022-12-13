@@ -17,7 +17,7 @@ const Signup = () => {
                     <input type="text" name='l-name' placeholder='Apellidos' required />
                     <input type="text" name='email' placeholder='Correo' required />
                     <input type="password" name='password' placeholder='Contraseña' required />
-                    <input type="submit" value="Ingresar" />
+                    <input type="submit" value="Registarse" />
                 </form>
                 <p>¿Ya tienes una cuenta? <Link to="/Login">Ingresar</Link></p>
             </div>
