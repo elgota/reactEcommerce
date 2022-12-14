@@ -160,7 +160,12 @@ export const reducerCart =(state,action) =>{
     }
     case TYPES.CALCULATE_TOTAL_PRICE_OF_THE_CART:{
 
-      break;
+ 
+      return{
+        ...state,
+        totalPricesShoppingCart: state.cart.reduce((previousValue,product)=>previousValue+product.price,0)
+
+      }
     }
       
   
@@ -168,5 +173,5 @@ export const reducerCart =(state,action) =>{
       return state;
 
   }
-  throw Error("Accion Desconocida" + action.type)
+  // throw Error("Accion Desconocida" + action.type)
 }

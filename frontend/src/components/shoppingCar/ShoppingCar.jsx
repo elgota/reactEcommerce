@@ -9,15 +9,12 @@ import EmptyCart from "./emptyCart.jsx";
 import CardProduct from "./cardProduct.jsx";
 import { useEffect } from 'react';
 
-var aux = 0;
-
-
 
 const ShoppingCar = () => {
 
   const [state, dispatch] = useReducer(reducerCart, productsInitialState);
 
- 
+
 
   const addToCart = (id) => {
     dispatch({
@@ -41,17 +38,21 @@ const ShoppingCar = () => {
     })
   }
 
-  // const calculateTotalPrices = () => {
-  //   dispatch({
-  //     types: TYPES.CALCULATE_TOTAL_PRICE_OF_THE_CART,
-  //   })
-  // }
+  const calculateTotalPrices = () => {
+
+    dispatch({
+      types: TYPES.CALCULATE_TOTAL_PRICE_OF_THE_CART,
+    })
+  }
 
 
   const { id } = useParams();
   let numero = parseInt(id)
+  // eslint-disable-next-line
+  useEffect(() => addToCart(numero), [])
+  useEffect(() => calculateTotalPrices(), [])
 
-  useEffect(()=>addToCart(numero),[])
+
 
 
   return (
@@ -61,11 +62,12 @@ const ShoppingCar = () => {
           <li className={css.shopping}><span className={css.textCar}>Carrito({state.cart.length})</span></li>
         </ul>
         <hr />
+        {/* <button onClick={()=>calculateTotalPrices()}>calcular</button> */}
         {/* {
-          state.products.map((product)=>{
+          state.products.map((product) => {
             return <CardProduct key={product.id} data={product} deleteFromCart={addToCart} />
           })
-         } */}
+        } */}
 
         {
           state.cart.length === 0 && <EmptyCart />
@@ -77,9 +79,20 @@ const ShoppingCar = () => {
           })
         }
 
-        {
-          state.cart.length >= 1 && <button onClick={() => clearCart()} className={css.deleteAll}>Eliminar Todo</button>
-        }
+        <div className={css.botonYtotal}>
+
+          {
+
+            state.cart.length >= 1 && <h2 >Total: ${state.totalPricesShoppingCart}</h2>
+          }
+
+          {
+            state.cart.length >= 1 && <button onClick={() => clearCart()} className={css.deleteAll}>Eliminar Todo</button>
+          }
+
+        </div>
+
+
 
       </div>
       <div className={css.title}>
