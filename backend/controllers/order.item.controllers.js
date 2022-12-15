@@ -1,12 +1,18 @@
 import { pool } from "../db.js";
 
 export const createOrderItem = async (req, res) => {
-    const { productId, orderId, sku, price, discount, quantity, 
+    const { productId, 
+            orderId, 
+            sku, 
+            price, 
+            discount, 
+            quantity,
+            updateAt, 
             content } = req.body;
 
     const [result] = await pool.query(
-        "INSERT INTO `order_item` (productId, orderId, sku, price, discount, quantity, content) VALUES (?, ?, ?, ?, ?, ?, ?)",
-        [ productId, orderId, sku, price, discount, quantity, content]
+        "INSERT INTO `order_item` (productId, orderId, sku, price, discount, quantity, updateAt, content) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        [ productId, orderId, sku, price, discount, quantity, updateAt, content]
     );
     res.json({
         id: result.insertId,
@@ -16,6 +22,7 @@ export const createOrderItem = async (req, res) => {
         price,
         discount,
         quantity,
+        updateAt,
         content
     });
 };
