@@ -9,9 +9,22 @@ import orderItemsRoutes from "./routes/order.item.routes.js";
 import transactionRoutes from "./routes/transaction.routes.js";
 import imageRoutes from "./routes/image.routes.js"
 
+import cors from "cors";
+import mysql from "mysql";
+import myConnection from "express-myconnection";
+
 const app = express();
 
 app.use(express.json());
+
+app.use(myConnection(mysql, {
+    host: "localhost",
+  port: 3306,
+  user: "root",
+  password: "root",
+  database: "vivero13",
+}));
+app.use(cors());
 
 app.use(indexRoutes);
 app.use(usersRoutes);
@@ -20,6 +33,8 @@ app.use(ordersRoutes);
 app.use(orderItemsRoutes);
 app.use(transactionRoutes);
 app.use(imageRoutes);
+
+
 
 
 app.listen(PORT);
