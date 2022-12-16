@@ -24,22 +24,32 @@
 .formContainer {
     display: flex;
     flex-direction: column;
+    width: 300px;
+    margin: 0 auto;
+}
+.formContainer h1 {
+    margin-bottom: 10px;
+}
+.formContainer label {
+    padding-bottom: 5px;
+}
+.formContainer label span {
+    color: #980606;
+    font-size: 20px;
 }
 .formContainer input {
     font-size: 18px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     padding: 10px;
     outline: none;
     border: none;
     border-radius: 5px;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
 }
 .formContainer input[type="submit"] {
     width: 320px;
     cursor: pointer;
     background-color: #21aa5b;
+    margin-top: 15px;
 }
 .formContainer input[type="submit"]:hover {
     background-color: #219b54;

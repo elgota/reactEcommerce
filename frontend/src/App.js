@@ -12,7 +12,7 @@ function App() {
   const appComponent = useRef();
 
   useEffect(() => {
-    console.log(appComponent.current)
+    
   })
   
   return (
