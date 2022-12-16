@@ -8,11 +8,14 @@ import { useReducer } from "react";
 import EmptyCart from "./emptyCart.jsx";
 import CardProduct from "./cardProduct.jsx";
 import { useEffect } from 'react';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 
 const ShoppingCar = () => {
 
   const [state, dispatch] = useReducer(reducerCart, productsInitialState);
+
+
 
 
 
@@ -46,11 +49,22 @@ const ShoppingCar = () => {
   }
 
 
+
+
   const { id } = useParams();
   let numero = parseInt(id)
   // eslint-disable-next-line
   useEffect(() => addToCart(numero), [])
   useEffect(() => calculateTotalPrices(), [])
+  
+  const prueba = state.products[numero - 4];
+  const [item, setItem] = useLocalStorage("ListProduct", " ");
+  useEffect(() => setItem(prueba), [])
+  console.log(item)
+
+
+
+
 
 
 

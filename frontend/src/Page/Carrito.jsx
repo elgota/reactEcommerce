@@ -13,6 +13,7 @@ const Carrito = () => {
       <Slider />
       <Footer />
     </Fragment>
+
   )
 }
 
