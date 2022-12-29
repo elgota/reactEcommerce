@@ -1,16 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {Form, Formik} from "formik";
-import {createProductRequest} from './../../api/product.api';
+import {createProductRequest, getProductRequest} from './../../api/product.api';
 
 function NuevoProducto() {
+
   return (
     <div>
         
-          <nav className="navbar bg-body-tertiary navbar-dark bg-dark">
+          {/* <nav className="navbar bg-body-tertiary navbar-dark bg-dark">
               <div className="container-fluid">
                   <span className="navbar-brand mb-0 h1">Cargar producto</span>
               </div>
-          </nav>
+          </nav> */}
           <Formik
             initialValues= {{
                 userId: "",
@@ -38,7 +39,7 @@ function NuevoProducto() {
             }}
           >
         {({handleChange, handleSubmit}) => (
-           <div className="productoForm">
+           <div className="productoForm"> 
            <Form className="formInputs" onSubmit={handleSubmit}>
                 <div className="mb-3">
                    <label className="form-label">Id del usuario</label>
