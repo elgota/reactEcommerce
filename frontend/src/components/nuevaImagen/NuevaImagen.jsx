@@ -26,8 +26,6 @@ export const NuevaImagen = () => {
   
   const [file, setFile] = useState(null);
 
-
-
   const selectedHandler = (e) => {
     setFile(e.target.files[0]);
   };
@@ -46,8 +44,6 @@ export const NuevaImagen = () => {
     document.getElementById("fileinput").value = null;
     setFile(null);
 
-    
-    
 
   };
 
