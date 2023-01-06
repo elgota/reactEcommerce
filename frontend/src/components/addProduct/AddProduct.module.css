@@ -1,0 +1,161 @@
+.container_form {
+  display: flex;
+  width: 100%;
+  height: auto;
+
+
+}
+
+.container_info {
+  width: 75%;
+  height: auto;
+  background: aqua;
+}
+
+.form_product {
+  width: 25%;
+  height: auto;
+  background: white;
+  border: 1px solid black;
+
+}
+
+
+/* input */
+
+
+.input_group {
+  position: relative;
+  margin: 1rem;
+}
+
+.inputs {
+  border: solid 1.5px #47C67C;
+  border-radius: 1rem;
+  background: none;
+  padding: 1rem;
+  font-size: 1rem;
+  color: #f5f5f5;
+  transition: border 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 90%;
+}
+
+.user_label {
+  position: absolute;
+  left: 15px;
+  color: #47C67C;
+  pointer-events: none;
+  transform: translateY(1rem);
+  transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.inputs:focus, inputs:valid {
+  outline: none;
+  border: 1.5px solid #1a73e8;
+}
+
+.inputs:focus~label,
+inputs:valid~label {
+  transform: translateY(-50%) scale(0.8);
+  background-color: #ffffff;
+  padding: 0 .2em;
+  color: #2196f3;
+}
+
+/* selector de img */
+.btnLabel {
+  display: flex;
+  color: #00A97F;
+  margin: 1rem 1rem 0.5rem 1rem
+
+}
+
+.btnSelector {
+  padding: 0.5rem;
+  border: 1px solid #00A97F;
+  border-radius: 0.5rem;
+}
+
+/* caja con imagenes */
+.filaImg {
+  display: flex;
+  border: 1px dashed #000;
+  margin: 0.1rem 1rem 1rem 1rem;
+}
+
+.caja {
+  width: 5rem;
+  height: 5rem;
+  margin-right: 0.5rem;
+  background-color: black;
+}
+
+.btnDelete{
+  background-color: green;
+  font-size: 11px;
+  border-radius: 10px 0px;
+  position: absolute;
+  margin: -4px;
+}
+
+/* enviar y limpiar  */
+
+.btnSend {
+  --color: #00A97F;
+  --color2: rgb(10, 25, 30);
+  padding: 0.8em 1.75em;
+  background-color: transparent;
+  border-radius: 6px;
+  border: .3px solid var(--color);
+  transition: .5s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 17px;
+  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  color: var(--color);
+  margin-left: 1rem;
+}
+
+.btnSend::after,
+.btnSend::before {
+  content: '';
+  display: block;
+  height: 100%;
+  width: 100%;
+  transform: skew(90deg) translate(-50%, -50%);
+  position: absolute;
+  inset: 50%;
+  left: 25%;
+  z-index: -1;
+  transition: .5s ease-out;
+  background-color: var(--color);
+}
+
+
+.btnSend::before {
+  top: -50%;
+  left: -25%;
+  transform: skew(90deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btnSend:hover::before {
+  transform: skew(45deg) rotate(180deg) translate(-50%, -50%);
+}
+
+.btnSend:hover::after {
+  transform: skew(45deg) translate(-50%, -50%);
+}
+
+.btnSend:hover {
+  color: var(--color2);
+}
+
+.btnSend:active {
+  filter: brightness(.7);
+  transform: scale(.98);
+}

@@ -5,6 +5,7 @@ import Home from "./Page/Home";
 import Carrito from "./Page/Carrito";
 import Login from"./Page/account/Login";
 import Signup from './Page/account/Signup'
+import AgregarProducto from './Page/AgregarProducto';
 
 
 
@@ -23,6 +24,7 @@ function App() {
         <Route exact path="/ListaCarrito/:id" element={<Carrito />}/>
         <Route exact path="/Login" element={<Login/>}/>
         <Route exact path="/Signup" element={<Signup />} />
+        <Route exact path='/Agregar' element={<AgregarProducto/>}/>
 
       </Routes>
     </div>
