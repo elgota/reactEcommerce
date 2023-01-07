@@ -53,7 +53,7 @@ const AddProduct = () => {
     setpreImg(newImgs)
   }
 
-  const texts = ["texto 1","texto 2","texto 3"];
+  const texts = ["hola","texto 2","texto 3"];
   let index = 0;
 
   useEffect(()=>{
