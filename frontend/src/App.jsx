@@ -1,19 +1,11 @@
-import React from "react";
-import "./App.css";
-import { Header } from "./components/header";
-import { ProductosLista } from "./components/productos/index";
-import 'boxicons';
-import { NuevaImagen } from './components/nuevaImagen/NuevaImagen';
+import { Route, Routes } from "react-router-dom";
+import ImagesPage from "./pages/ImagesPage";
 
 function App() {
   return (
-    <div className="App">
-      {/* <Header /> */}
-
-      {/* <ProductosLista /> */}
-
-      <NuevaImagen />
-    </div>
+    <Routes>
+      <Route path="/images" element={<ImagesPage />} />
+    </Routes>
   );
 }
 

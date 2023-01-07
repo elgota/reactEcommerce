@@ -1,8 +1,17 @@
-import React, { useState } from "react";
-import { createImageRequest } from "./../../api/image.api";
+import React, { useState, useEffect } from "react";
+import { createImageRequest, getImagesRequest } from "../api/image.api";
 
-export const NuevaImagen = () => {
+function ImagesPage() {
   const [file, setFile] = useState(null);
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    async function loadImages() {
+      const response = await getImagesRequest();
+      setImages(response.data);
+    }
+    loadImages();
+  }, []);
 
   const selectedHandler = (e) => {
     setFile(e.target.files[0]);
@@ -44,6 +53,18 @@ export const NuevaImagen = () => {
           Subir
         </button>
       </div>
+
+      {images.map((image) => (
+        <div key={image.id}>
+          <img
+            src={"http://localhost:4000/" + image}
+            width="300"
+            height="300"
+          />
+        </div>
+      ))}
     </div>
   );
-};
+}
+
+export default ImagesPage;

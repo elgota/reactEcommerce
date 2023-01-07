@@ -11,7 +11,7 @@ export const createImage = async (req, res) => {
   const title = req.file.originalname;
   const type = req.file.mimetype;
   const data = fs.readFileSync(
-    path.join(__dirname, "../images/" + req.file.filename)
+    path.join(__dirname, "../imagesUpload/" + req.file.filename)
   );
 
   await pool.query(
@@ -24,42 +24,17 @@ export const createImage = async (req, res) => {
 
 export const getImages = async (req, res) => {
   const [result] = await pool.query("SELECT * FROM `image`");
-  res.json(result);
-};
 
-export const getImage = async (req, res) => {
-  const [result] = await pool.query("SELECT * FROM `image` WHERE id = ?", [
-    req.params.id,
-  ]);
+  //console.log(result);
 
-  if (result.length === 0) {
-    return res.status(404).json({ message: "Imagen no encontrada" });
-  }
+  result.map((image) => {
+    fs.writeFileSync(
+      path.join(__dirname, "../imagesDownload/" + image.id + "-vivero13.png"),
+      image.data
+    );
+  });
 
-  res.json(result[0]);
-};
-
-export const updateImage = async (req, res) => {
-  const [result] = await pool.query("UPDATE `image` SET ? WHERE id = ?", [
-    req.body,
-    req.params.id,
-  ]);
-
-  if (result.affectedRows === 0) {
-    return res.status(404).json({ message: "Imagen no encontrada" });
-  }
-
-  return res.sendStatus(204);
-};
-
-export const deleteImage = async (req, res) => {
-  const [result] = await pool.query("DELETE FROM `image` WHERE id = ?", [
-    req.params.id,
-  ]);
-
-  if (result.affectedRows === 0) {
-    return res.status(404).json({ message: "Imagen no encontrada" });
-  }
-
-  return res.sendStatus(204);
+  const imagenDir = fs.readdirSync(path.join(__dirname, "../imagesDownload/"));
+  res.json(imagenDir);
+  //console.log(imagenDir);
 };
