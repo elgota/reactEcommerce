@@ -17,7 +17,7 @@ const app = express();
 app.use(express.json());
 
 app.use(cors());
-app.use(express.static("./backend/imagesDownload/"));
+app.use(express.static("./backend/imagesProduct/"));
 
 app.use(indexRoutes);
 app.use(usersRoutes);

@@ -7,3 +7,7 @@ export const createImageRequest = async (formdata) => {
 export const getImagesRequest = async () => {
   return await axios.get("http://localhost:4000/api/images");
 };
+
+export const getImagesByProductIdRequest = async (productId) => {
+  return await axios.get(`http://localhost:4000/api/images/product/${productId}`);
+};

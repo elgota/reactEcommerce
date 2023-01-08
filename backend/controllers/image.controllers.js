@@ -29,12 +29,40 @@ export const getImages = async (req, res) => {
 
   result.map((image) => {
     fs.writeFileSync(
-      path.join(__dirname, "../imagesDownload/" + image.id + "-vivero13.png"),
+      path.join(
+        __dirname,
+        "../imagesProduct/" + image.productId + "-" + image.id + "-vivero13.png"
+      ),
       image.data
     );
   });
 
-  const imagenDir = fs.readdirSync(path.join(__dirname, "../imagesDownload/"));
+  const imagenDir = fs.readdirSync(path.join(__dirname, "../imagesProduct/"));
   res.json(imagenDir);
   //console.log(imagenDir);
+};
+
+export const getImagesByProductId = async (req, res) => {
+  const [result] = await pool.query(
+    "SELECT * FROM `image` WHERE productId = ?",
+    [req.params.productId]
+  );
+
+  //console.log(result);
+
+  result.map((image) => {
+    fs.writeFileSync(
+      path.join(
+        __dirname,
+        "../imagesProduct/" + image.productId + "-" + image.id + "-vivero13.png"
+      ),
+      image.data
+    );
+  });
+
+  const imagenDir = fs.readdirSync(path.join(__dirname, "../imagesProduct/"));
+  const imageDirByProductId = imagenDir.filter((image) =>
+    image.startsWith(req.params.productId + "-")
+  );
+  res.json(imageDirByProductId);
 };

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { getImagesRequest } from "../api/image.api";
+import { getImagesByProductIdRequest } from "../api/image.api";
 
-function ImagesPage() {
+function ImagesByProductIdPage() {
   const [images, setImages] = useState([]);
 
   useEffect(() => {
     async function loadImages() {
-      const response = await getImagesRequest();
+      const productId = 2;//el productId debe venir de otro lado y ser variable
+      const response = await getImagesByProductIdRequest(productId); 
       setImages(response.data);
     }
     loadImages();
@@ -27,4 +28,4 @@ function ImagesPage() {
   );
 }
 
-export default ImagesPage;
+export default ImagesByProductIdPage;
