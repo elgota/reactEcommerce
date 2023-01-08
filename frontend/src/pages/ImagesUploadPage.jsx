@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createImageRequest, getImagesRequest } from "../api/image.api";
 
-function UploadImagesPage() {
+function ImagesUploadPage() {
   const [file, setFile] = useState(null);
 
   const selectedHandler = (e) => {
@@ -28,7 +28,7 @@ function UploadImagesPage() {
       <nav className="navbar navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            Imagen
+            Imagen Upload
           </a>
         </div>
       </nav>
@@ -48,4 +48,4 @@ function UploadImagesPage() {
   );
 }
 
-export default UploadImagesPage;
+export default ImagesUploadPage;

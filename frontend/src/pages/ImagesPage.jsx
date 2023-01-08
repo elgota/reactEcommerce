@@ -14,8 +14,16 @@ function ImagesPage() {
 
   return (
     <div>
-      {images.map((image) => (
-        <div key={image.id}>
+      <nav className="navbar navbar-dark bg-dark">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">
+            Images
+          </a>
+        </div>
+      </nav>
+
+      {images.map((image, index) => (
+        <div key={index}>
           <img
             src={"http://localhost:4000/" + image}
             width="300"

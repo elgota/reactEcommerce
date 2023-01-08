@@ -3,11 +3,11 @@ import { getImagesByProductIdRequest } from "../api/image.api";
 
 function ImagesByProductIdPage() {
   const [images, setImages] = useState([]);
+  const productId = 1; //el productId debe venir de otro lado y ser variable
 
   useEffect(() => {
     async function loadImages() {
-      const productId = 2;//el productId debe venir de otro lado y ser variable
-      const response = await getImagesByProductIdRequest(productId); 
+      const response = await getImagesByProductIdRequest(productId);
       setImages(response.data);
     }
     loadImages();
@@ -15,8 +15,16 @@ function ImagesByProductIdPage() {
 
   return (
     <div>
-      {images.map((image) => (
-        <div key={image.id}>
+      <nav className="navbar navbar-dark bg-dark">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">
+            Images By Product Id = {productId}
+          </a>
+        </div>
+      </nav>
+
+      {images.map((image, index) => (
+        <div key={index}>
           <img
             src={"http://localhost:4000/" + image}
             width="300"
