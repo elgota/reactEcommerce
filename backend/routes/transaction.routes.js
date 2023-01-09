@@ -1,10 +1,10 @@
-import { Router } from 'express';
+import { Router } from "express";
 import {
-    createTransaction,
-    getTransactions,
-    getTransaction,
-    updateTransaction,
-    deleteTransaction
+  createTransaction,
+  getTransactions,
+  getTransaction,
+  updateTransaction,
+  deleteTransaction,
 } from "../controllers/transaction.controllers.js";
 
 const router = Router();
@@ -16,4 +16,3 @@ router.put("/api/transactions/:id", updateTransaction);
 router.delete("/api/transactions/:id", deleteTransaction);
 
 export default router;
-

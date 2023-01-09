@@ -1,12 +1,12 @@
 import React from "react";
 import logo from "../../../public/logo.jpg";
 
-export const Header = () => {
+function Header() {
   return (
     <header>
       <a href="#">
         <div className="logo">
-        <img src={logo} alt="logo" width="150" />
+          <img src={logo} alt="logo" width="150" />
         </div>
       </a>
       <ul>
@@ -23,4 +23,6 @@ export const Header = () => {
       </div>
     </header>
   );
-};
+}
+
+export default Header;

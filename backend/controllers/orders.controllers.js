@@ -1,38 +1,9 @@
 import { pool } from "../db.js";
 
 export const createOrder = async (req, res) => {
-  const { 
+  const {
     userId,
-    sessionId, 
-    token, 
-    status,
-    subTotal,
-    itemDiscount,
-    tax,
-    shipping,
-    total,
-    promo,
-    discount,
-    grandTotal,
-    firstName,
-    middleName, 
-    lastName, 
-    mobile, 
-    email, 
-    line1, 
-    line2, 
-    city, 
-    province, 
-    country, 
-    content } =
-    req.body;
-  const [result] = await pool.query(
-    "INSERT INTO `order` (userId, sessionId, token, status, subTotal, itemDiscount, tax, shipping, total, promo, discount, grandTotal, firstName, middleName, lastName, mobile, email, line1, line2, city, province, country, updatedAt, content) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-    [sessionId, token, firstName, lastName, mobile, email, line1, line2, city, province, country, content]
-  );
-  res.json({
-    id: result.insertId,
-    sessionId, 
+    sessionId,
     token,
     status,
     subTotal,
@@ -53,7 +24,49 @@ export const createOrder = async (req, res) => {
     city,
     province,
     country,
-    content
+    content,
+  } = req.body;
+  const [result] = await pool.query(
+    "INSERT INTO `order` (userId, sessionId, token, status, subTotal, itemDiscount, tax, shipping, total, promo, discount, grandTotal, firstName, middleName, lastName, mobile, email, line1, line2, city, province, country, updatedAt, content) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    [
+      sessionId,
+      token,
+      firstName,
+      lastName,
+      mobile,
+      email,
+      line1,
+      line2,
+      city,
+      province,
+      country,
+      content,
+    ]
+  );
+  res.json({
+    id: result.insertId,
+    sessionId,
+    token,
+    status,
+    subTotal,
+    itemDiscount,
+    tax,
+    shipping,
+    total,
+    promo,
+    discount,
+    grandTotal,
+    firstName,
+    middleName,
+    lastName,
+    mobile,
+    email,
+    line1,
+    line2,
+    city,
+    province,
+    country,
+    content,
   });
 };
 

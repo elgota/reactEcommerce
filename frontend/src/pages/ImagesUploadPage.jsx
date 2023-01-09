@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { createImageRequest } from "./../../api/image.api";
+import { createImageRequest } from "../api/image.api";
 
-export const NuevaImagen = () => {
+function ImagesUploadPage() {
   const [file, setFile] = useState(null);
 
   const selectedHandler = (e) => {
@@ -28,7 +28,7 @@ export const NuevaImagen = () => {
       <nav className="navbar navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            Imagen
+            Imagen Upload
           </a>
         </div>
       </nav>
@@ -46,4 +46,6 @@ export const NuevaImagen = () => {
       </div>
     </div>
   );
-};
+}
+
+export default ImagesUploadPage;
