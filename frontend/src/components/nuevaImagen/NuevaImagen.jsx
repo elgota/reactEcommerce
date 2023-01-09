@@ -16,7 +16,7 @@ export const NuevaImagen = () => {
     async function loadProducts(){
       const response = await getProductRequest()
       // console.log(response.data)
-      setProducts(response.data)
+      setProducts(response.data) 
 
     }
     loadProducts();
@@ -25,9 +25,11 @@ export const NuevaImagen = () => {
   }, [])
   
   const [file, setFile] = useState(null);
-
+  
   const selectedHandler = (e) => {
     setFile(e.target.files[0]);
+    setSelectedOption(e.target.value[1])
+    console.log(setSelectedOption)
   };
 
   const sendHandler = () => {
@@ -38,6 +40,9 @@ export const NuevaImagen = () => {
 
     const formdata = new FormData();
     formdata.append("image", file);
+    formdata.append("id", selectedOption);
+
+    console.log(selectedOption);
 
     createImageRequest(formdata);
 
@@ -65,7 +70,7 @@ export const NuevaImagen = () => {
                 
 
                 <option 
-                value={product.title}
+                value={product.id}
                 key={product.title}
                 >
                 {product.title}

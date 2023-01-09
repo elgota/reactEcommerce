@@ -7,7 +7,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export const createImage = async (req, res) => {
-  const productId = 1;
+
+  const productId = req.body.id;
   const title = req.file.originalname;
   const type = req.file.mimetype;
   const data = fs.readFileSync(
@@ -18,8 +19,7 @@ export const createImage = async (req, res) => {
     "INSERT INTO `image` (productId, title, type, data) VALUES (?, ?, ?, ?)",
     [productId, title, type, data]
   );
-
-  //console.log(req.file);
+  
 };
 
 export const getImages = async (req, res) => {
@@ -38,6 +38,7 @@ export const getImage = async (req, res) => {
 
   res.json(result[0]);
 };
+
 
 export const updateImage = async (req, res) => {
   const [result] = await pool.query("UPDATE `image` SET ? WHERE id = ?", [

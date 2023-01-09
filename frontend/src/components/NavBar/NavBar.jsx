@@ -16,6 +16,7 @@ function NavBar() {
 
                             <Link to="/nuevaImagen" className="nav-link">Agregar su imagen</Link>
                             <Link to="/" className="nav-link">Volver a producto</Link>
+                            <Link to="/productos" className="nav-link">Ver productos</Link>
                         </div>
 
                     </div>
