@@ -46,6 +46,14 @@ export const getImagesByProductId = async (req, res) => {
     return res.status(404).json({ message: "Imagenes no encontradas" });
   }
 
+  fs.mkdir(
+    path.join(__dirname, "../imagesProduct/"),
+    { recursive: true },
+    function (err) {
+      if (err) return cb(err);
+    }
+  );
+
   result.map((image) => {
     fs.writeFileSync(
       path.join(
@@ -75,6 +83,14 @@ export const getImage = async (req, res) => {
   if (result.length === 0) {
     return res.status(404).json({ message: "Imagen no encontrada" });
   }
+
+  fs.mkdir(
+    path.join(__dirname, "../imagesProduct/"),
+    { recursive: true },
+    function (err) {
+      if (err) return cb(err);
+    }
+  );
 
   fs.writeFileSync(
     path.join(
