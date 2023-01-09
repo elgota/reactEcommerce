@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { createImageRequest, getImagesRequest } from "../api/image.api";
+import React, { useState } from "react";
+import { createImageRequest } from "../api/image.api";
 
 function ImagesUploadPage() {
   const [file, setFile] = useState(null);

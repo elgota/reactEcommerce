@@ -18,37 +18,17 @@ export const createImage = async (req, res) => {
     "INSERT INTO `image` (productId, title, type, data) VALUES (?, ?, ?, ?)",
     [productId, title, type, data]
   );
-
-  //console.log(req.file);
-};
-
-export const getImages = async (req, res) => {
-  const [result] = await pool.query("SELECT * FROM `image`");
-
-  //console.log(result);
-
-  result.map((image) => {
-    fs.writeFileSync(
-      path.join(
-        __dirname,
-        "../imagesProduct/" + image.productId + "-" + image.id + "-vivero13.png"
-      ),
-      image.data
-    );
-  });
-
-  const imagenDir = fs.readdirSync(path.join(__dirname, "../imagesProduct/"));
-  res.json(imagenDir);
-  //console.log(imagenDir);
 };
 
 export const getImagesByProductId = async (req, res) => {
-  const [result] = await pool.query(
-    "SELECT * FROM `image` WHERE productId = ?",
-    [req.params.productId]
-  );
-
-  //console.log(result);
+  if (req.query.productId === "null") {
+    var [result] = await pool.query("SELECT * FROM `image`");
+  } else {
+    var [result] = await pool.query(
+      "SELECT * FROM `image` WHERE productId = ?",
+      [req.query.productId]
+    );
+  }
 
   result.map((image) => {
     fs.writeFileSync(
@@ -61,8 +41,12 @@ export const getImagesByProductId = async (req, res) => {
   });
 
   const imagenDir = fs.readdirSync(path.join(__dirname, "../imagesProduct/"));
-  const imageDirByProductId = imagenDir.filter((image) =>
-    image.startsWith(req.params.productId + "-")
-  );
-  res.json(imageDirByProductId);
+  if (req.query.productId === "null") {
+    res.json(imagenDir);
+  } else {
+    const imageDirByProductId = imagenDir.filter((image) =>
+      image.startsWith(req.query.productId + "-")
+    );
+    res.json(imageDirByProductId);
+  }
 };
