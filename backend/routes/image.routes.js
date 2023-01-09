@@ -5,7 +5,6 @@ import {
   getImagesByProductId,
   getImage,
   deleteImage,
-  
 } from "./../controllers/image.controllers.js";
 
 import { fileUpload } from "./../middleware/image.middleware.js";

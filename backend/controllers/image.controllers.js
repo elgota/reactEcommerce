@@ -105,8 +105,6 @@ export const deleteImage = async (req, res) => {
     return res.status(404).json({ message: "Imagen no encontrado" });
   }
 
-  console.log(result);
-
   await pool.query("DELETE FROM `image` WHERE id = ?", [req.params.id]);
 
   fs.unlink(
