@@ -18,6 +18,18 @@ export const createImage = async (req, res) => {
     "INSERT INTO `image` (productId, title, type, data) VALUES (?, ?, ?, ?)",
     [productId, title, type, data]
   );
+
+  fs.unlink(
+    path.join(__dirname, "../imagesUpload/" + req.file.filename),
+    (err) => {
+      if (err) {
+        return res.status(500).json({
+          message: "No se pudo borrar imagen del middleware",
+          error: err,
+        });
+      }
+    }
+  );
 };
 
 export const getImagesByProductId = async (req, res) => {
@@ -28,6 +40,10 @@ export const getImagesByProductId = async (req, res) => {
       "SELECT * FROM `image` WHERE productId = ?",
       [req.query.productId]
     );
+  }
+
+  if (result.length === 0) {
+    return res.status(404).json({ message: "Imagenes no encontradas" });
   }
 
   result.map((image) => {
@@ -49,4 +65,67 @@ export const getImagesByProductId = async (req, res) => {
     );
     res.json(imageDirByProductId);
   }
+};
+
+export const getImage = async (req, res) => {
+  var [result] = await pool.query("SELECT * FROM `image` WHERE id = ?", [
+    req.params.id,
+  ]);
+
+  if (result.length === 0) {
+    return res.status(404).json({ message: "Imagen no encontrada" });
+  }
+
+  fs.writeFileSync(
+    path.join(
+      __dirname,
+      "../imagesProduct/" +
+        result[0].productId +
+        "-" +
+        result[0].id +
+        "-vivero13.png"
+    ),
+    result[0].data
+  );
+
+  const imagenDir = fs.readdirSync(path.join(__dirname, "../imagesProduct/"));
+
+  const imageDirById = imagenDir.filter((image) =>
+    image.includes("-" + result[0].id + "-")
+  );
+  res.json(imageDirById);
+};
+
+export const deleteImage = async (req, res) => {
+  const [result] = await pool.query("SELECT * FROM `image` WHERE id = ?", [
+    req.params.id,
+  ]);
+
+  if (result.length === 0) {
+    return res.status(404).json({ message: "Imagen no encontrado" });
+  }
+
+  console.log(result);
+
+  await pool.query("DELETE FROM `image` WHERE id = ?", [req.params.id]);
+
+  fs.unlink(
+    path.join(
+      __dirname,
+      "../imagesProduct/" +
+        result[0].productId +
+        "-" +
+        result[0].id +
+        "-vivero13.png"
+    ),
+    (err) => {
+      if (err) {
+        return res
+          .status(500)
+          .json({ message: "No se pudo borrar imagen", error: err });
+      }
+    }
+  );
+
+  return res.sendStatus(204);
 };

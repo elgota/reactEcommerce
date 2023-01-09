@@ -3,7 +3,7 @@ import { getImagesByProductIdRequest } from "../api/image.api";
 
 function ImagesByProductIdPage() {
   const [images, setImages] = useState([]);
-  const productId = 3; //el productId debe venir de otro lado y ser variable
+  const productId = null; //el productId debe venir de otro lado y ser variable
 
   useEffect(() => {
     async function loadImages() {
