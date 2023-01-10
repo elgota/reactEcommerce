@@ -1,18 +1,11 @@
 import axios from "axios";
 
 export const createImageRequest = async (formdata) => {
-  const options = {
-    method: "POST",
-    url: "http://localhost:4000/api/images",
-    data: formdata,
-  };
+  return await axios.post("http://localhost:4000/api/images", formdata);
+};
 
-  await axios
-    .request(options)
-    .then(function (response) {
-      console.log(response.data);
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
+export const getImagesByProductIdRequest = async (productId) => {
+  return await axios.get(
+    `http://localhost:4000/api/images/?productId=${productId}`
+  );
 };
