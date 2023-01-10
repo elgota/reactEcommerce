@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Kanit:ital,wght@0,200;1,200;1,600&family=Playball&family=Poppins:ital,wght@0,600;0,700;1,600&family=Roboto:ital,wght@1,300;1,700&display=swap');
+
+
 .container_form {
   display: flex;
   width: 100%;
@@ -14,14 +17,14 @@
   max-height: 55rem;
 }
 
-.imagenFondo{
+.imagenFondo {
   height: 100%;
   width: 100%;
   object-fit: cover;
   filter: blur(7px);
 }
 
-.logo{
+.logo {
   position: absolute;
   right: 37rem;
   width: 15%;
@@ -65,7 +68,8 @@
 
 }
 
-.inputs:focus, inputs:valid {
+.inputs:focus,
+inputs:valid {
   outline: none;
   border: 1.5px solid #1a73e8;
 }
@@ -83,7 +87,6 @@ inputs:valid~label {
   display: flex;
   color: #00A97F;
   margin: 1.5rem 1rem
-
 }
 
 .btnSelector {
@@ -95,7 +98,7 @@ inputs:valid~label {
 /* caja con imagenes */
 .filaImg {
   display: flex;
-  border: 1px dashed #00A97F ;
+  border: 1px dashed #00A97F;
   margin: 0.1rem 1rem 1rem 1rem;
 }
 
@@ -104,10 +107,10 @@ inputs:valid~label {
   height: 5rem;
   margin-right: 0.5rem;
   background-color: black;
-  
+
 }
 
-.caja::after{
+.caja::after {
   content: "";
   display: block;
   padding-bottom: 100%;
@@ -129,12 +132,73 @@ inputs:valid~label {
   object-fit: cover;
 }
 
-.btnDelete{
+.btnDelete {
   background-color: green;
   font-size: 11px;
   border-radius: 10px 0px;
   position: absolute;
   margin: -4px;
+}
+
+
+/*texto*/
+
+.cajaTexto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 30%;
+  top: 30%;
+  right: 25%;
+  position: absolute;
+}
+
+
+.texto {
+  animation: caja 10s ease-in-out infinite;
+  position: absolute;
+  color: #088439;
+  font-family: 'Poppins', sans-serif;
+  font-size: 75px;
+  text-align: center;
+  text-shadow: 2px 2px 1px #000;
+}
+
+@keyframes caja {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  25% {
+    opacity: 1;
+
+    transform: translateX(0%);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform: translateX(0%);
+  }
+
+  75%{
+    opacity: 1;
+    transform: translateX(0%);
+  }
+
+  90% {
+    opacity: 0;
+
+    transform: translateX(-50%);
+  }
+
+  100% {
+    opacity: 0;
+
+    transform: translateX(-100%);
+  }
 }
 
 /* enviar y limpiar  */
@@ -198,6 +262,6 @@ inputs:valid~label {
   transform: scale(.98);
 }
 
-.btnUnder{
+.btnUnder {
   padding-bottom: 1rem;
 }

@@ -8,7 +8,7 @@ import fondo from "../../assets/fondo-vivero.jpg"
 const AddProduct = () => {
 
   const [preImg, setpreImg] = useState([]);
-  const[text ,setText] = useState("texto 1");
+  const [text, setText] = useState("Bienvenido");
 
   const changeInput = (e) => {
     let indexImg;
@@ -33,6 +33,7 @@ const AddProduct = () => {
     Object.keys(files).forEach((i) => {
       const file = files[i];
       let url = URL.createObjectURL(file);
+      console.log(url);
 
       arrayImages.push({
         index: indexImg,
@@ -53,16 +54,16 @@ const AddProduct = () => {
     setpreImg(newImgs)
   }
 
-  const texts = ["hola","texto 2","texto 3"];
+  const texts = ["Vende tus Productos", "De Forma Segura", "Rapido y Facil!", "Sin Complicaciones"];
   let index = 0;
 
-  useEffect(()=>{
-    const interval = setInterval(()=>{
+  useEffect(() => {
+    const interval = setInterval(() => {
       setText(texts[index]);
-      index =(index +1)% texts.length;
-    },5000);
-    return ()=>clearInterval(interval);
-  },[])
+      index = (index + 1) % texts.length;
+    }, 10000);
+    return () => clearInterval(interval);
+  }, [])
 
 
 
@@ -71,45 +72,48 @@ const AddProduct = () => {
       <div className={css.container_info}>
         <img src={fondo} alt="vivero" className={css.imagenFondo} />
         <img src={imgLogo} alt="logo" className={css.logo} />
-        <p>{text}</p>
+        <div className={css.cajaTexto}>
+
+        <p className={css.texto}>{text}</p>
+        </div>
       </div>
       <div className={css.form_product}>
         <form action="">
 
           <div className={css.input_group}>
-            <input required="" type="text" name="text"  className={css.inputs} />
+            <input required="" type="text" name="text" className={css.inputs} />
             <label className={css.user_label}>Nombre Del Producto</label>
           </div>
           <div className={css.input_group}>
-            <input required="" type="text" name="text"  className={css.inputs} />
+            <input required="" type="text" name="text" className={css.inputs} />
             <label className={css.user_label}>Title</label>
           </div>
           <div className={css.input_group}>
-            <input required="" type="text" name="text"  className={css.inputs} />
+            <input required="" type="text" name="text" className={css.inputs} />
             <label className={css.user_label}>Slug</label>
           </div>
           <div className={css.input_group}>
-            <input required="" type="text" name="text"  className={css.inputs} />
+            <input required="" type="text" name="text" className={css.inputs} />
             <label className={css.user_label}>Summary</label>
           </div>
           <div className={css.input_group}>
-            <input required="" type="text" name="text"  className={css.inputs} />
+            <input required="" type="text" name="text" className={css.inputs} />
             <label className={css.user_label}>Type</label>
           </div>
           <div className={css.input_group}>
-            <input required="" type="text" name="text"  className={css.inputs} />
+            <input required="" type="text" name="text" className={css.inputs} />
             <label className={css.user_label}>Sku</label>
           </div>
           <div className={css.input_group}>
-            <input required="" type="text" name="text"  className={css.inputs} />
+            <input required="" type="text" name="text" className={css.inputs} />
             <label className={css.user_label}>Precio</label>
           </div>
           <div className={css.input_group}>
-            <input required="" type="text" name="text"  className={css.inputs} />
+            <input required="" type="text" name="text" className={css.inputs} />
             <label className={css.user_label}>Descuento</label>
           </div>
           <div className={css.input_group}>
-            <input required="" type="text" name="text"  className={css.inputs} />
+            <input required="" type="text" name="text" className={css.inputs} />
             <label className={css.user_label}>Unidades disponibles</label>
           </div>
           <label className={css.btnLabel}>
@@ -118,26 +122,27 @@ const AddProduct = () => {
               <input hidden type="file" multiple onChange={changeInput}></input>
             </div>
           </label>
-         {preImg.length > 0 && <div className={css.filaImg}>
-            {             
+          {preImg.length > 0 && <div className={css.filaImg}>
+            {
               preImg.map((imagen) => {
                 return <div className={css.caja} key={imagen.index}>
-                    <button  className={css.btnDelete} onClick={deleteImg.bind(this, imagen.index)}>X</button>
-                    <img
-                      alt="algo"
-                      src={imagen.url}
-                      data-toggle="modal"
-                      data-target="#ModalPreViewImg"
-                      className={css.img_responsive}
-                    ></img>
-                  </div>
+                  <button className={css.btnDelete} onClick={deleteImg.bind(this, imagen.index)}>X</button>
+                  <img
+                    alt="algo"
+                    src={imagen.url}
+                    data-toggle="modal"
+                    data-target="#ModalPreViewImg"
+                    className={css.img_responsive}
+                  ></img>
+                  {console.log(imagen.url)}
+                </div>
               })
             }
 
           </div>}
           <div className={css.btnUnder}>
-          <button type='submit' className={css.btnSend}>Aceptar</button>
-          <button type='submit' className={css.btnSend}>Limpiar</button>
+            <button type='submit' className={css.btnSend}>Aceptar</button>
+            <button type='submit' className={css.btnSend}>Limpiar</button>
           </div>
         </form>
       </div>
