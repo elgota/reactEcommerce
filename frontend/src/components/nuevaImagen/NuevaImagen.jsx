@@ -59,8 +59,9 @@ export const NuevaImagen = () => {
         <label className="form-label">Selecciona un archivo</label>
           <input id="fileinput" onChange={selectedHandler} type="file" className="form-control" />
         </div>
+        <label className="form-label">Elige el producto</label>
         <div className="input-group mb-3">
-
+          
           <select className="form-select" id="options"
             value={selectedOption}
             onChange={handleChange}
