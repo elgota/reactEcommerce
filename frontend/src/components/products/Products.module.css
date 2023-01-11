@@ -42,7 +42,7 @@
 
 .product{
   width: 12rem;
-  height: 8rem;
+  height: 10rem;
   background-color: white;
   position: relative;
   overflow: hidden;
@@ -56,4 +56,75 @@
   top:3rem;
   width: 6rem;
   height: 11rem;
+}
+
+.btnDescPro {
+  margin-top: 10px;
+  font-size: 0.6rem;
+  border: 1px solid var(--black);
+  padding: 5px 10px;
+  width: max-content;
+  border-radius: 15px;
+  font-weight: bold;
+  background-color: rgb(25, 124, 12);
+  color: #fff;
+  cursor: pointer;
+}
+
+.divSHDescProd {
+  width: 70%;
+  min-height: 700px;
+  background: white;
+  position: fixed;
+  z-index: 2;
+  margin: 20px auto;
+  left: 0;
+  right: 0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 5px;
+}
+
+.barTopDivSH {
+  text-align: right;
+  padding: 10px 17px;
+  font-size: 25px;
+}
+.barTopDivSH svg {
+  cursor: pointer;
+}
+
+.contentDivSH {
+  display: flex;
+}
+.contentDivSH p {
+  font-size: 25px;
+  font-weight: 700;
+}
+.contentDivSH p span{
+  font-weight: 400;
+}
+
+.divContLink {
+  text-align: center;
+  margin-top: 60px;
+}
+.linkCarSHDescProd {
+  margin-top: 10px;
+    font-size: 17px;
+    border: 1px solid var(--black);
+    padding: 5px 10px;
+    width: max-content;
+    border-radius: 15px;
+    font-weight: bold;
+    background-color: rgb(25, 124, 12);
+    color: #fff;
+    cursor: pointer;
+}
+
+.imgSHDescProd {
+  width: 500px;
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 }
