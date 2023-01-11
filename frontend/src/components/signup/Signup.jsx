@@ -38,6 +38,7 @@ const Signup = () => {
     }
 
     const saveData = () => {
+<<<<<<< HEAD
         localStorage.setItem('name', inputTextName);
         localStorage.setItem('mname', inputTextMName);
         localStorage.setItem('lname', inputTextLName);
@@ -48,11 +49,48 @@ const Signup = () => {
 
     return (
         <div className={css.mainContainerSignup}>
+=======
+        // localStorage.setItem('name', inputTextName);
+        // localStorage.setItem('mname', inputTextMName);
+        // localStorage.setItem('lname', inputTextLName);
+        // localStorage.setItem('email', inputTextEmail);
+        // localStorage.setItem('password', inputTextPassword);
+        // alert("Cuenta creada");
+
+        fetch("http://localhost:4000/api/users",{
+            method: "POST",
+            body: JSON.stringify({
+                firstName: inputTextName,
+                middleName: inputTextMName,
+                lastName: inputTextLName,
+                email: inputTextEmail,
+                passwordHash: inputTextPassword,
+                admin: 0,
+                vendor: 1
+    
+            }),
+            headers:{
+                "content-type" : "application/json"
+            }
+    
+            
+        })
+    }
+
+
+
+    return (
+        <div  className={css.mainContainerSignup}>
+>>>>>>> 4d451132f3e33aaa6eb3a308e043cab2acb3d37d
             <div className={css.signupContainer}>
                 <div className={css.logoTitle}>
                     <h1>Crea una cuenta</h1>
                 </div>
+<<<<<<< HEAD
                 <form action='/Login' method='GET' className={css.formContainer}>
+=======
+                <form action="/Login"  className={css.formContainer}>
+>>>>>>> 4d451132f3e33aaa6eb3a308e043cab2acb3d37d
                     <label>Nombre: <span>*</span></label>
                     <input type="text" name='name' onChange={handleInputChangeName} required />
 

@@ -18,7 +18,7 @@ const Header = () => {
         <div className={css.menu}>
           <ul className={css.menu}>
             <li>Collections</li>
-            <li>--------</li>
+            <li><Link to="/Agregar">Agregar Producto</Link></li>
             <li>--------</li>
             <li>--------</li>
             <li>--------</li>

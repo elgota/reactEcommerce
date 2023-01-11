@@ -31,8 +31,8 @@ const Testimonial = () => {
         slidesPerGroup={1} spaceBetween={20} 
         className={css.tCarousel}>
           {
-            TestimonialsData.map((testimonials)=>(
-              <SwiperSlide>
+            TestimonialsData.map((testimonials,i)=>(
+              <SwiperSlide key={i}>
                 <div className={css.testimonial}>
                   <img src={testimonials.image} alt=""/>
                   <span>{testimonials.comment}</span>

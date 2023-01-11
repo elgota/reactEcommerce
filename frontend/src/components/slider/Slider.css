@@ -61,6 +61,10 @@ left: 6rem;
   padding: 5px 10px;
   width: max-content;
   border-radius: 15px;
+  font-weight: bold;
+  background-color: rgb(25, 124, 12);
+  color:#fff;
+  cursor: pointer;
 }
 
 .img-p{
