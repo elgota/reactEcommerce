@@ -1,4 +1,10 @@
 import { pool } from "../db.js";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 
 export const createProduct = async (req, res) => {
   const {
@@ -60,12 +66,27 @@ export const getProduct = async (req, res) => {
   }
 
   res.json(result[0]);
+
+  
 };
 
 export const getCustomProducts = async (req, res) => {
   const [result] = await pool.query("SELECT p.id, p.title, p.summary, i.data FROM product p INNER JOIN image i ON p.id = i.productId");
-  res.json(result);
-}
+  console.log(result);
+
+  result.map((image => {
+    fs.writeFileSync(path.join(__dirname, '../imagesProduct/' + image.productId + "-" + image.id + "-vivero13.png"),
+    image.data)
+  }))
+
+  const imageDir = fs.readdirSync(path.join(__dirname, '../imagesProduct'));
+
+  res.json(imageDir)
+
+  // console.log(fs.readdirSync(path.join(__dirname, '../imagesProduct/')))
+    
+  };
+
 
 export const updateProduct = async (req, res) => {
   const [result] = await pool.query("UPDATE product SET ? WHERE id = ?", [

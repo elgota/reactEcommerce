@@ -3,20 +3,32 @@ import { getCustomProductRequest } from "./../../api/product.api"
 
 function VerProductos() {
 
-    const [product, setProduct] = useState([]);
+    const [imageList, setImageList] = useState([])
 
     useEffect(() => {
+      async function loadImages() {
+        const response = await getCustomProductRequest();
+        setImageList(response.data);
+      }
 
-        async function loadProducts() {
-            const response = await getCustomProductRequest();
-            setProduct(response.data);
-            console.log(response.data);
-        }
-
-        loadProducts();
-
-
+      loadImages();
     }, [])
+    
+
+    const [product, setProduct] = useState([]);
+
+    // useEffect(() => {
+
+    //     async function loadProducts() {
+    //         const response = await getCustomProductRequest();
+    //         setProduct(response.data);
+    //         console.log(response.data);
+    //     }
+
+    //     loadProducts();
+
+
+    // }, [])
 
     return (
         <div>
@@ -24,10 +36,13 @@ function VerProductos() {
                 <div className="col">
                     {
 
-                        product.map((product, i) => ( //"i" es la iteración de map.
+                        imageList.map((product, i) => ( //"i" es la iteración de map.
 
                             <div className="card" key={i}>
-                                <img src="..." className="card-img-top" alt="..."/>
+                                <img src={"http://localhost:4000/" + product}
+                                className="card-img-top" 
+                                alt="..."
+                                style={{scale: ".75"}}/>
                                 <div className="card-body">
                                     <h5 className="card-title">{product.title}</h5>
                                     <p className="card-text">{product.summary}</p>

@@ -8,6 +8,7 @@ import { Routes, Route } from "react-router-dom";
 import VerProductos from "./components/VerProductos/VerProductos";
 import ImagesUploadPage from "./pages/ImagesUploadPage";
 import ImagesByProductIdPage from "./pages/ImagesByProductIdPage";
+import {NuevaImagen} from "./components/nuevaImagen/NuevaImagen";
 
 function App() {
   return (
@@ -16,8 +17,9 @@ function App() {
 
       <Routes>
         <Route path="/" element={<NuevoProducto />}></Route>
-        
+
         <Route path="/productos" element={<VerProductos />}></Route>
+        <Route path="/nuevaImagen" element={<NuevaImagen />}></Route>
         <Route path="/images-upload" element={<ImagesUploadPage />} />
         <Route path="/images" element={<ImagesByProductIdPage />} />
       </Routes>
