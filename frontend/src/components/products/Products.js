@@ -5,11 +5,16 @@ import { productsInitialState} from "../reducers/shoppingCart_reducer";
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
 
+// import axios from 'axios';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTimes} from '@fortawesome/free-solid-svg-icons'
 
 const Products = () => {
 
+  // const getCustomProductRequest = async () => 
+  // await axios.get("http://localhost:4000/api/products/custom");
+  
   const boxSHDescProd = useRef(null);
   // let nameBoxSHDescProd = '';
   const [iDBoxSHDescProd, setIDBoxSHDescProd] = useState('');
@@ -19,6 +24,7 @@ const Products = () => {
   const [typeBoxSHDescProd, setTypeBoxSHDescProd] = useState('');
   const [priceBoxSHDescProd, setPriceBoxSHDescProd] = useState('');
 
+  // console.log(getCustomProductRequest());
 
 
   const [MenuProducts, setMenuProducts] = useState(productsInitialState.products)
