@@ -8,7 +8,7 @@ import fondo from "../../assets/fondo-vivero.jpg"
 const AddProduct = () => {
 
   const [preImg, setpreImg] = useState([]);
-  const { register , handleSubmit, formState:{ errors } } = useForm();
+  const { register , handleSubmit, formState:{ errors },reset } = useForm();
 
 
   const changeInput = (e) => {
@@ -72,11 +72,17 @@ const AddProduct = () => {
     datas.data = preImg
     console.log(datas);
     console.log(datas.data[0].url);
+    window.location.href = "/"
   }
 
   const validarImg = ()=>{
     return preImg.length >0;
   }
+
+  const handleReset = () => {
+    reset();
+    setpreImg([]);
+  };
 
   return (
     <div className={css.container_form}>
@@ -89,7 +95,7 @@ const AddProduct = () => {
         </div>
       </div>
       <div className={css.form_product}>
-        <form noValidate action='/' onSubmit={handleSubmit(datos)}>
+        <form noValidate action="/Login" onSubmit={handleSubmit(datos)}>
 
           <div className={css.input_group}>
             <input {...register("title", { required: true, maxLength: 20 })} required=" " type="text"  className={css.inputs}/>
@@ -166,7 +172,7 @@ const AddProduct = () => {
           </div>}
           <div className={css.btnUnder}>
             <button type='submit' className={css.btnSend}>Aceptar</button>
-            <button type='submit' className={css.btnSend}>Limpiar</button>
+            <button type="button" onClick={handleReset} className={css.btnSend}>Limpiar</button>
           </div>
         </form>
       </div>

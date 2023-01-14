@@ -3,11 +3,15 @@ import css from "./Products.module.css"
 import Plane from "../../assets/plane.png"
 import { productsInitialState} from "../reducers/shoppingCart_reducer";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Products = () => {
 
   
+  const getCustomProductRequest = async () => 
+  await axios.get("http://localhost:4000/api/products/custom");
 
+  console.log(getCustomProductRequest());
 
 
   const [MenuProducts, setMenuProducts] = useState(productsInitialState.products)
