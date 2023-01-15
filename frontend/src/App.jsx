@@ -21,8 +21,8 @@ function App() {
       <Route exact path="/login" element={<Login />} />
       <Route exact path="/signup" element={<Signup />} />
       <Route exact path="/agregar" element={<AgregarProducto />} />
-      <Route path="/images-upload" element={<ImagesUploadPage />} />
-      <Route path="/images" element={<ImagesByProductIdPage />} />
+      <Route exact path="/images-upload" element={<ImagesUploadPage />} />
+      <Route exact path="/images" element={<ImagesByProductIdPage />} />
     </Routes>
   );
 }
