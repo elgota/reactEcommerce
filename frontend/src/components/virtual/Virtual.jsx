@@ -1,9 +1,9 @@
-import React from 'react'
-import css from "./Virtual.module.css"
+import React from "react";
+import css from "./Virtual.module.css";
 import Shade from "../../assets/shade.png";
-import ImageSlider from "react-image-comparison"
-import after from "../../assets/after.png"
-import before from "../../assets/before.png"
+import ImageSlider from "react-image-comparison";
+import after from "../../assets/after.png";
+import before from "../../assets/before.png";
 
 const Virtual = () => {
   return (
@@ -17,11 +17,15 @@ const Virtual = () => {
 
       <div className={css.right}>
         <div className={css.wrapper}>
-        <ImageSlider  leftImage={after} rightImage={before} sliderLineColor="#000000"/>
+          <ImageSlider
+            leftImage={after}
+            rightImage={before}
+            sliderLineColor="#000000"
+          />
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Virtual
+export default Virtual;

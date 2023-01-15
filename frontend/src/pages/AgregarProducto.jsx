@@ -1,16 +1,16 @@
-import React, { Fragment } from 'react'
-import Header from '../components/header/Header';
-import Footer from '../components/footer/Footer';
-import AddProduct from '../components/addProduct/AddProduct';
+import React, { Fragment } from "react";
+import Header from "../components/header/Header";
+import Footer from "../components/footer/Footer";
+import AddProduct from "../components/addProduct/AddProduct";
 
 const AgregarProducto = () => {
   return (
     <Fragment>
-      <Header/>
-      <AddProduct/>
+      <Header />
+      <AddProduct />
       <Footer />
     </Fragment>
-  )
-}
+  );
+};
 
-export default AgregarProducto
+export default AgregarProducto;

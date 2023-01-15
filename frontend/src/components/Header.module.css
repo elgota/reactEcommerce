@@ -1,37 +1,37 @@
-.container{
+.container {
   padding: 0.5rem;
   display: flex;
 }
-.logo{
+.logo {
   display: flex;
   align-items: center;
-  flex:1;
+  flex: 1;
   gap: 0.5em;
 }
-.logo>img{
+.logo > img {
   width: 2.5rem;
   height: 2.5rem;
 }
-.logo>span{
-font-weight: 600;
+.logo > span {
+  font-weight: 600;
 }
-.right{
+.right {
   display: flex;
   gap: 2rem;
   align-items: center;
   justify-items: center;
 }
-.menu{
+.menu {
   display: flex;
   gap: 2rem;
   font-weight: 500;
   list-style: none;
 }
-.menu>li:hover{
+.menu > li:hover {
   color: #fe956f;
   cursor: pointer;
 }
-.search{
+.search {
   width: 7rem;
   height: 30%;
   outline: none;
@@ -39,7 +39,7 @@ font-weight: 600;
   border-radius: 5px;
   padding: 0.5rem;
 }
-.cart{
+.cart {
   width: 1.5rem;
   height: 1.5rem;
   cursor: pointer;

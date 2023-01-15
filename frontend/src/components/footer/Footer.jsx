@@ -1,9 +1,6 @@
-import React from 'react'
-import css from "./Footer.module.css"
-import Logo  from "../../assets/logo.png"
-
-
-
+import React from "react";
+import css from "./Footer.module.css";
+import Logo from "../../assets/logo.png";
 
 const Footer = () => {
   return (
@@ -21,12 +18,11 @@ const Footer = () => {
             <span className={css.pngLine}>
               <span>11 north avenue Orlando , FL 32801</span>
             </span>
-
           </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

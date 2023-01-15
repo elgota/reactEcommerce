@@ -1,18 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Kanit:ital,wght@0,200;1,200;1,600&family=Playball&family=Poppins:ital,wght@0,600;0,700;1,600&family=Roboto:ital,wght@1,300;1,700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=Kanit:ital,wght@0,200;1,200;1,600&family=Playball&family=Poppins:ital,wght@0,600;0,700;1,600&family=Roboto:ital,wght@1,300;1,700&display=swap");
 
 .container_form {
   display: flex;
   width: 100%;
   height: auto;
-
-
 }
 
 .container_info {
   width: 75%;
   height: auto;
-  background: #47C67C;
+  background: #47c67c;
   position: relative;
   max-height: 50rem;
 }
@@ -35,12 +32,9 @@
   height: auto;
   background: #000;
   border: 1px solid #000;
-
 }
 
-
 /* input */
-
 
 .input_group {
   position: relative;
@@ -48,7 +42,7 @@
 }
 
 .inputs {
-  border: solid 1.5px #47C67C;
+  border: solid 1.5px #47c67c;
   border-radius: 1rem;
   background: none;
   padding: 1rem;
@@ -61,11 +55,10 @@
 .user_label {
   position: absolute;
   left: 15px;
-  color: #47C67C;
+  color: #47c67c;
   pointer-events: none;
   transform: translateY(1rem);
   transition: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-
 }
 
 .inputs:focus,
@@ -74,30 +67,31 @@ inputs:valid {
   border: 1.5px solid #1a73e8;
 }
 
-.inputs:focus ~ label,.inputs:valid ~ label{
+.inputs:focus ~ label,
+.inputs:valid ~ label {
   transform: translateY(-50%) scale(0.8);
   background-color: #000;
-  padding: 0 .2em;
+  padding: 0 0.2em;
   color: #2196f3;
 }
 
 /* selector de img */
 .btnLabel {
   display: flex;
-  color: #00A97F;
-  margin: 1.5rem 1rem
+  color: #00a97f;
+  margin: 1.5rem 1rem;
 }
 
 .btnSelector {
   padding: 0.5rem;
-  border: 1px solid #00A97F;
+  border: 1px solid #00a97f;
   border-radius: 0.5rem;
 }
 
 /* caja con imagenes */
 .filaImg {
   display: flex;
-  border: 1px dashed #00A97F;
+  border: 1px dashed #00a97f;
   margin: 0.1rem 1rem 1rem 1rem;
 }
 
@@ -106,7 +100,6 @@ inputs:valid {
   height: 5rem;
   margin-right: 0.5rem;
   background-color: black;
-
 }
 
 .caja::after {
@@ -139,8 +132,6 @@ inputs:valid {
   margin: -4px;
 }
 
-
-
 /*texto*/
 
 .cajaTexto {
@@ -154,12 +145,11 @@ inputs:valid {
   position: absolute;
 }
 
-
 .texto {
   animation: caja 10s ease-in-out infinite;
   position: absolute;
   color: #088439;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 75px;
   text-align: center;
   text-shadow: 2px 2px 1px #000;
@@ -183,7 +173,7 @@ inputs:valid {
     transform: translateX(0%);
   }
 
-  75%{
+  75% {
     opacity: 1;
     transform: translateX(0%);
   }
@@ -204,20 +194,20 @@ inputs:valid {
 /* enviar y limpiar  */
 
 .btnSend {
-  --color: #00A97F;
+  --color: #00a97f;
   --color2: rgb(10, 25, 30);
   padding: 0.8em 1.75em;
   background-color: transparent;
   border-radius: 6px;
-  border: .3px solid var(--color);
-  transition: .5s;
+  border: 0.3px solid var(--color);
+  transition: 0.5s;
   position: relative;
   overflow: hidden;
   cursor: pointer;
   z-index: 1;
   font-weight: 300;
   font-size: 17px;
-  font-family: 'Roboto', 'Segoe UI', sans-serif;
+  font-family: "Roboto", "Segoe UI", sans-serif;
   text-transform: uppercase;
   color: var(--color);
   margin-left: 1rem;
@@ -225,7 +215,7 @@ inputs:valid {
 
 .btnSend::after,
 .btnSend::before {
-  content: '';
+  content: "";
   display: block;
   height: 100%;
   width: 100%;
@@ -234,10 +224,9 @@ inputs:valid {
   inset: 50%;
   left: 25%;
   z-index: -1;
-  transition: .5s ease-out;
+  transition: 0.5s ease-out;
   background-color: var(--color);
 }
-
 
 .btnSend::before {
   top: -50%;
@@ -258,17 +247,17 @@ inputs:valid {
 }
 
 .btnSend:active {
-  filter: brightness(.7);
-  transform: scale(.98);
+  filter: brightness(0.7);
+  transform: scale(0.98);
 }
 
 .btnUnder {
   padding-bottom: 1rem;
 }
 
-.errorText{
-color: red;
-margin-left: 1.5rem;
-font-size: small;
-font-family: 'Roboto';
+.errorText {
+  color: red;
+  margin-left: 1.5rem;
+  font-size: small;
+  font-family: "Roboto";
 }

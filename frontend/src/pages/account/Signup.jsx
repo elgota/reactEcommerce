@@ -1,17 +1,17 @@
-import React from 'react'
-import { Fragment } from 'react'
-import Footer from '../../components/footer/Footer';
-import Header from '../../components/header/Header';
-import Signup from '../../components/signup/Signup';
+import React from "react";
+import { Fragment } from "react";
+import Footer from "../../components/footer/Footer";
+import Header from "../../components/header/Header";
+import Signup from "../../components/signup/Signup";
 
 const Account = () => {
-    return (
+  return (
     <Fragment>
       <Header />
       <Signup />
       <Footer />
     </Fragment>
-    )
-}
-  
-export default Account
+  );
+};
+
+export default Account;

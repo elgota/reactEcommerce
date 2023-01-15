@@ -18,7 +18,7 @@ const Header = () => {
         <div className={css.menu}>
           <ul className={css.menu}>
             <li>Collections</li>
-            <li><Link to="/Agregar">Agregar Producto</Link></li>
+            <li><Link to="/agregar">Agregar Producto</Link></li>
             <li>--------</li>
             <li>--------</li>
             <li>--------</li>
@@ -26,10 +26,10 @@ const Header = () => {
         </div>
         <input type="text" className={css.search} placeholder="search" />
         <div>
-          <Link to="/ListaCarrito"><CgShoppingCart className={css.cart} ></CgShoppingCart></Link>
+          <Link to="/listaCarrito"><CgShoppingCart className={css.cart} ></CgShoppingCart></Link>
         </div>
         <div className={css.account}>
-          <Link to="/Login"><FontAwesomeIcon icon={faUser} /></Link>
+          <Link to="/login"><FontAwesomeIcon icon={faUser} /></Link>
         </div>
       </div>
     </div>

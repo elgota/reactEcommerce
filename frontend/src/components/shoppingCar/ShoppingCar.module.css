@@ -7,7 +7,6 @@
   background: #fff;
   margin: 32px auto;
   padding: 40px 64px;
-
 }
 
 .infoContainer {
@@ -39,7 +38,7 @@
   margin-bottom: 20px;
 }
 
-.title>h2 {
+.title > h2 {
   margin-bottom: 5px;
 }
 
@@ -57,7 +56,7 @@
   background-color: #fff;
   height: 25rem;
   width: 18rem;
-  border: 1px solid rgba(0, 0, 0, .125);
+  border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.185rem;
 }
 
@@ -68,7 +67,7 @@
   background-color: #fff;
   border-bottom: 1px solid #000;
 }
-.img{
+.img {
   transform: rotate(-20deg);
   position: absolute;
   right: 114px;
@@ -81,21 +80,21 @@
   flex-direction: column;
 }
 
-.name>:first-child {
+.name > :first-child {
   font-size: 1.4rem;
   font-weight: 600;
   text-transform: uppercase;
-  margin: auto
+  margin: auto;
 }
 
-.name>:nth-child(2) {
+.name > :nth-child(2) {
   font-weight: bold;
   font-size: 2rem;
   margin: auto;
   padding-top: 1rem;
 }
 
-.name>:nth-child(3) {
+.name > :nth-child(3) {
   font-size: 0.7rem;
   margin: auto;
   padding: 1rem 0rem 2rem 0rem;
@@ -103,7 +102,7 @@
 
 .boton {
   width: 100%;
-  padding: .75rem 0rem;
+  padding: 0.75rem 0rem;
   margin: auto;
   text-transform: uppercase;
   font-weight: bold;
@@ -119,7 +118,7 @@
   margin-left: auto;
   width: 15%;
   height: 44px;
-  padding: .75rem 0rem;
+  padding: 0.75rem 0rem;
   text-transform: uppercase;
   font-weight: bold;
   color: white;
@@ -127,7 +126,7 @@
   cursor: pointer;
 }
 
-.botonYtotal{
+.botonYtotal {
   display: flex;
   align-items: baseline;
 }

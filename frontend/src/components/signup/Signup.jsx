@@ -73,7 +73,7 @@ const Signup = () => {
                 <div className={css.logoTitle}>
                     <h1>Crea una cuenta</h1>
                 </div>
-                <form action="/Login"  className={css.formContainer}>
+                <form action="/login"  className={css.formContainer}>
                     <label>Nombre: <span>*</span></label>
                     <input type="text" name='name' onChange={handleInputChangeName} required />
 
@@ -90,7 +90,7 @@ const Signup = () => {
                     <input type="password" name='password' onChange={handleInputChangePassword} required />
                     <input type="submit" onClick={saveData} value="Registarse" />
                 </form>
-                <p>¿Ya tienes una cuenta? <Link to="/Login">Ingresar</Link></p>
+                <p>¿Ya tienes una cuenta? <Link to="/login">Ingresar</Link></p>
             </div>
         </div>
     )
