@@ -17,7 +17,7 @@ function App() {
   return (
     <Routes>
       <Route exact path="/" element={<Home />} />
-      <Route exact path="/lista-carrito/:id" element={<Carrito />} />
+      <Route exact path="/lista-carrito" element={<Carrito />} />
       <Route exact path="/login" element={<Login />} />
       <Route exact path="/signup" element={<Signup />} />
       <Route exact path="/agregar" element={<AgregarProducto />} />
