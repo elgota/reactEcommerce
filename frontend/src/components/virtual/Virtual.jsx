@@ -5,7 +5,7 @@ import ImageSlider from "react-image-comparison";
 import after from "../../assets/after.png";
 import before from "../../assets/before.png";
 
-const Virtual = () => {
+function Virtual() {
   return (
     <div className={css.Virtual}>
       <div className={css.left}>
@@ -26,6 +26,6 @@ const Virtual = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Virtual;

@@ -4,7 +4,7 @@ import Footer from "../../components/footer/Footer";
 import Header from "../../components/header/Header";
 import Login from "../../components/login/Login";
 
-const Account = () => {
+function Account() {
   return (
     <Fragment>
       <Header />
@@ -12,6 +12,6 @@ const Account = () => {
       <Footer />
     </Fragment>
   );
-};
+}
 
 export default Account;

@@ -1,7 +1,7 @@
 import React from "react";
-import css from "./ShoppingCar.module.css";
+import css from "./ShoppingCart.module.css";
 
-const cardProduct = ({ data, deleteFromCart, id }) => {
+function cardProduct({ data, deleteFromCart, id }) {
   return (
     <div className={css.card}>
       <div className={css.imgProduct}>
@@ -19,6 +19,6 @@ const cardProduct = ({ data, deleteFromCart, id }) => {
       </div>
     </div>
   );
-};
+}
 
 export default cardProduct;

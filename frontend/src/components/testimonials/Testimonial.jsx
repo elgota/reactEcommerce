@@ -4,7 +4,7 @@ import Hero from "../../assets/testimonialHero.png";
 import { TestimonialsData } from "../../data/testimonials";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-const Testimonial = () => {
+function Testimonial() {
   return (
     <div className={css.testimonials}>
       <div className={css.wrapper}>
@@ -47,6 +47,6 @@ const Testimonial = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Testimonial;

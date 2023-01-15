@@ -4,7 +4,7 @@ import HeroImg from "../../assets/hero.png";
 import { RiShoppingBagFill } from "react-icons/ri";
 import { BsArrowRight } from "react-icons/bs";
 
-const Hero = () => {
+function Hero() {
   return (
     <div className={css.container}>
       {/*Left Side*/}
@@ -47,6 +47,6 @@ const Hero = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Hero;

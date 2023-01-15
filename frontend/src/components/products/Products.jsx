@@ -10,7 +10,7 @@ import { useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-const Products = () => {
+function Products() {
   // const getCustomProductRequest = async () =>
   // await axios.get("http://localhost:4000/api/products/custom");
 
@@ -133,6 +133,6 @@ const Products = () => {
       </div>
     </>
   );
-};
+}
 
 export default Products;

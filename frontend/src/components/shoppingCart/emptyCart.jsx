@@ -1,7 +1,7 @@
 import React from "react";
-import css from "./ShoppingCar.module.css";
+import css from "./ShoppingCart.module.css";
 
-const emptyCart = () => {
+function emptyCart() {
   return (
     <div className={css.infoContainer}>
       <h2>Tu carrito esta vacío</h2>
@@ -13,6 +13,6 @@ const emptyCart = () => {
       </p>
     </div>
   );
-};
+}
 
 export default emptyCart;

@@ -2,7 +2,7 @@ import React from "react";
 import css from "./Footer.module.css";
 import Logo from "../../assets/logo.png";
 
-const Footer = () => {
+function Footer() {
   return (
     <div className={css.cFooterWrapper}>
       <hr />
@@ -23,6 +23,6 @@ const Footer = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Footer;

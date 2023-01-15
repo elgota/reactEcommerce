@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const NuevaImagen = () => {
+function NuevaImagen() {
   const [file, setFile] = useState(null);
 
   const selectedHandler = (e) => {
@@ -54,4 +54,6 @@ export const NuevaImagen = () => {
       </div>
     </div>
   );
-};
+}
+
+export default NuevaImagen;

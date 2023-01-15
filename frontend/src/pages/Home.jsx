@@ -8,7 +8,7 @@ import Slider from "../components/slider/Slider";
 import Testimonial from "../components/testimonials/Testimonial";
 import Virtual from "../components/virtual/Virtual";
 
-const Home = () => {
+function Home() {
   return (
     <Fragment>
       <Header />
@@ -19,6 +19,6 @@ const Home = () => {
       <Footer />
     </Fragment>
   );
-};
+}
 
 export default Home;

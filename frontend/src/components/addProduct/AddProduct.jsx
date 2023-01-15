@@ -5,7 +5,7 @@ import css from "./AddProduct.module.css";
 import imgLogo from "../../assets/logoVivero.png";
 import fondo from "../../assets/fondo-vivero.jpg";
 
-const AddProduct = () => {
+function AddProduct() {
   const [preImg, setpreImg] = useState([]);
   const {
     register,
@@ -272,6 +272,6 @@ const AddProduct = () => {
       </div>
     </div>
   );
-};
+}
 
 export default AddProduct;

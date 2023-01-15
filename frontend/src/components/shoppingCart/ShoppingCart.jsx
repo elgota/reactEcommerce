@@ -1,7 +1,7 @@
 import React from "react";
 import { Fragment } from "react";
 import { useParams } from "react-router-dom";
-import css from "./ShoppingCar.module.css";
+import css from "./ShoppingCart.module.css";
 import TYPES from "../reducers/actionType.js";
 import {
   productsInitialState,
@@ -13,7 +13,7 @@ import CardProduct from "./cardProduct.jsx";
 import { useEffect } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
-const ShoppingCar = () => {
+function ShoppingCart() {
   const [state, dispatch] = useReducer(reducerCart, productsInitialState);
 
   const addToCart = (id) => {
@@ -99,6 +99,6 @@ const ShoppingCar = () => {
       </div>
     </Fragment>
   );
-};
+}
 
-export default ShoppingCar;
+export default ShoppingCart;

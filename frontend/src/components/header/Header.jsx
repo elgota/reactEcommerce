@@ -3,11 +3,10 @@ import { Link } from "react-router-dom";
 import css from "./Header.module.css";
 import Logo from "../../assets/logo.png";
 import { CgShoppingCart } from "react-icons/cg";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-const Header = () => {
+function Header() {
   return (
     <div className={css.container}>
       <div className={css.logo}>
@@ -42,6 +41,6 @@ const Header = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Header;

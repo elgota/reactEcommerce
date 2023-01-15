@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import css from "./Login.module.css";
 
-const Login = () => {
+function Login() {
   const [inputTextEmail, setInputTextEmail] = useState("");
   const [inputTextPassword, setInputTextPassword] = useState("");
 
@@ -59,6 +59,6 @@ const Login = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Login;

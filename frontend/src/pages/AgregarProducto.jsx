@@ -3,7 +3,7 @@ import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import AddProduct from "../components/addProduct/AddProduct";
 
-const AgregarProducto = () => {
+function AgregarProducto() {
   return (
     <Fragment>
       <Header />
@@ -11,6 +11,6 @@ const AgregarProducto = () => {
       <Footer />
     </Fragment>
   );
-};
+}
 
 export default AgregarProducto;
