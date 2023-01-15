@@ -26,7 +26,7 @@ const Header = () => {
         </div>
         <input type="text" className={css.search} placeholder="search" />
         <div>
-          <Link to="/listaCarrito"><CgShoppingCart className={css.cart} ></CgShoppingCart></Link>
+          <Link to="/lista-carrito"><CgShoppingCart className={css.cart} ></CgShoppingCart></Link>
         </div>
         <div className={css.account}>
           <Link to="/login"><FontAwesomeIcon icon={faUser} /></Link>

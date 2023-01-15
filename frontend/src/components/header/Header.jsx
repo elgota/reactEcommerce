@@ -30,7 +30,7 @@ const Header = () => {
         </div>
         <input type="text" className={css.search} placeholder="search" />
         <div>
-          <Link to="/listaCarrito">
+          <Link to="/lista-carrito">
             <CgShoppingCart className={css.cart}></CgShoppingCart>
           </Link>
         </div>

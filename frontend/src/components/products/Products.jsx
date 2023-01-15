@@ -73,7 +73,7 @@ const Products = () => {
                     <span>{product.detail}</span>
                   </div>
                   <span>{product.price}$</span>
-                  <Link to={`/listaCarrito/${product.id}`}>
+                  <Link to={`/lista-carrito/${product.id}`}>
                     <span>Añadir al carrito</span>
                   </Link>
                   <div
@@ -122,7 +122,7 @@ const Products = () => {
             </p>
             <div className={css.divContLink}>
               <Link
-                to={`/listaCarrito/${iDBoxSHDescProd}`}
+                to={`/lista-carrito/${iDBoxSHDescProd}`}
                 className={css.linkCarSHDescProd}
               >
                 <span>Añadir al carrito</span>
