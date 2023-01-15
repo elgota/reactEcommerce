@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { Router } from "express";
 
 import {
   createImage,
@@ -8,7 +7,6 @@ import {
   deleteImage,
 } from "./../controllers/image.controllers.js";
 
-import { fileUpload } from "./../middleware/image.middleware.js";
 import { fileUpload } from "./../middleware/image.middleware.js";
 
 const router = Router();

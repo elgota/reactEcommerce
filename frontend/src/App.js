@@ -1,38 +1,34 @@
-import { useRef, useEffect } from 'react';
-import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from "./Page/Home";
-import Carrito from "./Page/Carrito";
-import Login from"./Page/account/Login";
-import Signup from './Page/account/Signup'
-import AgregarProducto from './Page/AgregarProducto';
-
-
+import { useRef, useEffect } from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Carrito from "./pages/Carrito";
+import Login from "./pages/account/Login";
+import Signup from "./pages/account/Signup";
+import AgregarProducto from "./pages/AgregarProducto";
+import ImagesUploadPage from "./pages/ImagesUploadPage";
+import ImagesByProductIdPage from "./pages/ImagesByProductIdPage";
 
 function App() {
   const appComponent = useRef();
 
-  useEffect(() => {
-    
-  })
-  
+  useEffect(() => {});
+
   return (
     <Router>
-    <div className="App" ref={appComponent}>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route exact path="/ListaCarrito/:id" element={<Carrito />}/>
-        <Route exact path="/Login" element={<Login/>}/>
-        <Route exact path="/Signup" element={<Signup />} />
-        <Route exact path='/Agregar' element={<AgregarProducto/>}/>
-
-      </Routes>
-    </div>
-    
+      <div className="App" ref={appComponent}>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/lista-carrito/:id" element={<Carrito />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/signup" element={<Signup />} />
+          <Route exact path="/agregar" element={<AgregarProducto />} />
+          <Route exact path="/images-upload" element={<ImagesUploadPage />} />
+          <Route exact path="/images" element={<ImagesByProductIdPage />} />
+        </Routes>
+      </div>
     </Router>
-
   );
 }
-
 
 export default App;
