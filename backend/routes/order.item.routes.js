@@ -1,10 +1,10 @@
 import { Router } from "express";
-import { getOrderItem,
-        getOrderItems,
-        createOrderItem,
-        updateOrderItem,
-        deleteOrderItem,
-
+import {
+  getOrderItem,
+  getOrderItems,
+  createOrderItem,
+  updateOrderItem,
+  deleteOrderItem,
 } from "../controllers/order.item.controllers.js";
 
 const router = Router();
