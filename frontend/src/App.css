@@ -29,5 +29,23 @@ a {
   color: inherit;
 }
 
+.productoForm {
 
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+
+}
+
+.formInputs{
+ width: 30rem;
+}
+
+.imagenForm {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ margin-top: 5rem;
+ width: 30rem;
+}
 
