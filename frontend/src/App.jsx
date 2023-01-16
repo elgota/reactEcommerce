@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Carrito from "./pages/Carrito";
 import Login from "./pages/account/Login";
@@ -28,8 +28,8 @@ function App() {
       <Route exact path="/agregar" element={<AgregarProducto />} />
       <Route exact path="/images-upload" element={<ImagesUploadPage />} />
       <Route exact path="/images" element={<ImagesByProductIdPage />} />
-      <Route path="/productos" element={<VerProductos />}></Route>
-      <Route path="/nuevaImagen" element={<NuevaImagen />}></Route>
+      <Route path="/productos" element={<VerProductos />} />
+      <Route path="/nuevaImagen" element={<NuevaImagen />} />
     </Routes>
   );
 }
