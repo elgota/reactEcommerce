@@ -26,6 +26,9 @@ function NavBar() {
               <Link to="/" className="nav-link">
                 Volver a producto
               </Link>
+              <Link to="/productos" className="nav-link">
+                Ver productos
+              </Link>
             </div>
           </div>
         </div>

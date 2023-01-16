@@ -1,6 +1,7 @@
 import { useRef, useEffect } from "react";
+import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Carrito from "./pages/Carrito";
 import Login from "./pages/account/Login";
@@ -8,6 +9,10 @@ import Signup from "./pages/account/Signup";
 import AgregarProducto from "./pages/AgregarProducto";
 import ImagesUploadPage from "./pages/ImagesUploadPage";
 import ImagesByProductIdPage from "./pages/ImagesByProductIdPage";
+import { NuevaImagen } from "./components/nuevaImagen/NuevaImagen";
+import VerProductos from "./components/VerProductos/VerProductos";
+import NavBar from "./components/NavBar/NavBar";
+import "boxicons";
 
 function App() {
   const appComponent = useRef();
@@ -23,6 +28,8 @@ function App() {
       <Route exact path="/agregar" element={<AgregarProducto />} />
       <Route exact path="/images-upload" element={<ImagesUploadPage />} />
       <Route exact path="/images" element={<ImagesByProductIdPage />} />
+      <Route path="/productos" element={<VerProductos />}></Route>
+      <Route path="/nuevaImagen" element={<NuevaImagen />}></Route>
     </Routes>
   );
 }

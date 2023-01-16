@@ -1,11 +1,40 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getProductRequest } from "../../api/product.api";
+import { createImageRequest } from "./../../api/image.api";
+import FileBase64 from 'react-file-base64';
+import e from "cors";
 
-function NuevaImagen() {
+export const NuevaImagen = () => {
+  const [selectedOption, setSelectedOption] = useState('')
+
+  function handleChange(event) {
+    setSelectedOption(event.target.value);
+    console.log(event.target.value)
+  }
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    async function loadProducts(){
+      const response = await getProductRequest()
+      // console.log(response.data)
+      setProducts(response.data) 
+
+    }
+    loadProducts();
+
+    
+  }, [])
+  
   const [file, setFile] = useState(null);
-
+  
   const selectedHandler = (e) => {
-    // console.log(e.target.files[0])
-    setFile(e.target.files[0]);
+
+    setFile(e.target.files);
+    setSelectedOption(e.target.value)
+
+    console.log(e.target.files)
+    
   };
 
   const sendHandler = () => {
@@ -14,46 +43,64 @@ function NuevaImagen() {
       return;
     }
 
+  
     const formdata = new FormData();
-    formdata.append("image", file);
 
-    fetch("http://localhost:4000/api/images/post", {
-      method: "POST",
-      body: formdata,
-    })
-      .then((res) => res.text())
-      .then((res) => console.log(res))
-      .catch((err) => {
-        console.error(err);
-      });
+    for (let i = 0; i < file.length; i++) {
+      formdata.append("image", file[i]);
+      formdata.append("id", selectedOption);
+    }
+    // formdata.append("image", file);
+   
+
+    console.log(selectedOption);
+    console.log(formdata);
+
+    createImageRequest(formdata);
 
     document.getElementById("fileinput").value = null;
     setFile(null);
+
+
   };
 
   return (
-    <div>
-      <nav className="navbar navbar-dark bg-dark">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="#">
-            Imagen
-          </a>
+    <div className="d-flex justify-content-center">
+      <div className="imagenForm"> 
+        <div className="mb-3">
+        <label className="form-label">Selecciona un archivo</label>
+          <input id="fileinput" onChange={selectedHandler} type="file" name="file" className="form-control" multiple />
         </div>
-      </nav>
+        <label className="form-label">Elige el producto</label>
+        <div className="input-group mb-3">
+          
+          <select className="form-select" id="options"
+            value={selectedOption}
+            onChange={handleChange}
+          >
+            {
+              products.map(product => (
+                
 
-      <div className="input-group mt-3">
-        <input
-          id="fileinput"
-          onChange={selectedHandler}
-          type="file"
-          className="form-control"
-        />
+                <option 
+                value={product.id}
+                key={product.title}
+                >
+                {product.title}
+                </option>
+
+              ))
+            }
+
+          </select>
+        </div>
+
         <button onClick={sendHandler} type="button" className="btn btn-primary">
           Subir
         </button>
+        
       </div>
+      
     </div>
   );
-}
-
-export default NuevaImagen;
+};
