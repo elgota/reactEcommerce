@@ -1,4 +1,3 @@
-import { useRef, useEffect } from "react";
 import React from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
@@ -11,14 +10,9 @@ import ImagesUploadPage from "./pages/ImagesUploadPage";
 import ImagesByProductIdPage from "./pages/ImagesByProductIdPage";
 import { NuevaImagen } from "./components/nuevaImagen/NuevaImagen";
 import VerProductos from "./components/VerProductos/VerProductos";
-import NavBar from "./components/NavBar/NavBar";
 import "boxicons";
 
 function App() {
-  const appComponent = useRef();
-
-  useEffect(() => {});
-
   return (
     <Routes>
       <Route exact path="/" element={<Home />} />

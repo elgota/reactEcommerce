@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getProductRequest } from "../../api/product.api";
 import { createImageRequest } from "./../../api/image.api";
-import FileBase64 from "react-file-base64";
-import e from "cors";
 
 export const NuevaImagen = () => {
   const [selectedOption, setSelectedOption] = useState("");

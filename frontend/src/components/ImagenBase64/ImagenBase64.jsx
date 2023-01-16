@@ -1,11 +1,8 @@
 import React from "react";
-import FileBase64 from "react-file-base64";
 
 function ImagenBase64() {
   const uploadImage = (e) => {
     console.log(e.target.files);
-
-    const file = e.targe.files[0];
   };
 
   return (
