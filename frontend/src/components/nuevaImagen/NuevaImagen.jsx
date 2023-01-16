@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { getProductRequest } from "../../api/product.api";
 import { createImageRequest } from "./../../api/image.api";
-
+import FileBase64 from 'react-file-base64';
+import e from "cors";
 
 export const NuevaImagen = () => {
   const [selectedOption, setSelectedOption] = useState('')
 
   function handleChange(event) {
     setSelectedOption(event.target.value);
+    console.log(event.target.value)
   }
 
   const [products, setProducts] = useState([]);
@@ -27,9 +29,12 @@ export const NuevaImagen = () => {
   const [file, setFile] = useState(null);
   
   const selectedHandler = (e) => {
-    setFile(e.target.files[0]);
-    setSelectedOption(e.target.value[1])
-    console.log(setSelectedOption)
+
+    setFile(e.target.files);
+    setSelectedOption(e.target.value)
+
+    console.log(e.target.files)
+    
   };
 
   const sendHandler = () => {
@@ -38,11 +43,18 @@ export const NuevaImagen = () => {
       return;
     }
 
+  
     const formdata = new FormData();
-    formdata.append("image", file);
-    formdata.append("id", selectedOption);
+
+    for (let i = 0; i < file.length; i++) {
+      formdata.append("image", file[i]);
+      formdata.append("id", selectedOption);
+    }
+    // formdata.append("image", file);
+   
 
     console.log(selectedOption);
+    console.log(formdata);
 
     createImageRequest(formdata);
 
@@ -57,7 +69,7 @@ export const NuevaImagen = () => {
       <div className="imagenForm"> 
         <div className="mb-3">
         <label className="form-label">Selecciona un archivo</label>
-          <input id="fileinput" onChange={selectedHandler} type="file" className="form-control" />
+          <input id="fileinput" onChange={selectedHandler} type="file" name="file" className="form-control" multiple />
         </div>
         <label className="form-label">Elige el producto</label>
         <div className="input-group mb-3">

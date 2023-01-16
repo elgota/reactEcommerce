@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import {Form, Formik} from "formik";
 import {createProductRequest, getProductRequest} from './../../api/product.api';
 
+
 function NuevoProducto() {
 
   return (

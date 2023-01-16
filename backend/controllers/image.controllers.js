@@ -6,22 +6,36 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-export const createImage = async (req, res) => {
+export const createImage = async (req, res) => { 
+  
+  try {
+  console.log(req.files);
+  console.log(req.body.id);
 
-  const productId = req.body.id;
-  const title = req.file.originalname;
-  const type = req.file.mimetype;
+  for (let i = 0; i < req.files.length; i++) {
+  
+  
+  const productId = req.body.id[i];
+  const title = req.files[i].originalname;
+  const type = req.files[i].mimetype;
   const data = fs.readFileSync(
-    path.join(__dirname, "../imagesUpload/" + req.file.filename)
+    path.join(__dirname, "../imagesUpload/" + req.files[i].filename)
   );
 
   await pool.query(
     "INSERT INTO `image` (productId, title, type, data) VALUES (?, ?, ?, ?)",
     [productId, title, type, data]
   );
+    
+  }
+  
+  } catch (error) {
+    console.log(error);
+  }
+  
 
   fs.unlink(
-    path.join(__dirname, "../imagesUpload/" + req.file.filename),
+    path.join(__dirname, "../imagesUpload/" + req.files.filename),
     (err) => {
       if (err) {
         return res.status(500).json({

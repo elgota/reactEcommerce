@@ -9,6 +9,8 @@ import VerProductos from "./components/VerProductos/VerProductos";
 import ImagesUploadPage from "./pages/ImagesUploadPage";
 import ImagesByProductIdPage from "./pages/ImagesByProductIdPage";
 import {NuevaImagen} from "./components/nuevaImagen/NuevaImagen";
+import ImagenBase64 from "./components/ImagenBase64/ImagenBase64";
+import MultiplesImagenes from "./components/MultiplesImagenes/MultiplesImagenes";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/nuevaImagen" element={<NuevaImagen />}></Route>
         <Route path="/images-upload" element={<ImagesUploadPage />} />
         <Route path="/images" element={<ImagesByProductIdPage />} />
+        <Route path="/imagesBase64" element={<ImagenBase64/>} />
+        <Route path="/multiplesImagenes" element={<MultiplesImagenes/>} />
       </Routes>
     </div>
   );
