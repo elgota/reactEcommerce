@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Hunteando/ecommerce-s1-g13#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "boxicons": "^2.1.4",
     "cors": "^2.8.5",
     "dirname": "^0.1.0",
