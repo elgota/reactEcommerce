@@ -6,6 +6,7 @@ import { CgShoppingCart } from "react-icons/cg";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { ADD_PRODUCT, CART } from "./../config/routes/paths.js";
 
 const Header = () => {
   return (
@@ -21,7 +22,7 @@ const Header = () => {
           <ul className={css.menu}>
             <li>Collections</li>
             <li>
-              <Link to="/agregar">Agregar Producto</Link>
+              <Link to={ADD_PRODUCT}>Agregar Producto</Link>
             </li>
             <li>--------</li>
             <li>--------</li>
@@ -30,7 +31,7 @@ const Header = () => {
         </div>
         <input type="text" className={css.search} placeholder="search" />
         <div>
-          <Link to="/lista-carrito">
+          <Link to={CART}>
             <CgShoppingCart className={css.cart}></CgShoppingCart>
           </Link>
         </div>

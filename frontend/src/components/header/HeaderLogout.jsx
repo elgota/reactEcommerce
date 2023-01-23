@@ -5,9 +5,9 @@ import Logo from "../../assets/logo.png";
 import { CgShoppingCart } from "react-icons/cg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import { CART, ADD_PRODUCT } from "./../../config/routes/paths.js";
+import { ADD_PRODUCT, CART } from "./../../config/routes/paths.js";
 
-function Header() {
+function HeaderLogout() {
   return (
     <div className={css.container}>
       <div className={css.logo}>
@@ -35,7 +35,7 @@ function Header() {
           </Link>
         </div>
         <div className={css.account}>
-          <Link to="/login">
+          <Link to="/profile/logout">
             <FontAwesomeIcon icon={faUser} />
           </Link>
         </div>
@@ -44,4 +44,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default HeaderLogout;

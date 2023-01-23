@@ -4,6 +4,7 @@ import Plane from "../../assets/plane.png";
 import { productsInitialState } from "../reducers/shoppingCart_reducer";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+import { CART } from "./../../config/routes/paths.js";
 
 // import axios from 'axios';
 
@@ -73,7 +74,7 @@ function Products() {
                     <span>{product.detail}</span>
                   </div>
                   <span>{product.price}$</span>
-                  <Link to={`/lista-carrito/${product.id}`}>
+                  <Link to={`/${CART}/${product.id}`}>
                     <span>Añadir al carrito</span>
                   </Link>
                   <div
@@ -122,7 +123,7 @@ function Products() {
             </p>
             <div className={css.divContLink}>
               <Link
-                to={`/lista-carrito/${iDBoxSHDescProd}`}
+                to={`/${CART}/${iDBoxSHDescProd}`}
                 className={css.linkCarSHDescProd}
               >
                 <span>Añadir al carrito</span>

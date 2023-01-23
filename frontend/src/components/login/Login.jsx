@@ -4,8 +4,15 @@ import Logo from "../../assets/logo.png";
 import css from "./Login.module.css";
 import { loginRequest } from "./../../../src/api/login.api";
 import { Form, Formik } from "formik";
+import { useState } from "react";
+import { useAuthContext } from "../../contexts/authContext";
 
 function Login() {
+  const { login } = useAuthContext();
+  const [isLogin, setIsLogin] = useState(false);
+  if (isLogin) {
+    login();
+  }
   return (
     <div>
       <Formik
@@ -14,10 +21,14 @@ function Login() {
           password: "",
         }}
         onSubmit={async (values) => {
-          console.log(values);
+          //console.log(values);
           try {
             const response = await loginRequest(values);
-            console.log(response);
+            //console.log(response.data);
+            const user = response.data;
+            console.log(user);
+            setIsLogin(true);
+            console.log("Llego al final");
           } catch (error) {
             console.error(error);
           }
