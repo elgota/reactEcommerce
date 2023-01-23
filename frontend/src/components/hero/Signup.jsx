@@ -19,12 +19,9 @@ function Signup() {
         onSubmit={async (values) => {
           console.log(values);
           try {
-            console.log("entra al try");
             const response = await createUserRequest(values);
-            console.log("consigue response");
             console.log(response);
           } catch (error) {
-            console.log("sale error");
             console.error(error);
           }
         }}
