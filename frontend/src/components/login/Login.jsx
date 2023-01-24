@@ -10,9 +10,12 @@ import { useAuthContext } from "../../contexts/authContext";
 function Login() {
   const { login } = useAuthContext();
   const [isLogin, setIsLogin] = useState(false);
+  const [user, setUser] = useState(null);
+
   if (isLogin) {
     login();
   }
+
   return (
     <div>
       <Formik
@@ -25,10 +28,11 @@ function Login() {
           try {
             const response = await loginRequest(values);
             //console.log(response.data);
-            const user = response.data;
-            console.log(user);
+            const data = response.data;
+            console.log(data);
+            setUser(user);
             setIsLogin(true);
-            console.log("Llego al final");
+            //console.log("Llego al final");
           } catch (error) {
             console.error(error);
           }

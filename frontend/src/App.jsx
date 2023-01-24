@@ -15,6 +15,7 @@ import Logout from "./pages/account/Logout";
 import ProfilePage from "./pages/account/ProfilePage";
 import { AuthContextProvider } from "./contexts/authContext";
 import PrivateRoute from "./components/router/PrivateRoute";
+import PublicRoute from "./components/router/PublicRoute";
 import {
   CART,
   HOME,
@@ -36,8 +37,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path={HOME} element={<Home />} />
-          <Route path={LOGIN} element={<Login />} />
-          <Route path={SIGNUP} element={<Signup />} />
+
+          <Route path={HOME} element={<PublicRoute />}>
+            <Route path={LOGIN} element={<Login />} />
+            <Route path={SIGNUP} element={<Signup />} />
+          </Route>
 
           <Route path={PRIVATE} element={<PrivateRoute />}>
             <Route path={PROFILE} element={<ProfilePage />} />

@@ -1,11 +1,12 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuthContext } from "../../contexts/authContext.jsx";
+import { HOME } from "../../config/routes/paths.js";
 
-export default function PublicRoute() {
+function PublicRoute() {
   const { isAuthenticated } = useAuthContext();
 
   if (isAuthenticated) {
-    return <Navigate to="/" />;
+    return <Navigate to={HOME} />;
   }
 
   return (
@@ -14,3 +15,5 @@ export default function PublicRoute() {
     </div>
   );
 }
+
+export default PublicRoute;
