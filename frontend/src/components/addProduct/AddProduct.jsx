@@ -75,8 +75,8 @@ function AddProduct() {
 
   const datos = (datas) => {
     datas.data = preImg;
-    console.log(datas);
-    console.log(datas.data[0].url);
+    //console.log(datas);
+    //console.log(datas.data[0].url);
     window.location.href = "/";
   };
 

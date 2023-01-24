@@ -9,6 +9,7 @@ import ordersRoutes from "./routes/orders.routes.js";
 import orderItemsRoutes from "./routes/order.item.routes.js";
 import transactionRoutes from "./routes/transaction.routes.js";
 import imageRoutes from "./routes/image.routes.js";
+import loginRoutes from "./routes/login.routes.js";
 
 import cors from "cors";
 
@@ -26,6 +27,7 @@ app.use(ordersRoutes);
 app.use(orderItemsRoutes);
 app.use(transactionRoutes);
 app.use(imageRoutes);
+app.use(loginRoutes);
 
 app.listen(PORT);
 console.log(`Server corriendo en puerto ${PORT}`);

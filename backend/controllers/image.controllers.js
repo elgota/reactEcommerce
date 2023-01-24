@@ -8,8 +8,8 @@ const __dirname = path.dirname(__filename);
 
 export const createImage = async (req, res) => {
   try {
-    console.log(req.files);
-    console.log(req.body.id);
+    //console.log(req.files);
+    //console.log(req.body.id);
 
     for (let i = 0; i < req.files.length; i++) {
       const productId = req.body.id[i];
