@@ -1,15 +1,16 @@
 import express from "express";
 import { PORT } from "./config.js";
-import path from "path";
 
 import indexRoutes from "./routes/index.routes.js";
-import usersRoutes from "./routes/users.routes.js";
-import productsRoutes from "./routes/products.routes.js";
-import ordersRoutes from "./routes/orders.routes.js";
-import orderItemsRoutes from "./routes/order.item.routes.js";
+import userRoutes from "./routes/user.routes.js";
+import productRoutes from "./routes/product.routes.js";
+import orderRoutes from "./routes/order.routes.js";
+import orderItemRoutes from "./routes/order.item.routes.js";
 import transactionRoutes from "./routes/transaction.routes.js";
 import imageRoutes from "./routes/image.routes.js";
 import loginRoutes from "./routes/login.routes.js";
+import cartRoutes from "./routes/order.routes.js";
+import cartItemRoutes from "./routes/order.item.routes.js";
 
 import cors from "cors";
 
@@ -21,13 +22,15 @@ app.use(cors());
 app.use(express.static("./backend/imagesProduct/"));
 
 app.use(indexRoutes);
-app.use(usersRoutes);
-app.use(productsRoutes);
-app.use(ordersRoutes);
-app.use(orderItemsRoutes);
+app.use(userRoutes);
+app.use(productRoutes);
+app.use(orderRoutes);
+app.use(orderItemRoutes);
 app.use(transactionRoutes);
 app.use(imageRoutes);
 app.use(loginRoutes);
+app.use(cartRoutes);
+app.use(cartItemRoutes);
 
 app.listen(PORT);
 console.log(`Server corriendo en puerto ${PORT}`);
