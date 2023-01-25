@@ -8,13 +8,13 @@ export const createOrderItem = async (req, res) => {
     price,
     discount,
     quantity,
-    updateAt,
+    updatedAt,
     content,
   } = req.body;
 
   const [result] = await pool.query(
-    "INSERT INTO `order_item` (productId, orderId, sku, price, discount, quantity, updateAt, content) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-    [productId, orderId, sku, price, discount, quantity, updateAt, content]
+    "INSERT INTO `order_item` (productId, orderId, sku, price, discount, quantity, updatedAt, content) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+    [productId, orderId, sku, price, discount, quantity, updatedAt, content]
   );
   res.json({
     id: result.insertId,
@@ -24,7 +24,7 @@ export const createOrderItem = async (req, res) => {
     price,
     discount,
     quantity,
-    updateAt,
+    updatedAt,
     content,
   });
 };
