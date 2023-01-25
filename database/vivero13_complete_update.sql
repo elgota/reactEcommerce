@@ -1048,7 +1048,7 @@ VALUES
   );
 
 INSERT INTO
-  `order_item` (
+  `cart_item` (
     `productId`,
     `cartId`,
     `sku`,
@@ -1075,7 +1075,7 @@ VALUES
   );
 
 INSERT INTO
-  `order_item` (
+  `cart_item` (
     `productId`,
     `cartId`,
     `sku`,
@@ -1102,7 +1102,7 @@ VALUES
   );
 
 INSERT INTO
-  `order_item` (
+  `cart_item` (
     `productId`,
     `cartId`,
     `sku`,
