@@ -896,3 +896,234 @@ VALUES
     '2022-11-15 19:16:18',
     'rejected'
   );
+
+INSERT INTO
+  `cart` (
+    `userId`,
+    `sessionId`,
+    `token`,
+    `status`,
+    `firstName`,
+    `middleName`,
+    `lastName`,
+    `mobile`,
+    `email`,
+    `line1`,
+    `line2`,
+    `city`,
+    `province`,
+    `country`,
+    `createdAt`,
+    `updatedAt`,
+    `content`
+  )
+VALUES
+  (
+    4,
+    '4251bfcf87cb3baed5c309c7e8dbd4d4',
+    'aa8aeb0119bc33f2702acb6137048709',
+    0,
+    'Jose',
+    'Luis',
+    'Figueroa',
+    '987456321',
+    'jose.figueroa@gmail.com',
+    'Bodega Tarija',
+    'Bodega San Bernardo',
+    'Tarija',
+    'Cercado ',
+    'Bolivia',
+    '2022-11-14 12:16:18',
+    '2022-11-14 15:16:18',
+    'Frente a restaurant Las Delicias'
+  );
+
+INSERT INTO
+  `cart` (
+    `userId`,
+    `sessionId`,
+    `token`,
+    `status`,
+    `firstName`,
+    `middleName`,
+    `lastName`,
+    `mobile`,
+    `email`,
+    `line1`,
+    `line2`,
+    `city`,
+    `province`,
+    `country`,
+    `createdAt`,
+    `updatedAt`,
+    `content`
+  )
+VALUES
+  (
+    5,
+    '84266fdbd31d4c2c6d0665f7e8380fa3',
+    '3bbdfac9d110f77d85bfbcad291a928e',
+    1,
+    'Frank',
+    'Alberto',
+    'Rodriguez',
+    '963258741',
+    'frank.rodriguez@gmail.com',
+    'Bodega Colmena',
+    'Bodega Jorge Chavez',
+    'Maracaibo',
+    'Zulia',
+    'Venezuela',
+    '2022-11-15 12:16:18',
+    '2022-11-15 15:16:18',
+    'A dos cuadras de grifo El Sol'
+  );
+
+INSERT INTO
+  `cart` (
+    `userId`,
+    `sessionId`,
+    `token`,
+    `status`,
+    `firstName`,
+    `middleName`,
+    `lastName`,
+    `mobile`,
+    `email`,
+    `line1`,
+    `line2`,
+    `city`,
+    `province`,
+    `country`,
+    `createdAt`,
+    `updatedAt`,
+    `content`
+  )
+VALUES
+  (
+    5,
+    '84266fdbd31d4c2c6d0665f7e8380fa3',
+    '3bbdfac9d110f77d85bfbcad291a928e',
+    2,
+    'Frank',
+    'Alberto',
+    'Rodriguez',
+    '963258741',
+    'frank.rodriguez@gmail.com',
+    'Bodega Colmena',
+    'Bodega Jorge Chavez',
+    'Maracaibo',
+    'Zulia',
+    'Venezuela',
+    '2022-11-15 12:16:18',
+    '2022-11-15 15:16:18',
+    'A dos cuadras de grifo El Sol'
+  );
+
+INSERT INTO
+  `cart_item` (
+    `productId`,
+    `cartId`,
+    `sku`,
+    `price`,
+    `discount`,
+    `quantity`,
+    `active`,
+    `createdAt`,
+    `updatedAt`,
+    `content`
+  )
+VALUES
+  (
+    1,
+    1,
+    'P000001',
+    50.00,
+    0.00,
+    2,
+    1,
+    '2022-11-15 12:16:18',
+    '2022-11-15 15:16:18',
+    'Que no sean muy grandes por favor'
+  );
+
+INSERT INTO
+  `order_item` (
+    `productId`,
+    `cartId`,
+    `sku`,
+    `price`,
+    `discount`,
+    `quantity`,
+    `active`,
+    `createdAt`,
+    `updatedAt`,
+    `content`
+  )
+VALUES
+  (
+    1,
+    2,
+    'P000001',
+    50.00,
+    0.00,
+    1,
+    1,
+    '2022-11-15 12:16:18',
+    '2022-11-15 15:16:18',
+    'Sin macetero'
+  );
+
+INSERT INTO
+  `order_item` (
+    `productId`,
+    `cartId`,
+    `sku`,
+    `price`,
+    `discount`,
+    `quantity`,
+    `active`,
+    `createdAt`,
+    `updatedAt`,
+    `content`
+  )
+VALUES
+  (
+    2,
+    2,
+    'P000002',
+    100.00,
+    0.05,
+    1,
+    1,
+    '2022-11-15 12:16:18',
+    '2022-11-15 15:16:18',
+    'Con macetero'
+  );
+
+INSERT INTO
+  `order_item` (
+    `productId`,
+    `cartId`,
+    `sku`,
+    `price`,
+    `discount`,
+    `quantity`,
+    `active`,
+    `createdAt`,
+    `updatedAt`,
+    `content`
+  )
+VALUES
+  (
+    2,
+    2,
+    'P000002',
+    100.00,
+    0.05,
+    1,
+    1,
+    '2022-11-15 12:16:18',
+    '2022-11-15 15:16:18',
+    'Con tierra en la maceta'
+  );
