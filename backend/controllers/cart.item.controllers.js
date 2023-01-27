@@ -48,8 +48,8 @@ export const getCartItems = async (req, res) => {
 
 export const getCartItemsByUserId = async (req, res) => {
   var [result] = await pool.query(
-    "SELECT * FROM `cart_item` as ci INNER JOIN `cart` as c WHERE ci.cartId = c.id AND c.userId = ?",
-    [req.query.productId]
+    "SELECT p.title, p.price, p.summary FROM `cart_item` ci INNER JOIN `cart` c ON ci.cartId = c.id INNER JOIN `product` p ON p.id = ci.productId WHERE c.userId = ? AND c.status = 1;",
+    [req.query.userId]
   );
 
   if (result.length === 0) {
