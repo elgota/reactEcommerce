@@ -4,9 +4,13 @@ import { useForm } from "react-hook-form";
 import css from "./AddProduct.module.css";
 import imgLogo from "../../assets/logoVivero.png";
 import fondo from "../../assets/fondo-vivero.jpg";
+import FormData from "form-data";
+import { createProductRequest } from "../../api/product.api";
+import { createImageRequest } from "../../api/image.api";
 
 function AddProduct() {
   const [preImg, setpreImg] = useState([]);
+  const [imagenFile, setimagenFile] = useState([]);
   const {
     register,
     handleSubmit,
@@ -32,9 +36,12 @@ function AddProduct() {
     const files = e.currentTarget.files;
 
     const arrayImages = [];
+    const arrayFiles = [];
 
     Object.keys(files).forEach((i) => {
       const file = files[i];
+
+      arrayFiles.push(file);
       let url = URL.createObjectURL(file);
 
       arrayImages.push({
@@ -45,6 +52,7 @@ function AddProduct() {
       });
       indexImg++;
     });
+    setimagenFile(arrayFiles);
     return arrayImages;
   }
 
@@ -73,11 +81,15 @@ function AddProduct() {
     return () => clearInterval(interval);
   }, []);
 
-  const datos = (datas) => {
-    datas.data = preImg;
-    //console.log(datas);
-    //console.log(datas.data[0].url);
-    window.location.href = "/";
+  const datos = async (datas) => {
+    const formData = new FormData();
+    imagenFile.forEach((file) => {
+      formData.append("image", file);
+    });
+
+    const respuesta = await createProductRequest(datas);
+    formData.append("id", respuesta.data.id);
+    createImageRequest(formData);
   };
 
   const validarImg = () => {
@@ -99,7 +111,7 @@ function AddProduct() {
         </div>
       </div>
       <div className={css.form_product}>
-        <form noValidate action="/login" onSubmit={handleSubmit(datos)}>
+        <form noValidate onSubmit={handleSubmit(datos)}>
           <div className={css.input_group}>
             <input
               {...register("title", { required: true, maxLength: 20 })}
@@ -120,21 +132,6 @@ function AddProduct() {
             <input
               required=" "
               type="text"
-              {...register("slug", { required: true, maxLength: 20 })}
-              className={css.inputs}
-            />
-            <label className={css.user_label}>Slug</label>
-          </div>
-          {errors.slug?.type === "required" && (
-            <p className={css.errorText}>*El campo no puede estar vacio</p>
-          )}
-          {errors.slug?.type === "maxLength" && (
-            <p className={css.errorText}>*Maximo de caracteres es de 20</p>
-          )}
-          <div className={css.input_group}>
-            <input
-              required=" "
-              type="text"
               {...register("summary", { required: true, maxLength: 20 })}
               className={css.inputs}
             />
@@ -144,36 +141,6 @@ function AddProduct() {
             <p className={css.errorText}>*El campo no puede estar vacio</p>
           )}
           {errors.summary?.type === "maxLength" && (
-            <p className={css.errorText}>*Maximo de caracteres es de 20</p>
-          )}
-          <div className={css.input_group}>
-            <input
-              required=" "
-              type="text"
-              {...register("type", { required: true, maxLength: 20 })}
-              className={css.inputs}
-            />
-            <label className={css.user_label}>Type</label>
-          </div>
-          {errors.type?.type === "required" && (
-            <p className={css.errorText}>*El campo no puede estar vacio</p>
-          )}
-          {errors.type?.type === "maxLength" && (
-            <p className={css.errorText}>*Maximo de caracteres es de 20</p>
-          )}
-          <div className={css.input_group}>
-            <input
-              required=" "
-              type="text"
-              {...register("sku", { required: true, maxLength: 20 })}
-              className={css.inputs}
-            />
-            <label className={css.user_label}>Sku</label>
-          </div>
-          {errors.sku?.type === "required" && (
-            <p className={css.errorText}>*El campo no puede estar vacio</p>
-          )}
-          {errors.sku?.type === "maxLength" && (
             <p className={css.errorText}>*Maximo de caracteres es de 20</p>
           )}
           <div className={css.input_group}>
@@ -259,6 +226,18 @@ function AddProduct() {
                 );
               })}
             </div>
+          )}
+          <div className={css.input_group}>
+            <textarea
+              {...register("content", { required: false, minLength: 20 })}
+              className={css.textoDescriptivo}
+              cols="54"
+              rows="10"
+              placeholder="Ingrese  una descripcion del producto"
+            ></textarea>
+          </div>
+          {errors.content?.type === "minLength" && (
+            <p className={css.errorText}>*El minimo de caracteres es de 20</p>
           )}
           <div className={css.btnUnder}>
             <button type="submit" className={css.btnSend}>
