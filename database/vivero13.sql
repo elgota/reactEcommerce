@@ -371,14 +371,14 @@ INSERT INTO `cart` (`userId`,`sessionId`,`token`,`status`,`firstName`,`middleNam
 
 INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (1,1,'P000001',50,0,2,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Que no sean muy grandes por favor');
 INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (2,2,'P000002',50,0,1,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Sin macetero');
-INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (3,2,'P000002',100,0.05,1,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Con macetero');
-INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (4,3,'P000003',100,0.05,1,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Con tierra en la maceta');
-INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (5,3,'P000003',50,0,2,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Que no sean muy grandes por favor');
+INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (3,2,'P000003',100,0.05,1,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Con macetero');
+INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (4,3,'P000004',100,0.05,1,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Con tierra en la maceta');
+INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (5,3,'P000005',50,0,2,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Que no sean muy grandes por favor');
 INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (1,4,'P000001',50,0,2,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Que no sean muy grandes por favor');
 INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (2,5,'P000002',50,0,1,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Sin macetero');
-INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (3,5,'P000002',100,0.05,1,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Con macetero');
-INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (4,6,'P000003',100,0.05,1,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Con tierra en la maceta');
-INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (5,6,'P000001',50,0,2,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Que no sean muy grandes por favor');
+INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (3,5,'P000003',100,0.05,1,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Con macetero');
+INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (4,6,'P000004',100,0.05,1,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Con tierra en la maceta');
+INSERT INTO `cart_item` (`productId`,`cartId`,`sku`,`price`,`discount`,`quantity`,`active`,`createdAt`,`updatedAt`,`content`) VALUES (5,6,'P000005',50,0,2,1,'2022-11-15 12:16:18','2022-11-15 15:16:18','Que no sean muy grandes por favor');
 
 INSERT INTO
   `transaction` (
