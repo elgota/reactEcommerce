@@ -247,7 +247,7 @@ function AddProduct() {
               Limpiar
             </button>
           </div>
-        </form>
+        </form>userId
       </div>
     </div>
   );

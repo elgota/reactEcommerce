@@ -1,26 +1,22 @@
 import { pool } from "../db.js";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { v4 as uuidv4 } from "uuid";
 
 export const createProduct = async (req, res) => {
   const {
-    userId,
+    userId = 1,
     title,
     metaTitle,
-    slug,
+    slug = uuidv4(),
     summary,
-    type,
-    sku,
+    type = 123,
+    sku = uuidv4(),
     price,
     discount,
     quantity,
-    shop,
+    shop = 1,
     updatedAt,
-    publishedAt,
-    startsAt,
+    publishedAt = new Date(),
+    startsAt = new Date(),
     endsAt,
     content,
   } = req.body;
@@ -56,9 +52,18 @@ export const getProducts = async (req, res) => {
 };
 
 export const getProduct = async (req, res) => {
-  const [result] = await pool.query("SELECT * FROM product WHERE id = ?", [
-    req.params.id,
-  ]);
+  const [result] = await pool.query(
+    "SELECT p.id, p.title, p.summary, p.price, p.content, i.data FROM product p INNER JOIN image i ON p.id = i.productId  WHERE p.id = ? GROUP BY p.id",
+    [req.params.id]
+  );
+
+  let aux = 0;
+  result.map(() => {
+    const imageBuffer = result[aux].data;
+    const imageUrl = `data:image/png;base64,${imageBuffer.toString("base64")}`;
+    result[aux].data = imageUrl;
+    aux++;
+  });
 
   if (result.length === 0) {
     return res.status(404).json({ message: "Product not found" });
@@ -69,29 +74,16 @@ export const getProduct = async (req, res) => {
 
 export const getCustomProducts = async (req, res) => {
   const [result] = await pool.query(
-    "SELECT p.id, p.title, p.summary, p.price, i.data FROM product p INNER JOIN image i ON p.id = i.productId"
+    "SELECT p.id, p.title, p.summary, p.price, p.content, i.data FROM product p INNER JOIN image i ON p.id = i.productId  GROUP BY p.id"
   );
-  console.log(result);
-
-  // result.map((image => {
-  //   fs.writeFileSync(path.join(__dirname, '../imagesProduct/' + image.productId + "-" + image.id + "-vivero13.png"),
-  //   image.data)
-  // }))
-
-  // const imageDir = fs.readdirSync(path.join(__dirname, '../imagesProduct'));
-
-  // res.json(imageDir)
-
-  // console.log(fs.readdirSync(path.join(__dirname, '../imagesProduct/')))
 
   let aux = 0;
   result.map(() => {
     const imageBuffer = result[aux].data;
-    const imageUrl = `data:image/png;base64, ${imageBuffer.toString("base64")}`;
+    const imageUrl = `data:image/png;base64,${imageBuffer.toString("base64")}`;
     result[aux].data = imageUrl;
     aux++;
   });
-
   res.json(result);
 };
 
@@ -119,10 +111,3 @@ export const deleteProduct = async (req, res) => {
 
   return res.sendStatus(204);
 };
-
-// export const getCustomProducts = async (req, res) => {
-//   const [result] = await pool.query(
-//     "SELECT * FROM product ORDER BY createdAt ASC"
-//   );
-//   res.json(result);
-// };

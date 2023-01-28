@@ -23,22 +23,22 @@ export const createImage = async (req, res) => {
         "INSERT INTO `image` (productId, title, type, data) VALUES (?, ?, ?, ?)",
         [productId, title, type, data]
       );
+
+      fs.unlink(
+        path.join(__dirname, "../imagesUpload/" + req.files[i].filename),
+        (err) => {
+          if (err) {
+            return res.status(500).json({
+              message: "No se pudo borrar imagen del middleware",
+              error: err,
+            });
+          }
+        }
+      );
     }
   } catch (error) {
     console.log(error);
   }
-
-  fs.unlink(
-    path.join(__dirname, "../imagesUpload/" + req.files.filename),
-    (err) => {
-      if (err) {
-        return res.status(500).json({
-          message: "No se pudo borrar imagen del middleware",
-          error: err,
-        });
-      }
-    }
-  );
 };
 
 export const getImagesByProductId = async (req, res) => {

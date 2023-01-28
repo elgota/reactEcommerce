@@ -181,170 +181,11 @@ CREATE TABLE `cart_item` (
   CONSTRAINT `fk_cart_item_product` FOREIGN KEY (`productId`) REFERENCES `product` (`id`)
 );
 
-INSERT INTO
-  `user` (
-    `firstName`,
-    `middleName`,
-    `lastName`,
-    `mobile`,
-    `email`,
-    `passwordHash`,
-    `admin`,
-    `vendor`,
-    `registeredAt`,
-    `lastLogin`,
-    `intro`,
-    `profile`,
-    `photo`
-  )
-VALUES
-  (
-    'Angelo',
-    'Michael',
-    'Huaraca',
-    '987654321',
-    'angelo.huaraca@gmail.com',
-    'password1',
-    1,
-    1,
-    '2022-11-01 12:32:05',
-    '2022-11-09 20:27:06',
-    'Proveedor con 20 años de experiencia',
-    'Atención solo en Perú',
-    null
-  );
-
-INSERT INTO
-  `user` (
-    `firstName`,
-    `middleName`,
-    `lastName`,
-    `mobile`,
-    `email`,
-    `passwordHash`,
-    `admin`,
-    `vendor`,
-    `registeredAt`,
-    `lastLogin`,
-    `intro`,
-    `profile`,
-    `photo`
-  )
-VALUES
-  (
-    'Juan',
-    'Pablo',
-    'Gottardini',
-    '945865214',
-    'juan.gottardini@gmail.com',
-    'password2',
-    1,
-    1,
-    '2022-11-01 18:32:05',
-    '2022-11-10 15:12:23',
-    'Proveedor con 30 años de experiencia',
-    'Atención solo en Argentina',
-    null
-  );
-
-INSERT INTO
-  `user` (
-    `firstName`,
-    `middleName`,
-    `lastName`,
-    `mobile`,
-    `email`,
-    `passwordHash`,
-    `admin`,
-    `vendor`,
-    `registeredAt`,
-    `lastLogin`,
-    `intro`,
-    `profile`,
-    `photo`
-  )
-VALUES
-  (
-    'Josue',
-    'Enrique',
-    'Quispe',
-    '999888777',
-    'josue.quispe@gmail.com',
-    'password3',
-    0,
-    1,
-    '2022-11-02 12:32:54',
-    '2022-11-03 10:22:55',
-    'Proveedor con 10 años de experiencia',
-    'Atención solo en Chile',
-    null
-  );
-
-INSERT INTO
-  `user` (
-    `firstName`,
-    `middleName`,
-    `lastName`,
-    `mobile`,
-    `email`,
-    `passwordHash`,
-    `admin`,
-    `vendor`,
-    `registeredAt`,
-    `lastLogin`,
-    `intro`,
-    `profile`,
-    `photo`
-  )
-VALUES
-  (
-    'Jose',
-    'Luis',
-    'Figueroa',
-    '987456321',
-    'jose.figueroa@gmail.com',
-    'password4',
-    0,
-    0,
-    '2022-11-05 07:23:44',
-    '2022-11-07 21:33:44',
-    null,
-    null,
-    null
-  );
-
-INSERT INTO
-  `user` (
-    `firstName`,
-    `middleName`,
-    `lastName`,
-    `mobile`,
-    `email`,
-    `passwordHash`,
-    `admin`,
-    `vendor`,
-    `registeredAt`,
-    `lastLogin`,
-    `intro`,
-    `profile`,
-    `photo`
-  )
-VALUES
-  (
-    'Frank',
-    'Alberto',
-    'Rodriguez',
-    '963258741',
-    'frank.rodriguez@gmail.com',
-    'password5',
-    0,
-    0,
-    '2022-11-03 12:44:19',
-    '2022-11-10 06:33:44',
-    null,
-    null,
-    null
-  );
+INSERT INTO `user` (`firstName`,`middleName`,`lastName`,`mobile`,`email`,`passwordHash`,`admin`,`vendor`,`registeredAt`,`lastLogin`,`intro`,`profile`,`photo`) VALUES ('Angelo','Michael','Huaraca','987654321','angelo.huaraca@gmail.com','password1',1,1,'2022-11-01 12:32:05','2022-11-09 20:27:06','Proveedor con 20 años de experiencia','Atención solo en Perú',NULL);
+INSERT INTO `user` (`firstName`,`middleName`,`lastName`,`mobile`,`email`,`passwordHash`,`admin`,`vendor`,`registeredAt`,`lastLogin`,`intro`,`profile`,`photo`) VALUES ('Juan','Pablo','Gottardini','945865214','juan.gottardini@gmail.com','password2',1,1,'2022-11-01 18:32:05','2022-11-10 15:12:23','Proveedor con 30 años de experiencia','Atención solo en Argentina',NULL);
+INSERT INTO `user` (`firstName`,`middleName`,`lastName`,`mobile`,`email`,`passwordHash`,`admin`,`vendor`,`registeredAt`,`lastLogin`,`intro`,`profile`,`photo`) VALUES ('Josue','Enrique','Quispe','999888777','josue.quispe@gmail.com','password3',0,1,'2022-11-02 12:32:54','2022-11-03 10:22:55','Proveedor con 10 años de experiencia','Atención solo en Chile',NULL);
+INSERT INTO `user` (`firstName`,`middleName`,`lastName`,`mobile`,`email`,`passwordHash`,`admin`,`vendor`,`registeredAt`,`lastLogin`,`intro`,`profile`,`photo`) VALUES ('Jose','Luis','Figueroa','987456321','jose.figueroa@gmail.com','password4',0,0,'2022-11-05 07:23:44','2022-11-07 21:33:44',NULL,NULL,NULL);
+INSERT INTO `user` (`firstName`,`middleName`,`lastName`,`mobile`,`email`,`passwordHash`,`admin`,`vendor`,`registeredAt`,`lastLogin`,`intro`,`profile`,`photo`) VALUES ('Frank','Alberto','Rodriguez','963258741','frank.rodriguez@gmail.com','password5',0,0,'2022-11-03 12:44:19','2022-11-10 06:33:44',NULL,NULL,NULL);
 
 INSERT INTO `product` (`userId`,`title`,`metaTitle`,`slug`,`summary`,`type`,`sku`,`price`,`discount`,`quantity`,`shop`,`createdAt`,`updatedAt`,`publishedAt`,`startsAt`,`endsAt`,`content`) VALUES (1,'Bromelia','Planta Bromelia en Vivero13','bromelia','Planta de invierno',1,'P000001',50.00,0.00,10,1,'2022-11-02 22:46:04','2022-11-03 22:46:04','2022-11-02 23:46:04','2022-11-02 00:00:00','2022-12-02 23:59:59','Mantener en temperaturas entre 24-27°');
 INSERT INTO `product` (`userId`,`title`,`metaTitle`,`slug`,`summary`,`type`,`sku`,`price`,`discount`,`quantity`,`shop`,`createdAt`,`updatedAt`,`publishedAt`,`startsAt`,`endsAt`,`content`) VALUES (2,'Violeta Africana','Planta Violeta Africana en Vivero13','violeta-africana','Planta de primavera',1,'P000002',100.00,0.05,20,1,'2022-11-02 22:46:28','2022-11-03 22:46:28','2022-11-02 23:46:28','2022-11-02 00:00:00','2022-12-02 23:59:59','Mantener en temperaturas entre 22-25°');
@@ -363,7 +204,7 @@ INSERT INTO `order_item` (`productId`,`orderId`,`sku`,`price`,`discount`,`quanti
 INSERT INTO `order_item` (`productId`,`orderId`,`sku`,`price`,`discount`,`quantity`,`createdAt`,`updatedAt`,`content`) VALUES (5, 3, 'P000005', 100.00,0.05,1,'2022-11-15 12:16:18', '2022-11-15 15:16:18', 'Con tierra en la maceta');
 
 INSERT INTO `cart` (`userId`,`sessionId`,`token`,`status`,`firstName`,`middleName`,`lastName`,`mobile`,`email`,`line1`,`line2`,`city`,`province`,`country`,`createdAt`,`updatedAt`,`content`) VALUES (4,'4251bfcf87cb3baed5c309c7e8dbd4d4','aa8aeb0119bc33f2702acb6137048709',1,'Jose','Luis','Figueroa','987456321','jose.figueroa@gmail.com','Bodega Tarija','Bodega San Bernardo','Tarija','Cercado ','Bolivia','2022-11-14 12:16:18','2022-11-14 15:16:18','Frente a restaurant Las Delicias');
-INSERT INTO `cart` (`userId`,`sessionId`,`token`,`status`,`firstName`,`middleName`,`lastName`,`mobile`,`email`,`line1`,`line2`,`city`,`province`,`country`,`createdAt`,`updatedAt`,`content`) VALUES (4,'84266fdbd31d4c2c6d0665f7e8380fa3','3bbdfac9d110f77d85bfbcad291a928e',1,'Jose','Luis','Figueroa','987456321','jose.figueroa@gmail.com','Bodega Tarija','Bodega San Bernardo','Tarija','Cercado ','Bolivia','2022-11-15 12:16:18','2022-11-15 15:16:18','A dos cuadras de grifo El Sol');
+INSERT INTO `cart` (`userId`,`sessionId`,`token`,`status`,`firstName`,`middleName`,`lastName`,`mobile`,`email`,`line1`,`line2`,`city`,`province`,`country`,`createdAt`,`updatedAt`,`content`) VALUES (4,'84266fdbd31d4c2c6d0665f7e8380fa3','3bbdfac9d110f77d85bfbcad291a928e',0,'Jose','Luis','Figueroa','987456321','jose.figueroa@gmail.com','Bodega Tarija','Bodega San Bernardo','Tarija','Cercado ','Bolivia','2022-11-15 12:16:18','2022-11-15 15:16:18','A dos cuadras de grifo El Sol');
 INSERT INTO `cart` (`userId`,`sessionId`,`token`,`status`,`firstName`,`middleName`,`lastName`,`mobile`,`email`,`line1`,`line2`,`city`,`province`,`country`,`createdAt`,`updatedAt`,`content`) VALUES (5,'84266fdbd31d4c2c6d0665f7e8380fa3','3bbdfac9d110f77d85bfbcad291a928e',1,'Frank','Alberto','Rodriguez','963258741','frank.rodriguez@gmail.com','Bodega Colmena','Bodega Jorge Chavez','Maracaibo','Zulia','Venezuela','2022-11-15 12:16:18','2022-11-15 15:16:18','A dos cuadras de grifo El Sol');
 INSERT INTO `cart` (`userId`,`sessionId`,`token`,`status`,`firstName`,`middleName`,`lastName`,`mobile`,`email`,`line1`,`line2`,`city`,`province`,`country`,`createdAt`,`updatedAt`,`content`) VALUES (4,'84266fdbd31d4c2c6d0665f7e8380fa3','3bbdfac9d110f77d85bfbcad291a928e',0,'Jose','Luis','Figueroa','987456321','jose.figueroa@gmail.com','Bodega Tarija','Bodega San Bernardo','Tarija','Cercado ','Bolivia','2022-11-15 12:16:18','2022-11-15 15:16:18','A dos cuadras de grifo El Sol');
 INSERT INTO `cart` (`userId`,`sessionId`,`token`,`status`,`firstName`,`middleName`,`lastName`,`mobile`,`email`,`line1`,`line2`,`city`,`province`,`country`,`createdAt`,`updatedAt`,`content`) VALUES (4,'84266fdbd31d4c2c6d0665f7e8380fa3','3bbdfac9d110f77d85bfbcad291a928e',0,'Jose','Luis','Figueroa','987456321','jose.figueroa@gmail.com','Bodega Tarija','Bodega San Bernardo','Tarija','Cercado ','Bolivia','2022-11-15 12:16:18','2022-11-15 15:16:18','A dos cuadras de grifo El Sol');
