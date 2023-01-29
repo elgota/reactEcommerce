@@ -74,7 +74,7 @@ export const getProduct = async (req, res) => {
 
 export const getCustomProducts = async (req, res) => {
   const [result] = await pool.query(
-    "SELECT p.id, p.title, p.summary, p.price, p.content, i.data FROM product p INNER JOIN image i ON p.id = i.productId  GROUP BY p.id"
+    "SELECT p.id, p.title, p.summary, p.price, p.content, i.data FROM product p INNER JOIN image i ON p.id = i.productId"
   );
 
   let aux = 0;
