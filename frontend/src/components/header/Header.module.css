@@ -48,3 +48,18 @@
 .account {
   padding-right: 15px;
 }
+
+.dropdown {
+  overflow-x: hidden;
+}
+
+.dropdown-menu {
+  min-width: 100vw;
+}
+
+
+.dropdown-menu.show {
+  display: block;
+  position: flex;
+  /* estilos adicionales */
+}

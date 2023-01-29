@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import css from "./Header.module.css";
 import Logo from "../../assets/logo.png";
@@ -10,11 +10,19 @@ import {
   ADD_PRODUCT,
   LOGIN,
   LOGOUT,
+  HOME,
 } from "./../../config/routes/paths.js";
 import { useAuthContext } from "../../contexts/authContext";
 
 function Header() {
-  const { isAuthenticated } = useAuthContext();
+  const { isAuthenticated, user } = useAuthContext();
+  //console.log(isAuthenticated);
+  // console.log(user);
+  const [isOpen, setIsOpen] = useState(false);
+
+  function handleClick() {
+    setIsOpen(!isOpen);
+  }
 
   return (
     <div className={css.container}>
@@ -42,11 +50,27 @@ function Header() {
             <CgShoppingCart className={css.cart}></CgShoppingCart>
           </Link>
         </div>
-        <div className={css.account}>
+
+        <div>
           {isAuthenticated ? (
-            <Link to={LOGOUT}>
-              <FontAwesomeIcon icon={faUser} />
-            </Link>
+            <div className="dropdown">
+              <button onClick={handleClick}>
+                <div>{user.firstName}</div>
+              </button>
+              {isOpen && (
+                <ul className={`dropdown-menu ${isOpen ? "show" : ""}`}>
+                  <li>
+                    <Link to={HOME}>Mi Perfil</Link>
+                  </li>
+                  <li>
+                    <Link to={ADD_PRODUCT}>Publicar Productos</Link>
+                  </li>
+                  <li>
+                    <Link to={LOGOUT}>Cerrar Sesión</Link>
+                  </li>
+                </ul>
+              )}
+            </div>
           ) : (
             <Link to={LOGIN}>
               <FontAwesomeIcon icon={faUser} />
