@@ -9,7 +9,7 @@ import {
 } from "../reducers/shoppingCart_reducer";
 import { useReducer } from "react";
 import EmptyCart from "./emptyCart.jsx";
-import CardProduct from "./cardProduct.jsx";
+import CardProduct from "./cartItem.jsx";
 import { useEffect } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 

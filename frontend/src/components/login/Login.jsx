@@ -4,6 +4,7 @@ import Logo from "../../assets/logo.png";
 import css from "./Login.module.css";
 import { Form, Formik } from "formik";
 import { useAuthContext } from "../../contexts/authContext";
+import { SIGNUP } from "../../config/routes/paths";
 
 function Login() {
   const { login } = useAuthContext();
@@ -49,7 +50,7 @@ function Login() {
                   <input type="submit" value="Ingresar" />
                 </div>
                 <p>
-                  ¿No tienes una cuenta? <Link to="/signup">Registrate</Link>
+                  ¿No tienes una cuenta? <Link to={SIGNUP}>Registrate</Link>
                 </p>
               </div>
             </div>

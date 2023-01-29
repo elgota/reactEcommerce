@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import css from "./Signup.module.css";
 import { createUserRequest } from "../../api/user.api";
 import { Form, Formik } from "formik";
+import { LOGIN } from "../../config/routes/paths";
 
 function Signup() {
   return (
@@ -76,7 +77,7 @@ function Signup() {
                   <input type="submit" value="Registarse" />
                 </div>
                 <p>
-                  ¿Ya tienes una cuenta? <Link to="/login">Ingresar</Link>
+                  ¿Ya tienes una cuenta? <Link to={LOGIN}>Ingresar</Link>
                 </p>
               </div>
             </div>

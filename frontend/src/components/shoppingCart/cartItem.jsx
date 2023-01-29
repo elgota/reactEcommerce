@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./ShoppingCart.module.css";
 
-function cardProduct({ data, deleteFromCart, id }) {
+function cartItem({ data, deleteFromCart, id }) {
   return (
     <div className={css.card}>
       <div className={css.imgProduct}>
@@ -21,4 +21,4 @@ function cardProduct({ data, deleteFromCart, id }) {
   );
 }
 
-export default cardProduct;
+export default cartItem;

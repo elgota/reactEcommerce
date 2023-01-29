@@ -11,6 +11,7 @@ import {
   LOGIN,
   LOGOUT,
   HOME,
+  PROFILE,
 } from "./../../config/routes/paths.js";
 import { useAuthContext } from "../../contexts/authContext";
 
@@ -33,18 +34,6 @@ function Header() {
       </div>
       <div className={css.right}>
         <div className={css.menu}>
-          <ul className={css.menu}>
-            <li>Collections</li>
-            <li>
-              <Link to={ADD_PRODUCT}>Agregar Producto</Link>
-            </li>
-            <li>--------</li>
-            <li>--------</li>
-            <li>--------</li>
-          </ul>
-        </div>
-        <input type="text" className={css.search} placeholder="search" />
-        <div>
           <Link to={CART}>
             <CgShoppingCart className={css.cart}></CgShoppingCart>
           </Link>
@@ -59,7 +48,7 @@ function Header() {
               {isOpen && (
                 <ul className={`dropdown-menu ${isOpen ? "show" : ""}`}>
                   <li>
-                    <Link to={HOME}>Mi Perfil</Link>
+                    <Link to={PROFILE}>Mi Perfil</Link>
                   </li>
                   <li>
                     <Link to={ADD_PRODUCT}>Publicar Productos</Link>

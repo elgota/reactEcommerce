@@ -7,7 +7,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-import "./Slider.css";
+import "./Slider.module.css";
 
 function Slider() {
   return (
