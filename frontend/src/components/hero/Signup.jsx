@@ -20,7 +20,7 @@ function Signup() {
           // console.log(values);
           try {
             const response = await createUserRequest(values);
-            // console.log(response);
+            console.log(response);
           } catch (error) {
             console.error(error);
           }
