@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 import { loginRequest } from "../api/login.api";
 
 const MY_AUTH_APP = "MY_AUTH_APP";
+const MY_USER = "MY_USER";
 export const AuthContext = createContext();
 
 export function AuthContextProvider({ children }) {
@@ -16,19 +17,30 @@ export function AuthContextProvider({ children }) {
     window.localStorage.getItem(MY_AUTH_APP) ?? false
   );
 
-  const [user, setUser] = useState(null);
+  var getItem = window.localStorage.getItem(MY_USER);
 
-  const login = useCallback(async function (values) {
-    const response = await loginRequest(values);
-    console.log(response.data);
-    window.localStorage.setItem(MY_AUTH_APP, true);
-    setIsAuthenticate(true);
-    setUser(response.data);
-    console.log(user);
-  }, [user]);
+  if (typeof getItem !== "object") {
+    getItem = JSON.parse(getItem);
+  }
+
+  const [user, setUser] = useState(getItem ?? false);
+  //console.log(user);
+  const login = useCallback(
+    async function (values) {
+      const response = await loginRequest(values);
+      console.log(response.data);
+      window.localStorage.setItem(MY_AUTH_APP, true);
+      window.localStorage.setItem(MY_USER, JSON.stringify(response.data));
+      setIsAuthenticate(true);
+      setUser(response.data);
+      console.log(user);
+    },
+    [user]
+  );
 
   const logout = useCallback(function () {
     window.localStorage.removeItem(MY_AUTH_APP);
+    window.localStorage.removeItem(MY_USER);
     setIsAuthenticate(false);
   }, []);
 

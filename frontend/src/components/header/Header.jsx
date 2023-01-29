@@ -16,8 +16,7 @@ import { useAuthContext } from "../../contexts/authContext";
 
 function Header() {
   const { isAuthenticated, user } = useAuthContext();
-  //console.log(isAuthenticated);
-  // console.log(user);
+
   const [isOpen, setIsOpen] = useState(false);
 
   function handleClick() {
