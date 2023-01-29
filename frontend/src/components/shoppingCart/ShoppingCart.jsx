@@ -50,7 +50,7 @@ function ShoppingCart() {
 
   const prueba = state.products[numero - 4];
   const [item, setItem] = useLocalStorage("ListProduct", " ");
-  useEffect(() => setItem(prueba), []);
+  useEffect(() => setItem(prueba), [prueba, setItem]);
   console.log(item);
 
   return (

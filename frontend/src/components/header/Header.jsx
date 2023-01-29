@@ -10,7 +10,6 @@ import {
   ADD_PRODUCT,
   LOGIN,
   LOGOUT,
-  HOME,
   PROFILE,
 } from "./../../config/routes/paths.js";
 import { useAuthContext } from "../../contexts/authContext";
