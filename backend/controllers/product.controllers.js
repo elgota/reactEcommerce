@@ -72,7 +72,7 @@ export const getProduct = async (req, res) => {
   res.json(result[0]);
 };
 
-export const getCustomProducts = async (req, res) => {
+export const getProductsImages = async (req, res) => {
   const [result] = await pool.query(
     "SELECT p.id, p.title, p.summary, p.price, p.content, i.data FROM product p INNER JOIN image i ON p.id = i.productId"
   );
