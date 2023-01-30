@@ -2,18 +2,16 @@ import React from "react";
 import { Fragment } from "react";
 import Footer from "../components/footer/Footer";
 import Header from "../components/header/Header";
-import ShoppingCart from "../components/shoppingCart/ShoppingCart";
-import Slider from "../components/slider/Slider";
+import Signup from "../components/signup/Signup";
 
-function Carrito() {
+function Account() {
   return (
     <Fragment>
       <Header />
-      <ShoppingCart />
-      <Slider />
+      <Signup />
       <Footer />
     </Fragment>
   );
 }
 
-export default Carrito;
+export default Account;

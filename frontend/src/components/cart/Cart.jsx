@@ -1,20 +1,17 @@
 import React from "react";
 import { Fragment } from "react";
 import { useParams } from "react-router-dom";
-import css from "./ShoppingCart.module.css";
+import css from "./Cart.module.css";
 import TYPES from "../reducers/actionType.js";
-import {
-  productsInitialState,
-  reducerCart,
-} from "../reducers/shoppingCart_reducer";
+import { productsInitialState, cartReducer } from "./../reducers/cartReducer";
 import { useReducer } from "react";
-import EmptyCart from "./emptyCart.jsx";
-import CardProduct from "./cartItem.jsx";
+import EmptyCart from "./EmptyCart.jsx";
+import CartItem from "./CartItem.jsx";
 import { useEffect } from "react";
 import { useLocalStorage } from "../../hooks/useLocalStorage";
 
-function ShoppingCart() {
-  const [state, dispatch] = useReducer(reducerCart, productsInitialState);
+function Cart() {
+  const [state, dispatch] = useReducer(cartReducer, productsInitialState);
 
   const addToCart = (id) => {
     dispatch({
@@ -57,7 +54,7 @@ function ShoppingCart() {
     <Fragment>
       <div className={css.container}>
         <ul className={css.tabContainer}>
-          <li className={css.shopping}>
+          <li className={css.cart}>
             <span className={css.textCar}>Carrito({state.cart.length})</span>
           </li>
         </ul>
@@ -73,7 +70,7 @@ function ShoppingCart() {
 
         {state.cart.map((productCart) => {
           return (
-            <CardProduct
+            <CartItem
               key={productCart.id + Math.random() * 50}
               data={productCart}
               deleteFromCart={deleteFromCart}
@@ -82,9 +79,7 @@ function ShoppingCart() {
         })}
 
         <div className={css.botonYtotal}>
-          {state.cart.length >= 1 && (
-            <h2>Total: ${state.totalPricesShoppingCart}</h2>
-          )}
+          {state.cart.length >= 1 && <h2>Total: ${state.totalPricesCart}</h2>}
 
           {state.cart.length >= 1 && (
             <button onClick={() => clearCart()} className={css.deleteAll}>
@@ -101,4 +96,4 @@ function ShoppingCart() {
   );
 }
 
-export default ShoppingCart;
+export default Cart;

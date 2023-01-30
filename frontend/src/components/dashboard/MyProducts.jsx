@@ -1,31 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { getCustomProductRequest } from "./../../api/product.api";
+import { getProductsImagesRequest } from "../../api/product.api";
 
-function VerProductos() {
+function MyProducts() {
   const [imageList, setImageList] = useState([]);
 
   useEffect(() => {
-    async function loadImages() {
-      const response = await getCustomProductRequest();
+    async function loadProducts() {
+      const response = await getProductsImagesRequest();
       setImageList(response.data);
     }
 
-    loadImages();
+    loadProducts();
   }, []);
-
-  // const [product, setProduct] = useState([]);
-
-  // useEffect(() => {
-
-  //     async function loadProducts() {
-  //         const response = await getCustomProductRequest();
-  //         setProduct(response.data);
-  //         console.log(response.data);
-  //     }
-
-  //     loadProducts();
-
-  // }, [])
 
   return (
     <div>
@@ -61,4 +47,4 @@ function VerProductos() {
   );
 }
 
-export default VerProductos;
+export default MyProducts;

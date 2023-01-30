@@ -130,10 +130,10 @@ export const productsInitialState = {
     },
   ],
   cart: [],
-  totalPricesShoppingCart: 0,
+  totalPricesCart: 0,
 };
 
-export const reducerCart = (state, action) => {
+export const cartReducer = (state, action) => {
   switch (action.types) {
     case TYPES.ADD_TO_CART: {
       let newProduct = state.products.find(
@@ -157,7 +157,7 @@ export const reducerCart = (state, action) => {
     case TYPES.CALCULATE_TOTAL_PRICE_OF_THE_CART: {
       return {
         ...state,
-        totalPricesShoppingCart: state.cart.reduce(
+        totalPricesCart: state.cart.reduce(
           (previousValue, product) => previousValue + product.price,
           0
         ),

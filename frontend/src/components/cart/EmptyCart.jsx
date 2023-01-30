@@ -1,7 +1,7 @@
 import React from "react";
-import css from "./ShoppingCart.module.css";
+import css from "./Cart.module.css";
 
-function emptyCart() {
+function EmptyCart() {
   return (
     <div className={css.infoContainer}>
       <h2>Tu carrito esta vacío</h2>
@@ -15,4 +15,4 @@ function emptyCart() {
   );
 }
 
-export default emptyCart;
+export default EmptyCart;

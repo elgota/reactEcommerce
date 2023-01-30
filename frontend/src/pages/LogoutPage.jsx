@@ -1,6 +1,6 @@
 import React from "react";
 import { Fragment } from "react";
-import Logout from "../../components/logout/Logout";
+import Logout from "../components/logout/Logout";
 
 function Account() {
   return (
