@@ -25,8 +25,8 @@ function Hero() {
           <span>Monthly traffic</span>
         </div>
         <div className={css.customers}>
-          <samp>100k</samp>
-          <samp>happy customers</samp>
+          <samp>10k</samp>
+          <samp>Cliente felices</samp>
         </div>
       </div>
     </div>

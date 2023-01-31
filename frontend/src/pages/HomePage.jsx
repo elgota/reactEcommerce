@@ -5,7 +5,6 @@ import Header from "../components/header/Header";
 import Hero from "../components/hero/Hero";
 import Products from "../components/products/Products";
 import Testimonial from "../components/testimonials/Testimonial";
-import Virtual from "../components/virtual/Virtual";
 
 function Home() {
   return (
@@ -13,7 +12,6 @@ function Home() {
       <Header />
       <Hero />
       <Products />
-      <Virtual />
       <Testimonial />
       <Footer />
     </Fragment>
