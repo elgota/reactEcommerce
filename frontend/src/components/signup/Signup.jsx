@@ -18,7 +18,7 @@ function Signup() {
           vendor: 1,
         }}
         onSubmit={async (values) => {
-          console.log(values);
+          //console.log(values);
           try {
             const response = await createUserRequest(values);
             console.log(response);

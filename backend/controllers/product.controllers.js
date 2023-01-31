@@ -46,7 +46,7 @@ export const createProduct = async (req, res) => {
 
 export const getProducts = async (req, res) => {
   const [result] = await pool.query(
-    "SELECT * FROM product ORDER BY createdAt ASC"
+    "SELECT * FROM product WHERE ORDER BY createdAt ASC"
   );
   res.json(result);
 };
@@ -89,10 +89,10 @@ export const getProductsImages = async (req, res) => {
 
 export const getProductsImagesByUserId = async (req, res) => {
   const [result] = await pool.query(
-    "SELECT p.id, p.title, p.summary, p.price, p.content, i.data FROM product p INNER JOIN image i ON p.id = i.productId WHERE p.userId=?",
-    [req.params.userId]
+    "SELECT p.id, p.title, p.summary, p.price, p.quantity, i.data FROM product p INNER JOIN image i ON p.id = i.productId WHERE p.userId=? AND p.status=0",
+    [req.query.userId]
   );
-
+  console.log(result);
   let aux = 0;
   result.map(() => {
     const imageBuffer = result[aux].data;
@@ -117,9 +117,10 @@ export const updateProduct = async (req, res) => {
 };
 
 export const deleteProduct = async (req, res) => {
-  const [result] = await pool.query("DELETE FROM product WHERE id = ?", [
-    req.params.id,
-  ]);
+  const [result] = await pool.query(
+    "UPDATE product SET status=1 WHERE id = ?",
+    [req.params.id]
+  );
 
   if (result.affectedRows === 0) {
     return res.status(404).json({ message: "Product not found" });

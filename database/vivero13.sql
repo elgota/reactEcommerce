@@ -46,8 +46,8 @@ CREATE TABLE `product` (
   `publishedAt` datetime DEFAULT NULL,
   `startsAt` datetime DEFAULT NULL,
   `endsAt` datetime DEFAULT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci,  
-  `status` smallint(6) NOT NULL DEFAULT '',
+  `content` text COLLATE utf8mb4_unicode_ci,
+  `status` smallint(6) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uq_slug` (`slug`),
   KEY `idx_product_user` (`userId`),
@@ -141,17 +141,52 @@ CREATE TABLE `image` (
   CONSTRAINT `fk_image_product` FOREIGN KEY (`productId`) REFERENCES `product` (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
-CREATE TABLE `logueado`(
+CREATE TABLE `cart` (
   `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
-  `userID` BIGINT(20) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
+  `userId` BIGINT(20) NULL DEFAULT NULL,
+  `sessionId` VARCHAR(100),
+  `token` VARCHAR(100),
+  `status` SMALLINT(6) NOT NULL DEFAULT 0,
+  `firstName` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `middleName` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `lastName` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile` VARCHAR(15) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `line1` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `line2` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `province` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` VARCHAR(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` DATETIME DEFAULT NULL,
+  `content` TEXT COLLATE utf8mb4_unicode_ci,
+  PRIMARY KEY (`id`),
+  INDEX `idx_cart_user` (`userId` ASC),
+  CONSTRAINT `fk_cart_user` FOREIGN KEY (`userId`) REFERENCES `user` (`id`)
 );
 
-INSERT INTO `user` (`firstName`,`middleName`,`lastName`,`mobile`,`email`,`passwordHash`,`admin`,`vendor`,`registeredAt`,`lastLogin`,`intro`,`profile`,`photo`) VALUES ('Angelo','Michael','Huaraca','987654321','angelo.huaraca@gmail.com','password1',1,1,'2022-11-01 12:32:05','2022-11-09 20:27:06','Proveedor con 20 años de experiencia','Atención solo en Perú', null);
-INSERT INTO `user` (`firstName`,`middleName`,`lastName`,`mobile`,`email`,`passwordHash`,`admin`,`vendor`,`registeredAt`,`lastLogin`,`intro`,`profile`,`photo`) VALUES ('Juan','Pablo','Gottardini','945865214','juan.gottardini@gmail.com','password2',1,1,'2022-11-01 18:32:05','2022-11-10 15:12:23','Proveedor con 30 años de experiencia','Atención solo en Argentina', null);
-INSERT INTO `user` (`firstName`,`middleName`,`lastName`,`mobile`,`email`,`passwordHash`,`admin`,`vendor`,`registeredAt`,`lastLogin`,`intro`,`profile`,`photo`) VALUES ('Josue','Enrique','Quispe','999888777','josue.quispe@gmail.com','password3',0,1,'2022-11-02 12:32:54','2022-11-03 10:22:55','Proveedor con 10 años de experiencia','Atención solo en Chile', null);
-INSERT INTO `user` (`firstName`,`middleName`,`lastName`,`mobile`,`email`,`passwordHash`,`admin`,`vendor`,`registeredAt`,`lastLogin`,`intro`,`profile`,`photo`) VALUES ('Jose','Luis','Figueroa','987456321','jose.figueroa@gmail.com','password4',0,0,'2022-11-05 07:23:44','2022-11-07 21:33:44',null, null, null);
-INSERT INTO `user` (`firstName`,`middleName`,`lastName`,`mobile`,`email`,`passwordHash`,`admin`,`vendor`,`registeredAt`,`lastLogin`,`intro`,`profile`,`photo`) VALUES ('Frank','Alberto','Rodriguez','963258741','frank.rodriguez@gmail.com','password5',0,0,'2022-11-03 12:44:19','2022-11-10 06:33:44', null, null, null);
+CREATE TABLE `cart_item` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `productId` BIGINT(20) NOT NULL,
+  `cartId` BIGINT(20) NOT NULL,
+  `sku` VARCHAR(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` FLOAT NOT NULL DEFAULT '0',
+  `discount` FLOAT NOT NULL DEFAULT '0',
+  `quantity` SMALLINT(6) NOT NULL DEFAULT '0',
+  `active` tinyint(1) NOT NULL DEFAULT '0',
+  `createdAt` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updatedAt` DATETIME DEFAULT NULL,
+  `content` TEXT COLLATE utf8mb4_unicode_ci,
+  PRIMARY KEY (`id`),
+  INDEX `idx_cart_item_product` (`productId` ASC),
+  CONSTRAINT `fk_cart_item_product` FOREIGN KEY (`productId`) REFERENCES `product` (`id`)
+);
+
+INSERT INTO `user` (`firstName`,`middleName`,`lastName`,`mobile`,`email`,`passwordHash`,`admin`,`vendor`,`registeredAt`,`lastLogin`,`intro`,`profile`,`photo`) VALUES ('Angelo','Michael','Huaraca','987654321','angelo.huaraca@gmail.com','password1',1,1,'2022-11-01 12:32:05','2022-11-09 20:27:06','Proveedor con 20 años de experiencia','Atención solo en Perú',NULL);
+INSERT INTO `user` (`firstName`,`middleName`,`lastName`,`mobile`,`email`,`passwordHash`,`admin`,`vendor`,`registeredAt`,`lastLogin`,`intro`,`profile`,`photo`) VALUES ('Juan','Pablo','Gottardini','945865214','juan.gottardini@gmail.com','password2',1,1,'2022-11-01 18:32:05','2022-11-10 15:12:23','Proveedor con 30 años de experiencia','Atención solo en Argentina',NULL);
+INSERT INTO `user` (`firstName`,`middleName`,`lastName`,`mobile`,`email`,`passwordHash`,`admin`,`vendor`,`registeredAt`,`lastLogin`,`intro`,`profile`,`photo`) VALUES ('Josue','Enrique','Quispe','999888777','josue.quispe@gmail.com','password3',0,1,'2022-11-02 12:32:54','2022-11-03 10:22:55','Proveedor con 10 años de experiencia','Atención solo en Chile',NULL);
+INSERT INTO `user` (`firstName`,`middleName`,`lastName`,`mobile`,`email`,`passwordHash`,`admin`,`vendor`,`registeredAt`,`lastLogin`,`intro`,`profile`,`photo`) VALUES ('Jose','Luis','Figueroa','987456321','jose.figueroa@gmail.com','password4',0,0,'2022-11-05 07:23:44','2022-11-07 21:33:44',NULL,NULL,NULL);
+INSERT INTO `user` (`firstName`,`middleName`,`lastName`,`mobile`,`email`,`passwordHash`,`admin`,`vendor`,`registeredAt`,`lastLogin`,`intro`,`profile`,`photo`) VALUES ('Frank','Alberto','Rodriguez','963258741','frank.rodriguez@gmail.com','password5',0,0,'2022-11-03 12:44:19','2022-11-10 06:33:44',NULL,NULL,NULL);
 
 INSERT INTO `product` (`userId`,`title`,`metaTitle`,`slug`,`summary`,`type`,`sku`,`price`,`discount`,`quantity`,`shop`,`createdAt`,`updatedAt`,`publishedAt`,`startsAt`,`endsAt`,`content`) VALUES (1,'Bromelia','Planta Bromelia en Vivero13','bromelia','Planta de invierno',1,'P000001',50.00,0.00,10,1,'2022-11-02 22:46:04','2022-11-03 22:46:04','2022-11-02 23:46:04','2022-11-02 00:00:00','2022-12-02 23:59:59','Mantener en temperaturas entre 24-27°');
 INSERT INTO `product` (`userId`,`title`,`metaTitle`,`slug`,`summary`,`type`,`sku`,`price`,`discount`,`quantity`,`shop`,`createdAt`,`updatedAt`,`publishedAt`,`startsAt`,`endsAt`,`content`) VALUES (2,'Violeta Africana','Planta Violeta Africana en Vivero13','violeta-africana','Planta de primavera',1,'P000002',100.00,0.05,20,1,'2022-11-02 22:46:28','2022-11-03 22:46:28','2022-11-02 23:46:28','2022-11-02 00:00:00','2022-12-02 23:59:59','Mantener en temperaturas entre 22-25°');

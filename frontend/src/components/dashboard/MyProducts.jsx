@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
-  getProductsImagesRequest,
+  getProductsImagesByUserIdRequest,
   deleteProductRequest,
 } from "../../api/product.api";
 import { useAuthContext } from "../../contexts/authContext";
@@ -27,9 +27,10 @@ function MyProducts() {
 
   useEffect(() => {
     async function loadProducts() {
-      const res = await getProductsImagesRequest(user.id);
+      const res = await getProductsImagesByUserIdRequest(user.id);
+      //console.log(user.id);
       setProducts(res.data);
-      console.log(products);
+      //console.log(products);
     }
 
     loadProducts();
@@ -41,6 +42,7 @@ function MyProducts() {
         <tr>
           <th className={css.cell}>Nombre</th>
           <th className={css.cell}>Precio</th>
+          <th className={css.cell}>Cantidad</th>
           <th className={css.cell}>Imagen</th>
           <th className={css.cell}>Editar</th>
         </tr>
@@ -50,6 +52,7 @@ function MyProducts() {
           <tr key={product.id} className={css.row}>
             <td className={css.cell}>{product.title}</td>
             <td className={css.cell}>{product.price}</td>
+            <td className={css.cell}>{product.quantity}</td>
             <td className={css.cell}>
               <img
                 src={product.data}
@@ -57,6 +60,7 @@ function MyProducts() {
                 className={css.image}
               />
             </td>
+
             <td className="cell">
               <button onClick={() => onEdit(product)} className="button">
                 Editar

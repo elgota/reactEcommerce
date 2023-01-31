@@ -28,12 +28,12 @@ export function AuthContextProvider({ children }) {
   const login = useCallback(
     async function (values) {
       const response = await loginRequest(values);
-      console.log(response.data);
+      //console.log(response.data);
       window.localStorage.setItem(MY_AUTH_APP, true);
       window.localStorage.setItem(MY_USER, JSON.stringify(response.data));
       setIsAuthenticate(true);
       setUser(response.data);
-      console.log(user);
+      //console.log(user);
     },
     [user]
   );
