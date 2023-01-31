@@ -7,10 +7,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import {
   CART,
-  ADD_PRODUCT,
   LOGIN,
   LOGOUT,
   PROFILE,
+  DASHBOARD,
+  HOME,
 } from "./../../config/routes/paths.js";
 import { useAuthContext } from "../../contexts/authContext";
 
@@ -28,7 +29,7 @@ function Header() {
       <div className={css.logo}>
         <img src={Logo} alt="Logo" /> {/* remplazar */}
         <span>
-          <Link to="/">Vivero</Link>
+          <Link to={HOME}>Vivero</Link>
         </span>
       </div>
       <div className={css.right}>
@@ -50,7 +51,7 @@ function Header() {
                     <Link to={PROFILE}>Mi Perfil</Link>
                   </li>
                   <li>
-                    <Link to={ADD_PRODUCT}>Publicar Productos</Link>
+                    <Link to={DASHBOARD}>Dashboard</Link>
                   </li>
                   <li>
                     <Link to={LOGOUT}>Cerrar Sesión</Link>

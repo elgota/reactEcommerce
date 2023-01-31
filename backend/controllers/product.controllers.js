@@ -87,6 +87,22 @@ export const getProductsImages = async (req, res) => {
   res.json(result);
 };
 
+export const getProductsImagesByUserId = async (req, res) => {
+  const [result] = await pool.query(
+    "SELECT p.id, p.title, p.summary, p.price, p.content, i.data FROM product p INNER JOIN image i ON p.id = i.productId WHERE p.userId=?",
+    [req.params.userId]
+  );
+
+  let aux = 0;
+  result.map(() => {
+    const imageBuffer = result[aux].data;
+    const imageUrl = `data:image/png;base64,${imageBuffer.toString("base64")}`;
+    result[aux].data = imageUrl;
+    aux++;
+  });
+  res.json(result);
+};
+
 export const updateProduct = async (req, res) => {
   const [result] = await pool.query("UPDATE product SET ? WHERE id = ?", [
     req.body,

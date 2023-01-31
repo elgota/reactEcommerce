@@ -69,9 +69,6 @@ function Products() {
         <div className={css.products}>
           <ul className={css.menu}>
             <li onClick={() => setMenuProducts(allProducts)}>ALL</li>
-            <li onClick={() => filter("lessThan50")}>Hasta $50</li>
-            <li onClick={() => filter("between50and100")}>$50 a $100</li>
-            <li onClick={() => filter("moreThan100")}>Mas de $100</li>
           </ul>
           <div className={css.list}>
             {menuProducts.map((product, i) => {

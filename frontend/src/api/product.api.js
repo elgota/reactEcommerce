@@ -8,3 +8,6 @@ export const getProductsImagesRequest = async () =>
 
 export const createProductRequest = async (product) =>
   await axios.post("http://localhost:4000/api/products", product);
+
+export const deleteProductRequest = async (productId) =>
+  await axios.delete(`http://localhost:4000/api/products/${productId}`);

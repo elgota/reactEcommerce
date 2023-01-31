@@ -9,3 +9,4 @@ export const MY_PRODUCTS = "/private/my-products";
 export const ADD_PRODUCT = "/private/add-product";
 export const PRODUCTS = "/private/products";
 export const CART = "/private/cart";
+export const DASHBOARD = "/private/dashboard";

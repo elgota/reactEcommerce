@@ -1,0 +1,18 @@
+.table {
+  border: 1px solid black;
+}
+
+.row {
+  border: 1px solid black;
+}
+
+.cell {
+  border: 1px solid black;
+  text-align: center;
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+  width: 50%;
+}

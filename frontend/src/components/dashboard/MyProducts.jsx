@@ -1,49 +1,74 @@
-import React, { useEffect, useState } from "react";
-import { getProductsImagesRequest } from "../../api/product.api";
+import React, { useState, useEffect } from "react";
+import {
+  getProductsImagesRequest,
+  deleteProductRequest,
+} from "../../api/product.api";
+import { useAuthContext } from "../../contexts/authContext";
+import css from "./MyProducts.module.css";
+import AddProduct from "./AddProduct";
 
 function MyProducts() {
-  const [imageList, setImageList] = useState([]);
+  const { user } = useAuthContext();
+
+  const [products, setProducts] = useState([]);
+
+  const onEdit = (product) => {
+    return <AddProduct />;
+  };
+
+  const onDelete = async (productId) => {
+    try {
+      const response = await deleteProductRequest(productId);
+      console.error(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     async function loadProducts() {
-      const response = await getProductsImagesRequest();
-      setImageList(response.data);
+      const res = await getProductsImagesRequest(user.id);
+      setProducts(res.data);
+      console.log(products);
     }
 
     loadProducts();
   }, []);
 
   return (
-    <div>
-      <div className="row row-cols-1 row-cols-md-2 g-4">
-        <div className="col">
-          {imageList.map(
-            (
-              product,
-              i //"i" es la iteración de map.
-            ) => (
-              <div className="card" key={i}>
-                {/* <img src={"http://localhost:4000/" + product}
-                                className="card-img-top" 
-                                alt="..."
-                                style={{scale: ".75"}}/> */}
-                <img
-                  src={product.data}
-                  className="card-img-top"
-                  alt="..."
-                  style={{ scale: ".75" }}
-                />
-                <div className="card-body">
-                  <h5 className="card-title">{product.title}</h5>
-                  <p className="card-text">{product.summary}</p>
-                  <p className="card-text">$ {product.price}</p>
-                </div>
-              </div>
-            )
-          )}
-        </div>
-      </div>
-    </div>
+    <table className={css.table}>
+      <thead>
+        <tr>
+          <th className={css.cell}>Nombre</th>
+          <th className={css.cell}>Precio</th>
+          <th className={css.cell}>Imagen</th>
+          <th className={css.cell}>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        {products.map((product) => (
+          <tr key={product.id} className={css.row}>
+            <td className={css.cell}>{product.title}</td>
+            <td className={css.cell}>{product.price}</td>
+            <td className={css.cell}>
+              <img
+                src={product.data}
+                alt={product.title}
+                className={css.image}
+              />
+            </td>
+            <td className="cell">
+              <button onClick={() => onEdit(product)} className="button">
+                Editar
+              </button>
+              <button onClick={() => onDelete(product.id)} className="button">
+                Eliminar
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 
