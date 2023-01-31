@@ -30,7 +30,7 @@ function Header() {
       <div className={css.logo}>
         <img src={Logo} alt="Logo" /> {/* remplazar */}
         <span>
-          <Link to={HOME}>Vivero</Link>
+          <Link to={HOME}>Vivero13</Link>
         </span>
       </div>
       <div className={css.right}>

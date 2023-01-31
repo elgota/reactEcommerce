@@ -104,7 +104,7 @@ function AddProduct() {
   return (
     <div className={css.container_form}>
       <div className={css.container_info}>
-        <img src={fondo} alt="vivero" className={css.imagenFondo} />
+        <img src={fondo} alt="vivero13" className={css.imagenFondo} />
         <img src={imgLogo} alt="logo" className={css.logo} />
         <div className={css.cajaTexto}>
           <p className={css.texto}>{text}</p>

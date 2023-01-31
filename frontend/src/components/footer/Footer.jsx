@@ -10,7 +10,7 @@ function Footer() {
       <div className={css.cFooter}>
         <div className={css.logo}>
           <img src={Logo} alt="" />
-          <span>Vivero</span>
+          <span>Vivero13</span>
         </div>
         <div className={css.block}>
           <div className={css.detail}>

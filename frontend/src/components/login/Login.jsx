@@ -30,7 +30,7 @@ function Login() {
               <div className={css.loginContainer}>
                 <div className={css.logoTitle}>
                   <img src={Logo} alt="Logo" />
-                  <h1>Vivero</h1>
+                  <h1>Vivero13</h1>
                 </div>
                 <div className={css.formContainer}>
                   <input

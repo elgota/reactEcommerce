@@ -53,8 +53,8 @@ function Products() {
     setIDBoxSHDescProd(product.id);
     setNameBoxSHDescProd(product.title);
     setImgBoxSHDescProd(product.data);
-    setDetailBoxSHDescProd(product.summary);
-    setTypeBoxSHDescProd(product.content);
+    setDetailBoxSHDescProd(product.content);
+    setTypeBoxSHDescProd(product.summary);
     setPriceBoxSHDescProd(product.price);
     console.log(nameBoxSHDescProd);
   }
@@ -88,11 +88,9 @@ function Products() {
                       <div className="name">
                         <span>{product.title}</span>
                       </div>
-                      <div className="name">
-                        <span>{product.summary}</span>
-                      </div>
+
                       <div>
-                        Precio: <span>{product.price}$</span>
+                        Precio: $<span>{product.price}</span>
                       </div>
                       <div
                         className={css.btnDescPro}
@@ -100,13 +98,13 @@ function Products() {
                           onBtnShowDesc(boxSHDescProd.current, product)
                         }
                       >
-                        Ver descripción
+                        Ver Detalle
                       </div>
                     </div>
                     <img
+                      className={css.image}
                       src={product.data}
                       alt="no img"
-                      className="img-p"
                     ></img>
                   </div>
                 );
@@ -134,16 +132,16 @@ function Products() {
             ></div>
             <div>
               <p>
-                Nombre producto: <span>{nameBoxSHDescProd}</span>
-              </p>
-              <p>
-                Summary: <span>{detailBoxSHDescProd}</span>
+                Nombre: <span>{nameBoxSHDescProd}</span>
               </p>
               <p>
                 Precio producto: $<span>{priceBoxSHDescProd}</span>
               </p>
               <p>
-                Descripcion detallada: <span>{typeBoxSHDescProd}</span>
+                Descripcion: <span>{typeBoxSHDescProd}</span>
+              </p>
+              <p>
+                Detalles Adicionales: <span>{detailBoxSHDescProd}</span>
               </p>
               <div className={css.divContLink}>
                 <Link
