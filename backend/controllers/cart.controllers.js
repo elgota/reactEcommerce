@@ -19,9 +19,31 @@ export const createCart = async (req, res) => {
     updatedAt,
     content,
   } = req.body;
-  const [result] = await pool.query(
-    "INSERT INTO `cart` (userId, sessionId, token, status, firstName, middleName, lastName, mobile, email, line1, line2, city, province, country, updatedAt, content) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-    [
+
+  try {
+    const [result] = await pool.query(
+      "INSERT INTO `cart` (userId, sessionId, token, status, firstName, middleName, lastName, mobile, email, line1, line2, city, province, country, updatedAt, content) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      [
+        userId,
+        sessionId,
+        token,
+        status,
+        firstName,
+        middleName,
+        lastName,
+        mobile,
+        email,
+        line1,
+        line2,
+        city,
+        province,
+        country,
+        updatedAt,
+        content,
+      ]
+    );
+    res.json({
+      id: result.insertId,
       userId,
       sessionId,
       token,
@@ -38,67 +60,66 @@ export const createCart = async (req, res) => {
       country,
       updatedAt,
       content,
-    ]
-  );
-  res.json({
-    id: result.insertId,
-    userId,
-    sessionId,
-    token,
-    status,
-    firstName,
-    middleName,
-    lastName,
-    mobile,
-    email,
-    line1,
-    line2,
-    city,
-    province,
-    country,
-    updatedAt,
-    content,
-  });
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getCarts = async (req, res) => {
-  const [result] = await pool.query("SELECT * FROM `cart`");
-  res.json(result);
+  try {
+    const [result] = await pool.query("SELECT * FROM `cart`");
+    res.json(result);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getCart = async (req, res) => {
-  const [result] = await pool.query("SELECT * FROM `cart` WHERE id = ?", [
-    req.params.id,
-  ]);
+  try {
+    const [result] = await pool.query("SELECT * FROM `cart` WHERE id = ?", [
+      req.params.id,
+    ]);
 
-  if (result.length === 0) {
-    return res.status(404).json({ message: "Usuario no encontrado" });
+    if (result.length === 0) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    res.json(result[0]);
+  } catch (error) {
+    console.log(error);
   }
-
-  res.json(result[0]);
 };
 
 export const updateCart = async (req, res) => {
-  const [result] = await pool.query("UPDATE `cart` SET ? WHERE id = ?", [
-    req.body,
-    req.params.id,
-  ]);
+  try {
+    const [result] = await pool.query("UPDATE `cart` SET ? WHERE id = ?", [
+      req.body,
+      req.params.id,
+    ]);
 
-  if (result.affectedRows === 0) {
-    return res.status(404).json({ message: "Orden no encontrada" });
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "Orden no encontrada" });
+    }
+
+    return res.sendStatus(204);
+  } catch (error) {
+    console.log(error);
   }
-
-  return res.sendStatus(204);
 };
 
 export const deleteCart = async (req, res) => {
-  const [result] = await pool.query("DELETE FROM `cart` WHERE id = ?", [
-    req.params.id,
-  ]);
+  try {
+    const [result] = await pool.query("DELETE FROM `cart` WHERE id = ?", [
+      req.params.id,
+    ]);
 
-  if (result.affectedRows === 0) {
-    return res.status(404).json({ message: "Orden no encontrada" });
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ message: "Orden no encontrada" });
+    }
+
+    return res.sendStatus(204);
+  } catch (error) {
+    console.log(error);
   }
-
-  return res.sendStatus(204);
 };

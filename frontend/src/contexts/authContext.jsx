@@ -25,14 +25,32 @@ export function AuthContextProvider({ children }) {
 
   const [user, setUser] = useState(getItem ?? false);
   //console.log(user);
+
   const login = useCallback(
     async function (values) {
-      const response = await loginRequest(values);
-      //console.log(response.data);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      var response = await loginRequest(values);
+      // console.log("Antiguo response.data");
+      // console.log(response.data);
+      // console.log("Tipo de dato");
+      // console.log(typeof response.data);
+      response = {
+        id: response.data.id,
+        firstName: response.data.firstName,
+        middleName: response.data.middleName,
+        lastName: response.data.lastName,
+        mobile: response.data.mobile,
+        email: response.data.email,
+        profile: response.data.profile,
+      };
+      // console.log("Nuevo response");
+      // console.log(response);
+      // console.log("Tipo de dato");
+      // console.log(typeof response);
       window.localStorage.setItem(MY_AUTH_APP, true);
-      window.localStorage.setItem(MY_USER, JSON.stringify(response.data));
+      window.localStorage.setItem(MY_USER, JSON.stringify(response));
       setIsAuthenticate(true);
-      setUser(response.data);
+      setUser(response);
       //console.log(user);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -45,14 +63,23 @@ export function AuthContextProvider({ children }) {
     setIsAuthenticate(false);
   }, []);
 
+  const changeUser = useCallback(function (user) {
+    console.log("user del change user");
+    console.log(user);
+    setUser(user);
+    window.localStorage.setItem(MY_USER, JSON.stringify(user));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const value = useMemo(
     () => ({
       login,
       logout,
       isAuthenticated,
       user,
+      changeUser,
     }),
-    [login, logout, isAuthenticated, user]
+    [login, logout, isAuthenticated, user, changeUser]
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

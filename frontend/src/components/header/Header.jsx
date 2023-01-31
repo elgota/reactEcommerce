@@ -17,7 +17,8 @@ import { useAuthContext } from "../../contexts/authContext";
 
 function Header() {
   const { isAuthenticated, user } = useAuthContext();
-
+  console.log(user);
+  console.log(user.firstName);
   const [isOpen, setIsOpen] = useState(false);
 
   function handleClick() {
@@ -46,7 +47,11 @@ function Header() {
                 <div>{user.firstName}</div>
               </button>
               {isOpen && (
-                <ul className={`${css.dropdownMenu} ${isOpen ? css.dropdownMenuShow : ""}`}>
+                <ul
+                  className={`${css.dropdownMenu} ${
+                    isOpen ? css.dropdownMenuShow : ""
+                  }`}
+                >
                   <li className={css.dropMenuC}>
                     <Link to={PROFILE}>Mi Perfil</Link>
                   </li>

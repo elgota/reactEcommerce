@@ -42,113 +42,129 @@ export const createImage = async (req, res) => {
 };
 
 export const getImagesByProductId = async (req, res) => {
-  if (req.query.productId === "null") {
-    var [result] = await pool.query("SELECT * FROM `image`");
-  } else {
-    var [result] = await pool.query(
-      "SELECT * FROM `image` WHERE productId = ?",
-      [req.query.productId]
-    );
-  }
-
-  if (result.length === 0) {
-    return res.status(404).json({ message: "Imagenes no encontradas" });
-  }
-
-  fs.mkdir(
-    path.join(__dirname, "../imagesProduct/"),
-    { recursive: true },
-    function (err) {
-      if (err) return cb(err);
+  try {
+    if (req.query.productId === "null") {
+      var [result] = await pool.query("SELECT * FROM `image`");
+    } else {
+      var [result] = await pool.query(
+        "SELECT * FROM `image` WHERE productId = ?",
+        [req.query.productId]
+      );
     }
-  );
 
-  result.map((image) => {
-    fs.writeFileSync(
-      path.join(
-        __dirname,
-        "../imagesProduct/" + image.productId + "-" + image.id + "-vivero13.png"
-      ),
-      image.data
-    );
-  });
+    if (result.length === 0) {
+      return res.status(404).json({ message: "Imagenes no encontradas" });
+    }
 
-  const imagenDir = fs.readdirSync(path.join(__dirname, "../imagesProduct/"));
-  if (req.query.productId === "null") {
-    res.json(imagenDir);
-  } else {
-    const imageDirByProductId = imagenDir.filter((image) =>
-      image.startsWith(req.query.productId + "-")
+    fs.mkdir(
+      path.join(__dirname, "../imagesProduct/"),
+      { recursive: true },
+      function (err) {
+        if (err) return cb(err);
+      }
     );
-    res.json(imageDirByProductId);
+
+    result.map((image) => {
+      fs.writeFileSync(
+        path.join(
+          __dirname,
+          "../imagesProduct/" +
+            image.productId +
+            "-" +
+            image.id +
+            "-vivero13.png"
+        ),
+        image.data
+      );
+    });
+
+    const imagenDir = fs.readdirSync(path.join(__dirname, "../imagesProduct/"));
+    if (req.query.productId === "null") {
+      res.json(imagenDir);
+    } else {
+      const imageDirByProductId = imagenDir.filter((image) =>
+        image.startsWith(req.query.productId + "-")
+      );
+      res.json(imageDirByProductId);
+    }
+  } catch (error) {
+    console.error(error);
   }
 };
 
 export const getImage = async (req, res) => {
-  var [result] = await pool.query("SELECT * FROM `image` WHERE id = ?", [
-    req.params.id,
-  ]);
+  try {
+    var [result] = await pool.query("SELECT * FROM `image` WHERE id = ?", [
+      req.params.id,
+    ]);
 
-  if (result.length === 0) {
-    return res.status(404).json({ message: "Imagen no encontrada" });
-  }
-
-  fs.mkdir(
-    path.join(__dirname, "../imagesProduct/"),
-    { recursive: true },
-    function (err) {
-      if (err) return cb(err);
+    if (result.length === 0) {
+      return res.status(404).json({ message: "Imagen no encontrada" });
     }
-  );
 
-  fs.writeFileSync(
-    path.join(
-      __dirname,
-      "../imagesProduct/" +
-        result[0].productId +
-        "-" +
-        result[0].id +
-        "-vivero13.png"
-    ),
-    result[0].data
-  );
+    fs.mkdir(
+      path.join(__dirname, "../imagesProduct/"),
+      { recursive: true },
+      function (err) {
+        if (err) return cb(err);
+      }
+    );
 
-  const imagenDir = fs.readdirSync(path.join(__dirname, "../imagesProduct/"));
+    fs.writeFileSync(
+      path.join(
+        __dirname,
+        "../imagesProduct/" +
+          result[0].productId +
+          "-" +
+          result[0].id +
+          "-vivero13.png"
+      ),
+      result[0].data
+    );
 
-  const imageDirById = imagenDir.filter((image) =>
-    image.includes("-" + result[0].id + "-")
-  );
-  res.json(imageDirById);
+    const imagenDir = fs.readdirSync(path.join(__dirname, "../imagesProduct/"));
+
+    const imageDirById = imagenDir.filter((image) =>
+      image.includes("-" + result[0].id + "-")
+    );
+    res.json(imageDirById);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 export const deleteImage = async (req, res) => {
-  const [result] = await pool.query("SELECT * FROM `image` WHERE id = ?", [
-    req.params.id,
-  ]);
+  try {
+    const [result] = await pool.query("SELECT * FROM `image` WHERE id = ?", [
+      req.params.id,
+    ]);
 
-  if (result.length === 0) {
-    return res.status(404).json({ message: "Imagen no encontrado" });
-  }
-
-  await pool.query("DELETE FROM `image` WHERE id = ?", [req.params.id]);
-
-  fs.unlink(
-    path.join(
-      __dirname,
-      "../imagesProduct/" +
-        result[0].productId +
-        "-" +
-        result[0].id +
-        "-vivero13.png"
-    ),
-    (err) => {
-      if (err) {
-        return res
-          .status(500)
-          .json({ message: "No se pudo borrar imagen", error: err });
-      }
+    if (result.length === 0) {
+      return res.status(404).json({ message: "Imagen no encontrado" });
     }
-  );
 
-  return res.sendStatus(204);
+    await pool.query("DELETE FROM `image` WHERE id = ?", [req.params.id]);
+
+    fs.unlink(
+      path.join(
+        __dirname,
+        "../imagesProduct/" +
+          result[0].productId +
+          "-" +
+          result[0].id +
+          "-vivero13.png"
+      ),
+      (err) => {
+        if (err) {
+          return res
+            .status(500)
+            .json({ message: "No se pudo borrar imagen", error: err });
+        }
+      }
+    );
+
+    return res.sendStatus(204);
+  } catch (error) {
+    console.error(error);
+  }
 };
