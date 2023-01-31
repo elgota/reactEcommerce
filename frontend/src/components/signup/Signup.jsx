@@ -46,16 +46,6 @@ function Signup() {
                   />
 
                   <label>
-                    Apellidos: <span>*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="lastName"
-                    onChange={handleChange}
-                    required
-                  />
-
-                  <label>
                     Correo: <span>*</span>
                   </label>
                   <input
