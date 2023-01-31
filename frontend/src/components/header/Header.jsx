@@ -42,18 +42,18 @@ function Header() {
         <div>
           {isAuthenticated ? (
             <div className="dropdown">
-              <button onClick={handleClick}>
+              <button className={css.BotonLogeo} onClick={handleClick}>
                 <div>{user.firstName}</div>
               </button>
               {isOpen && (
-                <ul className={`dropdown-menu ${isOpen ? "show" : ""}`}>
-                  <li>
+                <ul className={`${css.dropdownMenu} ${isOpen ? css.dropdownMenuShow : ""}`}>
+                  <li className={css.dropMenuC}>
                     <Link to={PROFILE}>Mi Perfil</Link>
                   </li>
-                  <li>
+                  <li className={css.dropMenuC}>
                     <Link to={DASHBOARD}>Dashboard</Link>
                   </li>
-                  <li>
+                  <li className={css.dropMenuC}>
                     <Link to={LOGOUT}>Cerrar Sesión</Link>
                   </li>
                 </ul>

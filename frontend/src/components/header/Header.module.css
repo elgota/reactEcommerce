@@ -57,9 +57,76 @@
   min-width: 100vw;
 }
 
-
-.dropdown-menu.show {
+.dropdownMenuShow {
   display: block;
-  position: flex;
-  /* estilos adicionales */
+  position: absolute;
+  width: 12rem;
+  height: 6.5rem;
+  right: -26px;
+  background: black;
+  text-align-last: center;
+  color: green;
+  padding: 4px 0px;
+  margin-top: 1px;
+  border-radius: 7px;
+  z-index: 1;
+  border: 1px solid green;
+}
+
+.dropMenuC{
+  list-style: none;
+  border: 1px solid green;
+  border-radius: 5px;
+  margin: 5px 5px;
+}
+
+.dropMenuC:hover{
+  background-color: green;
+  color: blue;
+}
+
+.BotonLogeo {
+  width: 10em;
+  position: relative;
+  height: 2.5em;
+  border: 3px ridge black;
+  outline: none;
+  background-color: transparent;
+  color: black;
+  transition: 1s;
+  border-radius: 0.3em;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.BotonLogeo::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 3%;
+  width: 95%;
+  height: 40%;
+  background-color: #47c67c;
+  transition: 0.5s;
+  transform-origin: center;
+}
+
+.BotonLogeo::before {
+  content: "";
+  transform-origin: center;
+  position: absolute;
+  top: 80%;
+  left: 3%;
+  width: 95%;
+  height: 40%;
+  background-color: #47c67c;
+  transition: 0.5s;
+}
+
+.BotonLogeo:hover::before, .BotonLogeo:hover::after {
+  transform: scale(0)
+}
+
+.BotonLogeo:hover {
+  box-shadow: inset 0px 0px 25px black;
 }

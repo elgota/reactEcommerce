@@ -35,7 +35,8 @@ export function AuthContextProvider({ children }) {
       setUser(response.data);
       //console.log(user);
     },
-    [user]
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
   );
 
   const logout = useCallback(function () {
