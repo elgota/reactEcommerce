@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import UserData from "./UserData";
+import ChangePassword from "./ChangePassword";
 
 const { Sider, Content } = Layout;
 
@@ -24,7 +25,7 @@ function Profile() {
           <div
             style={{ overflowY: "scroll", height: "calc(100vh - 64px - 48px)" }}
           >
-            {selectedKey === "2" ? <UserData /> : <UserData />}
+            {selectedKey === "1" ? <UserData /> : <ChangePassword />}
           </div>
         </Content>
       </Layout>
