@@ -7,8 +7,11 @@ import { useAuthContext } from "../../contexts/authContext";
 import css from "./MyProducts.module.css";
 import AddProduct from "./AddProduct";
 
+import {useNavigate} from 'react-router-dom'
+
 function MyProducts() {
   const { user } = useAuthContext();
+  const navigate = useNavigate();
 
   const [products, setProducts] = useState([]);
 
@@ -63,10 +66,10 @@ function MyProducts() {
             </td>
 
             <td className="cell">
-              <button onClick={() => onEdit(product)} className="button">
+              <button onClick={() => navigate(`/private/edit-product/${product.id}`)} className="button">
                 Editar
               </button>
-              <button onClick={() => onDelete(product.id)} className="button">
+              <button onClick={() => onDelete(product.id)} className="button"> 
                 Eliminar
               </button>
             </td>

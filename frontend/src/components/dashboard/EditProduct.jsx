@@ -1,114 +1,123 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from 'react'
 import { useForm } from "react-hook-form";
 import css from "./AddProduct.module.css";
 import imgLogo from "../../assets/logoVivero.png";
 import fondo from "../../assets/fondo-vivero.jpg";
-import FormData from "form-data";
-import { createProductRequest } from "../../api/product.api";
-import { createImageRequest } from "../../api/image.api";
+import { getProductRequestByProductId } from '../../api/product.api';
 
-function AddProduct() {
-  const [preImg, setpreImg] = useState([]);
-  const [imagenFile, setimagenFile] = useState([]);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm();
+function EditProduct() {
 
-  const changeInput = (e) => {
-    let indexImg;
-
-    if (preImg.length > 0) {
-      indexImg = preImg[preImg.length - 1].index + 1;
-    } else {
-      indexImg = 0;
-    }
-
-    let newImgsToState = readmultifile(e, indexImg);
-    let newImgsState = [...preImg, ...newImgsToState];
-    setpreImg(newImgsState);
-  };
-
-  function readmultifile(e, indexImg) {
-    const files = e.currentTarget.files;
-
-    const arrayImages = [];
-    const arrayFiles = [];
-
-    Object.keys(files).forEach((i) => {
-      const file = files[i];
-
-      arrayFiles.push(file);
-      let url = URL.createObjectURL(file);
-
-      arrayImages.push({
-        index: indexImg,
-        name: file.name,
-        url,
-        file,
-      });
-      indexImg++;
-    });
-    setimagenFile(arrayFiles);
-    return arrayImages;
-  }
-
-  function deleteImg(indice) {
-    const newImgs = preImg.filter(function (element) {
-      return element.index !== indice;
-    });
-    setpreImg(newImgs);
-  }
-
-  const [text, setText] = useState("Bienvenido");
-  const texts = [
-    "Vende tus Productos",
-    "De Forma Segura",
-    "Rapido y Facil!",
-    "Sin Complicaciones",
-  ];
-  let index = 0;
+  
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setText(texts[index]);
-      // eslint-disable-next-line
-      index = (index + 1) % texts.length;
-    }, 10000);
-    return () => clearInterval(interval);
-  }, []);
+    async function editProduct() {
+      const response = await getProductRequestByProductId(8)
+      console.log(response.data)
+    }
+  
+    editProduct();
+  }, [])
+  
 
-  const datos = async (datas) => {
-    const formData = new FormData();
-    imagenFile.forEach((file) => {
-      formData.append("image", file);
-    });
+    const [preImg, setpreImg] = useState([]);
+    const [imagenFile, setimagenFile] = useState([]);
+    const {
+      register,
+      handleSubmit,
+      formState: { errors },
+      reset,
+    } = useForm();
+  
+    const changeInput = (e) => {
+      let indexImg;
+  
+      if (preImg.length > 0) {
+        indexImg = preImg[preImg.length - 1].index + 1;
+      } else {
+        indexImg = 0;
+      }
+  
+      let newImgsToState = readmultifile(e, indexImg);
+      let newImgsState = [...preImg, ...newImgsToState];
+      setpreImg(newImgsState);
+    };
+  
+    function readmultifile(e, indexImg) {
+      const files = e.currentTarget.files;
+  
+      const arrayImages = [];
+      const arrayFiles = [];
+  
+      Object.keys(files).forEach((i) => {
+        const file = files[i];
+  
+        arrayFiles.push(file);
+        let url = URL.createObjectURL(file);
+  
+        arrayImages.push({
+          index: indexImg,
+          name: file.name,
+          url,
+          file,
+        });
+        indexImg++;
+      });
+      setimagenFile(arrayFiles);
+      return arrayImages;
+    }
+  
+    function deleteImg(indice) {
+      const newImgs = preImg.filter(function (element) {
+        return element.index !== indice;
+      });
+      setpreImg(newImgs);
+    }
+  
+    const [text, setText] = useState("Bienvenido");
+    const texts = [
+      "Vende tus Productos",
+      "De Forma Segura",
+      "Rapido y Facil!",
+      "Sin Complicaciones",
+    ];
+    let index = 0;
+  
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setText(texts[index]);
+        // eslint-disable-next-line
+        index = (index + 1) % texts.length;
+      }, 10000);
+      return () => clearInterval(interval);
+    }, []);
+  
+    const datos = async (datas) => {
+      const formData = new FormData();
+      imagenFile.forEach((file) => {
+        formData.append("image", file);
+      });
+  
+      const respuesta = await createProductRequest(datas);
+      formData.append("id", respuesta.data.id);
+      createImageRequest(formData);
+    };
+  
+    const validarImg = () => {
+      return preImg.length > 0;
+    };
+  
+    const handleReset = () => {
+      reset();
+      setpreImg([]);
+    };
 
-    const respuesta = await createProductRequest(datas);
-    formData.append("id", respuesta.data.id);
-    createImageRequest(formData);
-  };
-
-  const validarImg = () => {
-    return preImg.length > 0;
-  };
-
-  const handleReset = () => {
-    reset();
-    setpreImg([]);
-  };
-
+    
   return (
     <div className={css.container_form}>
       <div className={css.container_info}>
         <img src={fondo} alt="vivero13" className={css.imagenFondo} />
         <img src={imgLogo} alt="logo" className={css.logo} />
-        <div className={css.cajaTexto}>
-          <p className={css.texto}>{text}</p>
-        </div>
+        
       </div>
       <div className={css.form_product}>
         <form noValidate onSubmit={handleSubmit(datos)}>
@@ -250,7 +259,7 @@ function AddProduct() {
         </form>
       </div>
     </div>
-  );
+  )
 }
 
-export default AddProduct;
+export default EditProduct

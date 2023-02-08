@@ -7,6 +7,7 @@ export const PROFILE = "/private/profile";
 export const LOGOUT = "/private/logout";
 export const MY_PRODUCTS = "/private/my-products";
 export const ADD_PRODUCT = "/private/add-product";
+export const EDIT_PRODUCT = "/private/edit-product/:id";
 export const PRODUCTS = "/private/products";
 export const CART = "/private/cart";
 export const DASHBOARD = "/private/dashboard";

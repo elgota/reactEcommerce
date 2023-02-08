@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import AddProductPage from "./pages/AddProductPage";
+import EditProductPage from "./pages/EditProductPage";
 import MyProductsPage from "./pages/MyProductsPage";
 import DashboardPage from "./pages/DashboardPage";
 import LogoutPage from "./pages/LogoutPage";
@@ -18,6 +19,7 @@ import {
   CART,
   HOME,
   ADD_PRODUCT,
+  EDIT_PRODUCT,
   DASHBOARD,
   MY_PRODUCTS,
   SIGNUP,
@@ -44,6 +46,7 @@ function App() {
             <Route path={MY_PRODUCTS} element={<MyProductsPage />} />
             <Route path={LOGOUT} element={<LogoutPage />} />
             <Route path={ADD_PRODUCT} element={<AddProductPage />} />
+            <Route path={EDIT_PRODUCT} element={<EditProductPage />} />
             <Route path={CART} element={<Cart />} />
             <Route path={DASHBOARD} element={<DashboardPage />} />
           </Route>

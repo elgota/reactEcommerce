@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 export const createProduct = async (req, res) => {
   try {
     const {
-      userId = 1,
+      userId = 2,
       title,
       metaTitle,
       slug = uuidv4(),
@@ -62,7 +62,7 @@ export const getProducts = async (req, res) => {
 export const getProduct = async (req, res) => {
   try {
     const [result] = await pool.query(
-      "SELECT p.id, p.title, p.summary, p.price, p.content, i.data FROM product p INNER JOIN image i ON p.id = i.productId  WHERE p.id = ? GROUP BY p.id",
+      "SELECT p.id, p.title, p.summary, p.price, p.content, i.data FROM product p INNER JOIN image i ON p.id = i.productId  WHERE p.id = ?",
       [req.params.id]
     );
 
@@ -81,6 +81,7 @@ export const getProduct = async (req, res) => {
     }
 
     res.json(result[0]);
+    
   } catch (error) {
     console.error(error);
   }
