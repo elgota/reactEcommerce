@@ -3,123 +3,131 @@ import { useForm } from "react-hook-form";
 import css from "./AddProduct.module.css";
 import imgLogo from "../../assets/logoVivero.png";
 import fondo from "../../assets/fondo-vivero.jpg";
-import { getProductRequestByProductId } from '../../api/product.api';
+import FormData from "form-data";
+import { getProductRequestByProductId, updateProductRequest } from '../../api/product.api';
+import { useParams } from 'react-router-dom';
 
 function EditProduct() {
 
-  
+  const params = useParams();
+
+  const [product, setProduct] = useState('');
 
   useEffect(() => {
     async function editProduct() {
-      const response = await getProductRequestByProductId(8)
-      console.log(response.data)
+      const response = await getProductRequestByProductId(params.id)
+      // console.log(response.data) //Por qué se repite?
+      setProduct(response.data)
     }
-  
+
     editProduct();
   }, [])
-  
 
-    const [preImg, setpreImg] = useState([]);
-    const [imagenFile, setimagenFile] = useState([]);
-    const {
-      register,
-      handleSubmit,
-      formState: { errors },
-      reset,
-    } = useForm();
-  
-    const changeInput = (e) => {
-      let indexImg;
-  
-      if (preImg.length > 0) {
-        indexImg = preImg[preImg.length - 1].index + 1;
-      } else {
-        indexImg = 0;
-      }
-  
-      let newImgsToState = readmultifile(e, indexImg);
-      let newImgsState = [...preImg, ...newImgsToState];
-      setpreImg(newImgsState);
-    };
-  
-    function readmultifile(e, indexImg) {
-      const files = e.currentTarget.files;
-  
-      const arrayImages = [];
-      const arrayFiles = [];
-  
-      Object.keys(files).forEach((i) => {
-        const file = files[i];
-  
-        arrayFiles.push(file);
-        let url = URL.createObjectURL(file);
-  
-        arrayImages.push({
-          index: indexImg,
-          name: file.name,
-          url,
-          file,
-        });
-        indexImg++;
-      });
-      setimagenFile(arrayFiles);
-      return arrayImages;
-    }
-  
-    function deleteImg(indice) {
-      const newImgs = preImg.filter(function (element) {
-        return element.index !== indice;
-      });
-      setpreImg(newImgs);
-    }
-  
-    const [text, setText] = useState("Bienvenido");
-    const texts = [
-      "Vende tus Productos",
-      "De Forma Segura",
-      "Rapido y Facil!",
-      "Sin Complicaciones",
-    ];
-    let index = 0;
-  
-    useEffect(() => {
-      const interval = setInterval(() => {
-        setText(texts[index]);
-        // eslint-disable-next-line
-        index = (index + 1) % texts.length;
-      }, 10000);
-      return () => clearInterval(interval);
-    }, []);
-  
-    const datos = async (datas) => {
-      const formData = new FormData();
-      imagenFile.forEach((file) => {
-        formData.append("image", file);
-      });
-  
-      const respuesta = await createProductRequest(datas);
-      formData.append("id", respuesta.data.id);
-      createImageRequest(formData);
-    };
-  
-    const validarImg = () => {
-      return preImg.length > 0;
-    };
-  
-    const handleReset = () => {
-      reset();
-      setpreImg([]);
-    };
 
-    
+  const [preImg, setpreImg] = useState([]);
+  const [imagenFile, setimagenFile] = useState([]);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
+  const changeInput = (e) => {
+    let indexImg;
+
+    if (preImg.length > 0) {
+      indexImg = preImg[preImg.length - 1].index + 1;
+    } else {
+      indexImg = 0;
+    }
+
+    let newImgsToState = readmultifile(e, indexImg);
+    let newImgsState = [...preImg, ...newImgsToState];
+    setpreImg(newImgsState);
+  };
+
+  function readmultifile(e, indexImg) {
+    const files = e.currentTarget.files;
+
+    const arrayImages = [];
+    const arrayFiles = [];
+
+    Object.keys(files).forEach((i) => {
+      const file = files[i];
+
+      arrayFiles.push(file);
+      let url = URL.createObjectURL(file);
+
+      arrayImages.push({
+        index: indexImg,
+        name: file.name,
+        url,
+        file,
+      });
+      indexImg++;
+    });
+    setimagenFile(arrayFiles);
+    return arrayImages;
+  }
+
+  function deleteImg(indice) {
+    const newImgs = preImg.filter(function (element) {
+      return element.index !== indice;
+    });
+    setpreImg(newImgs);
+  }
+
+  const [text, setText] = useState("Bienvenido");
+  const texts = [
+    "Vende tus Productos",
+    "De Forma Segura",
+    "Rapido y Facil!",
+    "Sin Complicaciones",
+  ];
+  let index = 0;
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setText(texts[index]);
+      // eslint-disable-next-line
+      index = (index + 1) % texts.length;
+    }, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const datos = async (datas) => {
+    const formData = new FormData();
+    imagenFile.forEach((file) => {
+      formData.append("image", file);
+    });
+
+    const respuesta = await updateProductRequest(params.id);
+    formData.append("id", respuesta.data.id);
+    createImageRequest(formData);
+  };
+
+  const validarImg = () => {
+    return preImg.length > 0;
+  };
+
+  const handleReset = () => {
+    reset();
+    setpreImg([]);
+  };
+
+  Object.values(product).map(x => console.log(x));
   return (
+    
     <div className={css.container_form}>
       <div className={css.container_info}>
         <img src={fondo} alt="vivero13" className={css.imagenFondo} />
         <img src={imgLogo} alt="logo" className={css.logo} />
-        
+        <div className={css.cajaTexto}>
+          <p className={css.texto}>{text}</p>
+        </div>
       </div>
-      <div className={css.form_product}>
+      <div className={css.form_product} key={0}>
         <form noValidate onSubmit={handleSubmit(datos)}>
           <div className={css.input_group}>
             <input
@@ -128,7 +136,7 @@ function EditProduct() {
               type="text"
               className={css.inputs}
             />
-            <label className={css.user_label}>Title</label>
+            <label className={css.user_label}>{product.title}</label>
           </div>
           {errors.title?.type === "required" && (
             <p className={css.errorText}>*El campo no puede estar vacio</p>
@@ -144,7 +152,7 @@ function EditProduct() {
               {...register("summary", { required: true, maxLength: 20 })}
               className={css.inputs}
             />
-            <label className={css.user_label}>Summary</label>
+            <label className={css.user_label}>{product.summary}</label>
           </div>
           {errors.summary?.type === "required" && (
             <p className={css.errorText}>*El campo no puede estar vacio</p>
@@ -159,7 +167,7 @@ function EditProduct() {
               {...register("price", { required: true, pattern: /^[0-9]/ })}
               className={css.inputs}
             />
-            <label className={css.user_label}>Precio</label>
+            <label className={css.user_label}>{product.price}</label>
           </div>
           {errors.price?.type === "required" && (
             <p className={css.errorText}>*El campo no puede estar vacio</p>
@@ -174,7 +182,7 @@ function EditProduct() {
               {...register("discount", { required: true, pattern: /^[0-9]/ })}
               className={css.inputs}
             />
-            <label className={css.user_label}>Descuento</label>
+            <label className={css.user_label}>{product.discount}</label>
           </div>
           {errors.discount?.type === "required" && (
             <p className={css.errorText}>*El campo no puede estar vacio</p>
@@ -189,7 +197,7 @@ function EditProduct() {
               {...register("quantity", { required: true, pattern: /^[0-9]/ })}
               className={css.inputs}
             />
-            <label className={css.user_label}>Unidades disponibles</label>
+            <label className={css.user_label}>{product.quantity}</label>
           </div>
           {errors.quantity?.type === "required" && (
             <p className={css.errorText}>*El campo no puede estar vacio</p>
@@ -242,7 +250,7 @@ function EditProduct() {
               className={css.textoDescriptivo}
               cols="54"
               rows="10"
-              placeholder="Ingrese  una descripcion del producto"
+              placeholder={product.content}
             ></textarea>
           </div>
           {errors.content?.type === "minLength" && (

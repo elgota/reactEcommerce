@@ -15,9 +15,9 @@ function MyProducts() {
 
   const [products, setProducts] = useState([]);
 
-  const onEdit = (product) => {
-    return <AddProduct />;
-  };
+  // const onEdit = (product) => {
+  //   return <AddProduct />;
+  // };
 
   const onDelete = async (productId) => {
     try {
@@ -66,7 +66,7 @@ function MyProducts() {
             </td>
 
             <td className="cell">
-              <button onClick={() => navigate(`/private/edit-product/${product.id}`)} className="button">
+              <button onClick={() => navigate(`/private/edit-product/${product.id}`)} className="button"> 
                 Editar
               </button>
               <button onClick={() => onDelete(product.id)} className="button"> 

@@ -62,7 +62,7 @@ export const getProducts = async (req, res) => {
 export const getProduct = async (req, res) => {
   try {
     const [result] = await pool.query(
-      "SELECT p.id, p.title, p.summary, p.price, p.content, i.data FROM product p INNER JOIN image i ON p.id = i.productId  WHERE p.id = ?",
+      "SELECT p.id, p.title, p.summary, p.price, p.discount, p.quantity, p.content, i.data FROM product p INNER JOIN image i ON p.id = i.productId  WHERE p.id = ?",
       [req.params.id]
     );
 
@@ -133,9 +133,10 @@ export const getProductsImagesByUserId = async (req, res) => {
 export const updateProduct = async (req, res) => {
   try {
     const [result] = await pool.query("UPDATE product SET ? WHERE id = ?", [
-      req.body,
+      req.body, 
       req.params.id,
     ]);
+
 
     if (result.affectedRows === 0) {
       return res.status(404).json({ message: "Product not found" });

@@ -19,3 +19,6 @@ export const createProductRequest = async (product) =>
 
 export const deleteProductRequest = async (productId) =>
   await axios.put(`http://localhost:4000/api/delete-product/${productId}`);
+
+  export const updateProductRequest = async (productId) =>
+  await axios.put(`http://localhost:4000/api/products/${productId}`);
