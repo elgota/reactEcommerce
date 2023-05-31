@@ -102,10 +102,11 @@ function EditProduct() {
       formData.append("image", file);
     });
 
-    const respuesta = await updateProductRequest(params.id);
+    const respuesta = await updateProductRequest(params.id, datas);
     formData.append("id", respuesta.data.id);
     createImageRequest(formData);
   };
+
 
   const validarImg = () => {
     return preImg.length > 0;
